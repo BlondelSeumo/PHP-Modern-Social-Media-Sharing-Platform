@@ -1,0 +1,73 @@
+<div class="timeline-container" data-app="notifications">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link("notifications"); ?>" data-spa="true">
+					<?php echo cl_translate("Notifications"); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="vue-app-body" id="vue-notifications-app">
+		<div class="vue-app-body-inner">
+
+			<div class="profile--notifs-list-navbar">
+				<div class="profile--notifs-list-navbar-inner">
+					<a href="<?php echo cl_link("notifications"); ?>" data-spa="true">
+						<button class="navbar-item-btn <?php if($cl['page_tab'] == 'notifs') {echo('active');} ?>">
+							<?php echo cl_translate("Notifications"); ?>
+						</button>
+					</a>
+					<a href="<?php echo cl_link("mentions"); ?>" data-spa="true">
+						<button class="navbar-item-btn <?php if($cl['page_tab'] == 'mentions') {echo('active');} ?>">
+							<?php echo cl_translate("Mentions"); ?>
+						</button>
+					</a>
+				</div>
+			</div>
+
+			<div class="profile--notifs-list-container">
+				<?php if (not_empty($cl["notifs"])): ?>
+					<div data-an="notifs-list" class="profile--notifs-list" v-on:scroll="load_notifications($event)">
+						<?php foreach ($cl["notifs"] as $cl['li']): ?>
+							<?php echo cl_template('notifications/includes/list_item'); ?>
+						<?php endforeach; ?>
+					</div>
+				<?php else: ?>
+					<?php echo cl_template('notifications/includes/no_notifs'); ?>
+				<?php endif; ?>
+			</div>
+
+			<?php if (not_empty($cl["notifs"])): ?>
+				<div class="notifs-selection-control">
+					<div class="notifs-selection-control-inner" v-bind:class="{'disabled': invalid_form}">
+						<div class="info-render">
+							<span><?php echo cl_translate("Delete selected"); ?></span> <b>({{total_selected}})</b>
+						</div>
+						<div class="action-ctrls">
+							<button v-on:click="delete_notifs($event)" class="action-ctrls-item" v-bind:disabled="invalid_form">
+								<?php echo cl_svg('md-trash'); ?>
+							</button>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template('notifications/scripts/app_master_script'); ?>
+</div>

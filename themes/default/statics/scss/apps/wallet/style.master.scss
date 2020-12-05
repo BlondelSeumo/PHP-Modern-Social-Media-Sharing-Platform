@@ -1,0 +1,231 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-wallet{
+	main.main-content-container{
+		div.main-content-container-inner{
+			div.timeline-container{
+				div.account-wallet-container{
+					width: 100%;
+					display: block;
+					padding: 15px;
+
+					div.account-balance-card{
+						width: 100%;
+						display: block;
+						padding: 20px;
+						border-radius: 10px;
+						margin-bottom: 20px;
+						border: 1px solid $border;
+
+						h4{
+							font-size: 16px;
+							line-height: 22px;
+							padding: 0;
+							margin: 0 0 10px 0;
+							color: $black;
+							font-weight: 700;
+						}
+
+						div.account-balance-holder{
+							span{
+								font-size: 46px;
+								color: $blue;
+								line-height: 46px;
+								display: block;
+								font-weight: 700;
+							}
+
+							small{
+								display: block;
+								font-size: 11px;
+								line-height: 11px;
+								color: $grey;
+								text-transform: uppercase;
+								margin-top: 7px;
+							}
+						}
+
+						h5{
+							font-size: 14px;
+							line-height: 18px;
+							padding: 0;
+							margin: 0 0 10px 0;
+							color: $black;
+							font-weight: 400;
+							text-transform: uppercase;
+						}
+
+						form.form{
+							div.form-group{
+								input.form-control{
+
+								}
+							}
+						}
+					}
+
+					div.account-wallet-history{
+						width: 100%;
+						display: block;
+						padding: 20px;
+						border: 1px solid $border;
+						border-radius: 10px;
+
+						h4{
+							font-size: 16px;
+							line-height: 22px;
+							padding: 0;
+							margin: 0 0 20px 0;
+							color: $black;
+							font-weight: 700;
+						}
+
+						div.wallet-transactions-history{
+							width: 100%;
+							display: block;
+							max-height: 400px;
+							overflow-y: auto;
+
+							div.wallet-transactions-record{
+								width: 100%;
+								display: flex;
+								flex-direction: row;
+								flex-wrap: nowrap;
+								margin-bottom: 15px;
+								padding-bottom: 15px;
+								border-bottom: 1px solid $border;
+
+								&:last-child{
+									margin-bottom: 0px;
+									border-bottom: none;
+									padding-bottom: 0px;
+								}
+
+								div.lp{
+									width: 35px;
+									height: 35px;
+									min-width: 35px;
+									min-height: 35px;
+
+									div.icon{
+										width: 100%;
+										height: 100%;
+										display: flex;
+										flex-direction: row;
+										justify-content: center;
+										align-items: center;
+										background: $grey;
+										border-radius: 10em;
+
+										svg{
+											width: 20px;
+											height: 20px;
+											fill: #fff !important;
+
+											*{
+												stroke: #fff !important;
+											}
+										}
+									}
+								}
+
+								div.mp{
+									padding-left: 15px;
+									padding-right: 15px;
+									flex: 1;
+
+									div.amount{
+										width: 100%;
+										display: block;
+
+										span{
+											font-size: 14px;
+											line-height: 14px;
+											font-weight: 600;
+										}
+									}
+
+									div.trans-info{
+										width: 100%;
+										display: block;
+										p{
+											font-size: 13px;
+											color: $black;
+											line-height: 18px;
+											padding: 0;
+											margin: 0;
+										}
+									}
+								}
+
+								div.rp{
+									time{
+										font-size: 13px;
+										line-height: 18px;
+										color: $grey;
+									}
+								}
+							}
+						}
+
+						div.wallet-no-history{
+							width: 100%;
+							display: block;
+							background: $el_hovbg;
+							border-radius: 10px;
+
+							div.wallet-no-history-inner{
+								width: 100%;
+								display: flex;
+								flex-direction: column;
+								flex-wrap: nowrap;
+								align-items: center;
+								padding: 35px 20px;
+								justify-content: center;
+
+
+								div.icon{
+									width: 50px;
+									height: 50px;
+									min-width: 50px;
+									min-height: 50px;
+									margin-bottom: 10px;
+
+									svg{
+										width: 100%;
+										height: 100%;
+										fill: $blue;
+
+										*{
+											stroke: $blue;
+										}
+									}
+								}
+
+								p{
+									text-align: center;
+									padding: 0;
+									margin: 0;
+									font-size: 13px;
+									line-height: 20px;
+									color: $grey;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+

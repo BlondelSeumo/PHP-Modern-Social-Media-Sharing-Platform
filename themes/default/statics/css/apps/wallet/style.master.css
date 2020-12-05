@@ -1,0 +1,147 @@
+body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container {
+  width: 100%;
+  display: block;
+  padding: 15px; }
+  body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-balance-card {
+    width: 100%;
+    display: block;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e6ecf0; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-balance-card h4 {
+      font-size: 16px;
+      line-height: 22px;
+      padding: 0;
+      margin: 0 0 10px 0;
+      color: #14171a;
+      font-weight: 700; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-balance-card div.account-balance-holder span {
+      font-size: 46px;
+      color: #1ca1f3;
+      line-height: 46px;
+      display: block;
+      font-weight: 700; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-balance-card div.account-balance-holder small {
+      display: block;
+      font-size: 11px;
+      line-height: 11px;
+      color: #657786;
+      text-transform: uppercase;
+      margin-top: 7px; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-balance-card h5 {
+      font-size: 14px;
+      line-height: 18px;
+      padding: 0;
+      margin: 0 0 10px 0;
+      color: #14171a;
+      font-weight: 400;
+      text-transform: uppercase; }
+  body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history {
+    width: 100%;
+    display: block;
+    padding: 20px;
+    border: 1px solid #e6ecf0;
+    border-radius: 10px; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history h4 {
+      font-size: 16px;
+      line-height: 22px;
+      padding: 0;
+      margin: 0 0 20px 0;
+      color: #14171a;
+      font-weight: 700; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history {
+      width: 100%;
+      display: block;
+      max-height: 400px;
+      overflow-y: auto; }
+      body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e6ecf0; }
+        body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record:last-child {
+          margin-bottom: 0px;
+          border-bottom: none;
+          padding-bottom: 0px; }
+        body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.lp {
+          width: 35px;
+          height: 35px;
+          min-width: 35px;
+          min-height: 35px; }
+          body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.lp div.icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background: #657786;
+            border-radius: 10em; }
+            body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.lp div.icon svg {
+              width: 20px;
+              height: 20px;
+              fill: #fff !important; }
+              body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.lp div.icon svg * {
+                stroke: #fff !important; }
+        body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.mp {
+          padding-left: 15px;
+          padding-right: 15px;
+          flex: 1; }
+          body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.mp div.amount {
+            width: 100%;
+            display: block; }
+            body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.mp div.amount span {
+              font-size: 14px;
+              line-height: 14px;
+              font-weight: 600; }
+          body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.mp div.trans-info {
+            width: 100%;
+            display: block; }
+            body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.mp div.trans-info p {
+              font-size: 13px;
+              color: #14171a;
+              line-height: 18px;
+              padding: 0;
+              margin: 0; }
+        body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-transactions-history div.wallet-transactions-record div.rp time {
+          font-size: 13px;
+          line-height: 18px;
+          color: #657786; }
+    body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-no-history {
+      width: 100%;
+      display: block;
+      background: #f5f8fa;
+      border-radius: 10px; }
+      body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-no-history div.wallet-no-history-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 35px 20px;
+        justify-content: center; }
+        body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-no-history div.wallet-no-history-inner div.icon {
+          width: 50px;
+          height: 50px;
+          min-width: 50px;
+          min-height: 50px;
+          margin-bottom: 10px; }
+          body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-no-history div.wallet-no-history-inner div.icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #1ca1f3; }
+            body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-no-history div.wallet-no-history-inner div.icon svg * {
+              stroke: #1ca1f3; }
+        body.cl-app-wallet main.main-content-container div.main-content-container-inner div.timeline-container div.account-wallet-container div.account-wallet-history div.wallet-no-history div.wallet-no-history-inner p {
+          text-align: center;
+          padding: 0;
+          margin: 0;
+          font-size: 13px;
+          line-height: 20px;
+          color: #657786; }
+
+/*# sourceMappingURL=style.master.css.map */

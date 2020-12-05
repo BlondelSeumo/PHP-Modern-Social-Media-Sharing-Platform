@@ -1,0 +1,61 @@
+<tr data-list-item="<?php echo($cl['li']['id']); ?>" data-user-id="<?php echo($cl['li']['id']); ?>">
+    <td>
+        <?php echo($cl['li']['id']); ?>
+    </td>
+    <td>
+        <div class="user-info-holder">
+            <div class="avatar-holder">
+                <img src="<?php echo($cl['li']['avatar']); ?>" alt="Avatar">
+            </div>
+            <div class="uname-holder">
+                <b>
+                    <span class="user-name-holder <?php if ($cl['li']['verified'] == '1') {echo('verified-badge');} ?>">
+                        <?php echo($cl['li']['name']); ?>
+                    </span>
+                </b>
+                <a href="<?php echo($cl['li']['url']); ?>">
+                    <?php echo($cl['li']['username']); ?>
+                </a>
+            </div>
+        </div>
+    </td>
+    <td>
+        <span>
+            <?php echo($cl['li']['email']); ?>
+        </span>
+    </td>
+    <td>
+        <div class="banner-flag">
+            <?php echo($cl['li']['banner']); ?>
+        </div>
+    </td>
+    <td>
+        <?php echo($cl['li']['ip_address']); ?>
+    </td>
+    <td class="switch">
+        <label>
+            <input onchange="CSMUsers.toggle_status(<?php echo($cl['li']['id']); ?>);" type="checkbox" <?php if ($cl['li']['active'] == '1') { echo('checked'); } ?>>
+            <span class="lever switch-col-blue"></span>
+        </label>
+    </td>
+    <td>
+        <time>
+            <?php echo($cl['li']['last_active']); ?>
+        </time>
+    </td>
+    <td>
+        <div class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">more_horiz</i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="<?php echo($cl['li']['url']); ?>" class="dropdown-item">
+                    <?php echo cl_translate('Profile'); ?>
+                </a>
+                <a href="javascript:void(0);" class="dropdown-item" onclick="SMC_CPanel.delete_user('<?php echo($cl['li']['id']); ?>');">
+                    <?php echo cl_translate('Delete'); ?>
+                </a>
+            </ul>
+        </div>
+    </td>
+</tr>

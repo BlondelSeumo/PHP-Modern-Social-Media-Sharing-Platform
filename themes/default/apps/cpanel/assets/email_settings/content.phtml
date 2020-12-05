@@ -1,0 +1,120 @@
+<div class="cp-app-container" data-app="email-settings">
+    <div class="current-page-name">
+        <div class="lp">
+            <h2>
+                <?php echo cl_translate('E-mail settings'); ?>
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="<?php echo cl_link('admin_panel'); ?>">
+                        <?php echo cl_translate('Control panel'); ?>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);">
+                        <?php echo cl_translate('E-mail settings'); ?>
+                    </a>
+                </li> 
+            </ol>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <?php echo cl_translate('Manage mailing system settings'); ?>
+                    </h2>
+                </div>
+                <div class="body">
+                    <form class="form" data-an="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="smtp_username-input">
+                                    <label>
+                                        <?php echo cl_translate('SMTP username'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config smtp_username%}" name="smtp_username" type="text" class="form-control" placeholder="<?php echo cl_translate('Enter the username of your SMTP server'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="smtp_host-input">
+                                    <label>
+                                        <?php echo cl_translate('SMTP host'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config smtp_host%}" name="smtp_host" type="text" class="form-control" placeholder="<?php echo cl_translate('Enter the host name of your SMTP server'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="smtp_password-input">
+                                    <label>
+                                        <?php echo cl_translate('SMTP password'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config smtp_password%}" name="smtp_password" type="passwords" class="form-control" placeholder="<?php echo cl_translate('Enter the password of your SMTP server'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="smtp_encryption-input">
+                                    <label>
+                                        <?php echo cl_translate('SMTP encryption'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <select name="smtp_encryption" class="form-control selectpicker">
+                                            <option value="ssl" <?php if($cl['config']['smtp_encryption'] == 'ssl') { echo('selected'); } ?>>SSL</option>
+                                            <option value="tls" <?php if($cl['config']['smtp_encryption'] == 'tls') { echo('selected'); } ?>>TLS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="smtp_or_mail-input">
+                                    <label>
+                                        <?php echo cl_translate('SMTP server'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <select name="smtp_or_mail" class="form-control selectpicker">
+                                            <option value="smtp" <?php if($cl['config']['smtp_or_mail'] == 'smtp') { echo('selected'); } ?>>SMTP</option>
+                                            <option value="mail" <?php if($cl['config']['smtp_or_mail'] == 'mail') { echo('selected'); } ?>>MAIL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="smtp_port-input">
+                                    <label>
+                                        <?php echo cl_translate('SMTP port'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config smtp_port%}" name="smtp_port" type="number" class="form-control" placeholder="<?php echo cl_translate('Enter the port of your SMTP server'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 no-mb">
+                                <button data-an="submit-ctrl" type="submit" class="btn bg-blue btn-block btn-lg waves-effect ttup">
+                                    <?php echo cl_translate("Save changes"); ?>
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo cl_template('cpanel/assets/email_settings/scripts/app_master_script'); ?>

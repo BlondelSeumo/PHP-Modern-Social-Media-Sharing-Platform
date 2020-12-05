@@ -1,0 +1,1 @@
+scss --watch style.mq.scss:../../../css/apps/err500/style.mq.css

@@ -1,0 +1,443 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-affiliates{
+	main.main-content-container{
+		div.main-content-container-inner{
+			div.timeline-container{
+				div.main-affiliates--settings-container{
+					width: 100%;
+					display: block;
+					line-height: 0px;
+					min-height: calc(100vh - 55px);
+					
+					div.affiliates--settings-header{
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						padding: 50px 30px 0px 30px;
+
+						div.icon{
+							width: 60px;
+							height: 60px;
+							min-width: 60px;
+							min-height: 60px;
+							margin-bottom: 20px;
+
+							svg{
+								width: 100%;
+								height: 100%;
+								display: block;
+
+								*{
+									stroke: $blue;
+								}
+							}
+
+							&.icon-2{
+								width: 25px;
+								height: 25px;
+								min-height: 25px;
+								min-width: 25px;
+								margin-bottom: 20px;
+							}
+						}
+
+						h4{
+							text-align: center;
+							padding: 0;
+							margin: 0 0 10px 0;
+							font-size: 22px;
+							line-height: 26px;
+							font-weight: 700;
+							color: $black;
+						}
+
+						p{
+							text-align: center;
+							padding: 0;
+							margin: 0;
+							font-size: 13px;
+							line-height: 20px;
+							margin-bottom: 20px;
+							color: $black;
+
+							b{
+								color: green;
+							}
+						}
+					}
+
+					div.affiliates--settings-body{
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						padding: 0px 30px;
+
+						h5{
+							text-align: center;
+							font-size: 14px;
+							line-height: 18px;
+							padding: 0;
+							margin: 0;
+							font-weight: 500;
+							color: $black;
+							margin-bottom: 20px;
+						}
+
+						div.input-affiliate-url{
+							margin-bottom: 30px;
+
+							b{
+								text-align: center;
+								display: block;
+								font-size: 16px;
+								color: $link;
+								text-decoration: underline;
+							}
+						}
+
+						div.social-links{
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							align-items: center;
+							justify-content: center;
+
+							a.social-link-btn{	
+								border: none;
+								box-shadow: $btn_shadow;
+								background: none;
+								color: #fff;
+								padding: 0;
+								line-height: 0;
+								outline: 0;
+								overflow: hidden;
+								border-radius: 5em;
+								margin: 0px 5px;
+								height: 35px;
+								width: 35px;
+								position: relative;
+
+								span.icon{
+									width: 15px;
+									height: 15px;
+									line-height: 0px;
+									overflow: hidden;
+									position: absolute;
+									left: 0;
+									top: 0;
+									bottom: 0;
+									right: 0;
+									margin: auto;
+									svg{
+										width: 15px;
+										height: 15px;
+										fill: #fff;
+									}
+								}
+
+								&.twitter{
+									background: #64ccf2;
+								}
+
+								&.facebook{
+									background: #507cc0;
+								}
+
+								&.whatsapp{
+									background: #4de675;
+								}
+
+								&.pinterest{
+									background: #cb2027;
+								}
+
+								&.linkedin{
+									background: #007bb6;
+								}
+
+								&.copy-link{
+									background: $grey;
+
+									svg{
+										*{
+											stroke: #fff;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					div.affiliates--settings-footer{
+						width: 100%;
+						display: block;
+						padding: 0px 30px;
+						margin-top: 30px;
+
+						div.new-payout-request{
+							width: 100%;
+							display: block;
+
+							p{
+								display: block;
+								padding: 0;
+								margin: 0;
+								text-align: center;
+								width: 100%;
+								font-size: 13px;
+								color: $grey;
+								line-height: 18px;
+								margin-bottom: 15px;
+								font-weight: 500;
+							}
+
+							button{
+								height: 40px;
+							}
+						}
+
+						div.payments-info-nav{
+							width: 100%;
+							display: block;
+							margin-top: 10px;
+							text-align: center;
+
+							span{
+								font-size: 11px;
+								color: $grey;
+								line-height: 18px;
+								margin-left: 5px;
+								margin-right: 5px;
+								cursor: pointer;
+							}
+						}
+					}
+
+					div.feature-system-off-page{
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						line-height: 0px;
+						padding: 50px 25px 50px 25px;
+						height: calc(100vh - 55px);
+
+						div.icon{
+							line-height: 0px;
+							margin-bottom: 15px;
+							width: 100%;
+							text-align: center;
+
+							svg{
+								width: 100px;
+								height: 100px;
+								display: inline-block;
+								vertical-align: middle;
+							}
+						}
+
+						div.pl-message{
+							line-height: 0px;
+							width: 100%;
+							margin-bottom: 50px;
+
+							h4{
+								font-size: 20px;
+								padding: 0;
+								margin: 0 0 15px 0;
+								line-height: 20px;
+								color: $black;
+								font-weight: 700;
+								text-align: center;
+							}
+
+							p{
+								font-size: 13px;
+								line-height: 18px;
+								padding: 0;
+								margin: 0;
+								color: $grey;
+								text-align: center;
+								overflow-wrap: break-word;
+							}
+						}
+
+						div.c2action-single{
+							width: 100%;
+							line-height: 0px;
+							text-align: center;
+
+							a{
+								display: inline-block;
+								line-height: 0px;
+								text-decoration: none;
+
+								button{
+									padding-left: 40px;
+									padding-right: 40px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.modal.how-it-works{
+		div.modal-body{
+			div.list-item{
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 20px;
+
+				div.tp{
+					margin-bottom: 10px;
+					div.icon{
+						display: flex;
+						flex-direction: row;
+						flex-wrap: nowrap;
+						width: 50px;
+						min-width: 50px;
+						height: 50px;
+						min-height: 50px;
+						align-items: center;
+						justify-content: center;
+
+						svg{
+							width: 100%;
+							height: 100%;
+							fill: $blue;
+
+							*{
+								stroke: $blue;
+							}
+						}
+					}
+				}
+
+				div.bp{
+					padding: 0 15px;
+					font-size: 13px;
+					color: $black;
+					line-height: 20px;
+					font-weight: 300;
+					text-align: center;
+
+					b{
+						font-weight: 500;
+						color: green;
+					}
+				}
+
+				&.no-mb{
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
+
+	div.modal.payout-history{
+		div.payouts-history-ls{
+			display: block;
+			line-height: 0;
+			max-height: 300px;
+			overflow-y: auto;
+
+			div.payouts-history-ls-item {
+				width: 100%;
+				display: block;
+				margin-bottom: 15px;
+				padding-bottom: 15px;
+				padding: 15px;
+				background: $el_hovbg;
+				border-radius: 6px;
+				
+				div.payout-info{
+					width: 100%;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: center;
+					margin-bottom: 10px;
+
+
+					&:last-child{
+						margin-bottom: 0px;
+					}
+
+					b{
+						font-size: 13px;
+						line-height: 18px;
+						color: $black;
+						font-weight: 500;
+						margin-right: 10px;
+					}
+
+					span{
+						font-size: 13px;
+						line-height: 18px;
+						font-weight: normal;
+						color: $black;
+
+						&.badge.bg-red{
+							background: $red;
+							color: #fff;
+							font-size: 11px;
+							line-height: 11px;
+							padding: 3px 10px;
+						}
+
+						&.badge.bg-orange{
+							background: $orange;
+							color: #fff;
+							font-size: 11px;
+							line-height: 11px;
+							padding: 3px 10px;
+						}
+
+						&.badge.bg-green{
+							background: $green;
+							color: #fff;
+							font-size: 11px;
+							line-height: 11px;
+							padding: 3px 10px;
+						}
+
+						&.amount{
+							color: $blue;
+							font-weight: 700;
+						}
+
+						&.time{
+							color: $grey;
+						}
+					}
+				}
+
+				&:last-child{
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
+}

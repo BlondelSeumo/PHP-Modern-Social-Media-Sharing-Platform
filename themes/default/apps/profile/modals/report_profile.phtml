@@ -1,0 +1,148 @@
+<div class="modal report-profile-modal vh-center" tabindex="-1" role="dialog" data-app="report-profile-app">
+    <div class="modal-dialog" role="document" id="cl-report-profile-vue-app">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="main---mh--block">
+                    <h5 class="modal-title">
+                        <?php echo cl_translate("Report this profile"); ?>
+                    </h5>
+                    <span class="dismiss-modal" data-dismiss="modal">
+                        <?php echo cl_svg('md-close'); ?>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group no-mb">
+                        <label class="form-label">
+                            <b>
+                                <?php echo cl_translate("What is the problem?"); ?>
+                            </b>
+                        </label>
+                        <div class="radio-box-holder">
+                            <?php foreach ($cl['profile_report_types'] as $i => $t): ?>
+                                <div class="radio-box" v-on:click="reason = <?php echo($i); ?>">
+                                    <div class="lp">
+                                        <div class="icon selected" v-if="reason == <?php echo($i); ?>">
+                                            <?php echo cl_svg("checkbox"); ?>
+                                        </div>
+                                        <div class="icon" v-else>
+                                            <?php echo cl_svg("square-outline"); ?>
+                                        </div>
+                                    </div>
+                                    <div class="rp">
+                                        <span>
+                                            <?php echo cl_translate($t); ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <hr>
+                        <label class="form-label">
+                            <b>
+                                <?php echo cl_translate("Message to the reviewer"); ?> - <span v-bind:class="{'text-danger': (comment.length > 2900)}">({{comment.length}}/2900)</span>
+                            </b>
+                        </label>
+                        <div class="comment-input-holder">
+                            <textarea v-model.trim="comment" class="form-control" placeholder="<?php echo cl_translate("Please write briefly about the problem with this account"); ?>"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button v-if="fe_state.submitting" disabled="true" type="buttom" class="btn btn-custom main-outline lg btn-block">
+                    <?php echo cl_translate("Please wait"); ?>
+                </button>
+                <button v-else v-bind:disabled="is_invalid_form" v-on:click="send_report" type="buttom" class="btn btn-custom main-outline lg btn-block">
+                    <?php echo cl_translate("Send report!"); ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    "use strict";
+
+    jQuery(document).ready(function($) {
+        var SMCReportProfile = new Vue({
+            el: "#cl-report-profile-vue-app",
+            data: {
+                profile_id: <?php echo ($cl['prof_user']['id']); ?>,
+                fe_state: {
+                    submitting: false,
+                    done: false,
+                    fail: false
+                },
+                reason: 0,
+                comment: ""
+            },
+            computed: {
+                is_invalid_form: function() {
+                    if (this.reason == 0) {
+                        return true;
+                    }
+
+                    else if(this.comment.length > 2900) {
+                        return true;
+                    }
+
+                    else {
+                        return false;
+                    }
+                }
+            },
+            methods: {
+                open: function(id = 0) {
+                    if (SMColibri.is_logged()) {
+                        $('div[data-app="report-profile-app"]').modal('show');
+                    }
+                    else {
+                        SMColibri.req_auth();
+                    }
+                },
+                close: function() {
+                    let _app_      = this;
+                    _app_.reason   = 0;
+                    _app_.comment  = "";
+
+                    $('div[data-app="report-profile-app"]').modal('hide');
+                },
+                send_report: function(id = false) {
+                    let _app_ = this;
+                    let data  = Object({
+                        reason: _app_.reason,
+                        profile_id: _app_.profile_id,
+                        comment: _app_.comment
+                    });
+
+                    if (_app_.fe_state.submitting != true) {
+                        $.ajax({
+                            url: '<?php echo cl_link("native_api/main/report_profile"); ?>',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: data,
+                            beforeSend: function() {
+                                _app_.fe_state.submitting = true;
+                            }
+                        }).done(function(data) {
+                            if (data.status == 200) {
+                                cl_bs_notify("<?php echo cl_translate('Thank you for letting us know! Your feedback is greatly appreciated.'); ?>", 1000);
+                            }
+                            else {
+                                SMColibri.errorMSG();
+                            }
+                        }).always(function() {
+                            _app_.close();
+                            _app_.fe_state.submitting = false;
+                        });
+                    } 
+                }
+            }
+        });
+
+        if (window.SMCReportProfile == undefined) {
+            window.SMCReportProfile = SMCReportProfile;
+        }
+    });
+</script>

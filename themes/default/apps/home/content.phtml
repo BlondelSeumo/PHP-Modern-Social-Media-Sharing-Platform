@@ -1,0 +1,42 @@
+<div class="timeline-container" data-app="homepage">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link("/"); ?>" data-spa="true">
+					<?php echo cl_translate("Home"); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link("/"); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link("chats"); ?>" data-spa="true">
+					<?php echo cl_svg('paper-plane-outline'); ?>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-timeline-pubbox-wrapper">
+		<?php $cl['pb_id'] = 1; echo cl_template('timeline/pubbox'); ?>
+	</div>
+
+	<div class="timeline-posts-container">
+		<?php if (not_empty($cl["tl_feed"])): ?>
+			<div class="timeline-posts-ls" data-an="entry-list">		
+				<?php foreach ($cl["tl_feed"] as $cl["li"]): ?>
+					<?php echo cl_template('timeline/post'); ?>
+				<?php endforeach; ?>
+			</div>
+		<?php else: ?>
+			<?php echo cl_template('home/includes/no_posts'); ?>
+		<?php endif; ?>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template("home/scripts/app_master_script"); ?>
+</div>

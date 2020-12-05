@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		F.A.Qs
+	</title>
+	<link rel="icon" href="{%config site_favicon%}" type="image/png">
+	<link rel="stylesheet" href="{%config theme_url%}/statics/css/libs/bootstrap-v4.0.0.min.css">
+	<link rel="stylesheet" href="{%config theme_url%}/statics/css/apps/stat_pages/style.master.css">
+	<link rel="stylesheet" href="{%config theme_url%}/statics/css/apps/stat_pages/style.mq.css">
+	<script src="{%config theme_url%}/statics/js/libs/jquery-3.4.1.min.js"></script>
+	<script src="{%config theme_url%}/statics/js/libs/popper.1.12.9.min.js"></script>
+	<script src="{%config theme_url%}/statics/js/libs/bootstrap.v4.0.0.min.js"></script>
+</head>
+<body>
+	<main class="main-content-container">
+		<header class="stat-page-header">
+			<div class="row">
+				<div class="col-sm-8 offset-sm-2">
+					<ul class="h-inner-nav">
+						<li class="h-inner-nav-item logo">
+							<a href="<?php echo cl_link('/'); ?>">
+								<img src="{%config site_logo%}" alt="Logo">
+							</a>
+						</li>
+						<li class="h-inner-nav-item">
+							<a href="<?php echo cl_link('terms_of_use'); ?>">
+								<?php echo cl_translate('Conditions'); ?>
+							</a>
+						</li>
+						<li class="h-inner-nav-item">
+							<a href="<?php echo cl_link('privacy_policy'); ?>">
+								<?php echo cl_translate('Privacy policy'); ?>
+							</a>
+						</li>
+						<li class="h-inner-nav-item">
+							<a href="<?php echo cl_link('cookies_policy'); ?>">
+								<?php echo cl_translate('Cookies'); ?>
+							</a>
+						</li>
+						<li class="h-inner-nav-item">
+							<a href="<?php echo cl_link('about_us'); ?>">
+								<?php echo cl_translate('About us'); ?>
+							</a>
+						</li>
+						<li class="h-inner-nav-item">
+							<a class="active" href="#">
+								F.A.Qs
+							</a>
+						</li>
+						<li class="h-inner-nav-item dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<?php echo cl_translate('Language'); ?>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<?php foreach ($cl["languages"] as $k => $v): ?>
+									<a class="dropdown-item" href="<?php echo cl_link(cl_strf("language/%s",$k)); ?>">
+										<?php echo($v); ?>
+									</a>
+								<?php endforeach; ?>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<div class="content-title">
+			<div class="row">
+				<div class="col-sm-8 offset-sm-2">
+					<h1></h1>
+					<h1>
+						<?php echo cl_svg('help-buoy-outline'); ?> 
+						<span>
+							<?php echo cl_translate('Help center - {@site_name@}', array(
+								'site_name' => $cl['config']['name']
+							)); ?>
+						</span>
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="content-body">
+			<div class="row">
+				<div class="col-sm-8 offset-sm-2">
+					<?php echo cl_template('faqs/src/source'); ?>
+				</div>
+			</div>
+		</div>
+		<div class="content-footer">
+			<small>&copy; {%config name%}, Inc., <?php echo date('Y') ?>.</small>
+		</div>
+	</main>
+</body>
+</html>

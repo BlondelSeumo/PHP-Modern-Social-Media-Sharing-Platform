@@ -1,0 +1,118 @@
+<div class="timeline-container" data-app="affiliates">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link('affiliates'); ?>">
+					<?php echo cl_translate('Affiliates'); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="main-affiliates--settings-container">
+		<div class="affiliates--settings-header">
+			<div class="icon">
+				<?php echo cl_svg('cash-outline'); ?>
+			</div>
+			<h4>
+				<?php echo cl_translate('Join our affiliate program'); ?>
+			</h4>
+			<p>
+				<?php echo cl_translate('Just share your affiliate URL and every time someone signs up with your referral link you will earn {@aff_bonus_rate@}', array(
+					'aff_bonus_rate' => cl_html_el("b", cl_money($cl['config']['aff_bonus_rate']))
+				)); ?>
+			</p>
+			<div class="icon icon-2">
+				<?php echo cl_svg('arrow-down-outline'); ?>
+			</div>
+		</div>
+		<div class="affiliates--settings-body">
+			<h5>
+				<?php echo cl_translate('This is your affiliate URL'); ?>
+			</h5>
+			<div class="input-affiliate-url">
+				<b><?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?></b>
+			</div>
+			<div class="social-links">
+				<a href="javascript:void(0);" class="social-link-btn copy-link clip-board-copy" data-clipboard-text="<?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?>">
+					<span class="icon">
+						<?php echo cl_svg('copy-outline'); ?>
+					</span>
+				</a>
+				<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?>" class="social-link-btn facebook">
+					<span class="icon">
+						<?php echo cl_svg('logo-facebook'); ?>
+					</span>
+				</a>
+				<a target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?>" class="social-link-btn twitter">
+					<span class="icon">
+						<?php echo cl_svg('logo-twitter'); ?>
+					</span>
+				</a>
+				<a target="_blank" href="https://api.whatsapp.com/send?text=<?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?>" class="social-link-btn whatsapp">
+					<span class="icon">
+						<?php echo cl_svg('logo-whatsapp'); ?>
+					</span>
+				</a>
+				<a target="_blank" href="https://www.pinterest.ru/pin/create/button/?url=<?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?>" class="social-link-btn pinterest">
+					<span class="icon">
+						<?php echo cl_svg('logo-pinterest'); ?>
+					</span>
+				</a>
+				<a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo cl_strf("%s?ref=%s",$cl['config']['url'], $me['raw_uname']); ?>" class="social-link-btn linkedin">
+					<span class="icon">
+						<?php echo cl_svg('logo-linkedin'); ?>
+					</span>
+				</a>
+			</div>
+		</div>
+		<div class="affiliates--settings-footer">
+			<div class="new-payout-request">
+				<p>
+					<?php echo cl_translate('Submit a request to pay your earnings'); ?>
+				</p>
+				<?php if (cl_aff_request_exists()): ?>
+					<button disabled="true" class="btn btn-custom main-outline lg btn-block">
+						<?php echo cl_translate('Your request is pending'); ?>
+					</button>
+				<?php else: ?>
+					<button onclick="SMCAffiliates.new_req();" class="btn btn-custom main-outline lg btn-block">
+						<?php echo cl_translate('Request payout'); ?> <?php echo cl_money(cl_calc_affiliate_bonuses()); ?>
+					</button>
+				<?php endif; ?>
+			</div>
+			<div class="payments-info-nav">
+				<span onclick="SMCAffiliates.how_it_works();">
+					<?php echo cl_translate('How it works?'); ?>
+				</span>
+
+				<?php if (not_empty($cl["payout_history"])): ?>
+					<span onclick="SMCAffiliates.show_prev_reqs();">
+						<?php echo cl_translate('Show payout request history'); ?>	
+					</span>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<?php echo cl_template("affiliates/modals/payout_req"); ?>
+
+	<?php echo cl_template("affiliates/modals/howit_works"); ?>
+
+	<?php echo cl_template("affiliates/modals/payout_history"); ?>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+
+	<?php echo cl_template("affiliates/scripts/app_master_script"); ?>
+</div>

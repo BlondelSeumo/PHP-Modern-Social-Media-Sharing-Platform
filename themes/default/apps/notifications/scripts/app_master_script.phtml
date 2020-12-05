@@ -1,0 +1,123 @@
+<script>
+
+	"use strict";
+
+	$(document).ready(function($) {
+		var _app = new Vue({
+			el: "#vue-notifications-app",
+			data: {
+				total_selected: 0,
+				selected: {},
+				loading: false,
+				loadmore: true,
+				type: '<?php echo($cl["page_tab"]); ?>'
+			},
+			computed: {
+				invalid_form: function() {
+					return (this.total_selected < 1);
+				}
+			},
+			methods: {
+				load_notifications: function(event) {
+					var _app_     = this;
+					var notifs_ls = $(_app_.$el).find('[data-an="notifs-list"]');
+				    var offset    = 0;
+
+					if(($(event.target).get(0).scrollHeight - $(event.target).scrollTop()) <= ($(event.target).outerHeight() + 100)) {
+				    	if (cl_empty(_app_.loading) && _app_.loadmore) {
+
+				            if (notifs_ls.find('div[data-list-item]').length) {
+				            	offset = notifs_ls.find('div[data-list-item]').last().data('list-item');
+				            }
+
+				            if ($.isNumeric(offset) && offset) {
+								$.ajax({
+									url: '<?php echo cl_link("native_api/notifications/load_more"); ?>',
+									type: 'GET',
+									dataType: 'json',
+									data: {
+										offset: offset,
+										type: _app_.type
+									},
+									beforeSend: function() {
+										_app_.loading = true;
+									}
+								}).done(function(data) {
+									if (data.status == 200) {
+										notifs_ls.append($(data.html));
+									}
+									else{
+										_app_.loadmore = false;
+									}
+								}).always(function() {
+									_app_.loading = false;
+								});
+							}
+			       		}
+				    }
+				},
+				delete_notifs: function(event) {
+					var _app_ = this;
+
+					if($.isEmptyObject(_app_.selected) != true) {
+						var notifs_ls = $(_app_.$el).find('[data-an="notifs-list"]');
+						var promise   = SMColibri.confirm_action({
+							btn_1: "<?php echo cl_translate("Cancel"); ?>",
+							btn_2: "<?php echo cl_translate("Delete"); ?>",
+							title: "<?php echo cl_translate("Please confirm your actions!"); ?>",
+							message: "<?php echo cl_translate("Are you sure you want to delete the selected notifications? Please note that this action cannot be undone!"); ?>",
+						});
+
+						promise.done(function() {
+							$.ajax({
+								url: '<?php echo cl_link("native_api/notifications/delete"); ?>',
+								type: 'POST',
+								dataType: 'json',
+								data: {scope: _app_.selected},
+							}).done(function(data) {
+								if (data.status == 200) {
+									$.each(_app_.selected, function(k,v) {
+										notifs_ls.find('div[data-list-item="{0}"]'.format(v)).slideUp(150, function() {
+											$(this).remove();
+											if (notifs_ls.find('div[data-list-item]').length < 1) {
+												$(window).reloadPage(500);
+											}
+										});
+									});
+
+									_app_.selected       = {};
+									_app_.total_selected = 0;
+								}
+								else {
+									cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+								}
+							}).always(function() {
+								$("div.confirm-actions-modal").modal("hide");
+							});
+				        });
+
+						promise.fail(function() {
+				            $("div.confirm-actions-modal").modal("hide");
+				        });
+					}
+				}
+			},
+			mounted: function() {
+				var _app_ = this;
+
+				$(document).on('change', '[data-on-change="notif-chbox"]', function(e) {
+					var item_id = $(this).parents('[data-list-item]').data('list-item');
+
+					if ($(this).prop('checked')) {
+						_app_.total_selected++;
+						_app_.selected[item_id] = item_id;
+					}
+					else {
+						_app_.total_selected--;
+						delete(_app_.selected[item_id]);
+					}
+				});
+			}
+		});
+	});
+</script>

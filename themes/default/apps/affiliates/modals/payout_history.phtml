@@ -1,0 +1,56 @@
+<div class="modal fade vh-center payout-history" id="aff-payout-history" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="main---mh--block">
+                    <h5 class="modal-title">
+                        <?php echo cl_translate('Payouts history'); ?>
+                    </h5>
+                    <span class="dismiss-modal" data-dismiss="modal">
+                        <?php echo cl_svg('md-close'); ?>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="payouts-history-ls">
+                    <?php if (not_empty($cl["payout_history"])): ?>
+                        <?php foreach ($cl["payout_history"] as $row): ?>
+                            <div class="payouts-history-ls-item">
+                                <div class="payout-info">
+                                    <b><?php echo cl_translate('Date'); ?>:</b>
+                                    <span class="time">
+                                        <?php echo $row['time']; ?>
+                                    </span>
+                                </div>
+                                <div class="payout-info">
+                                    <b><?php echo cl_translate('Amount'); ?>:</b>
+                                    <span class="amount">
+                                        <?php echo $row['amount']; ?>
+                                    </span>
+                                </div>
+                                <div class="payout-info">
+                                    <b><?php echo cl_translate('Status'); ?>:</b>
+                                    <?php if ($row['status'] == 'pending'): ?>
+                                        <span class="badge bg-orange">
+                                            <?php echo cl_translate("Pending"); ?>
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="badge bg-green">
+                                            <?php echo cl_translate("Paid"); ?>
+                                        </span>
+                                    <?php endif; ?> 
+                                </div>
+                                <div class="payout-info">
+                                    <b><?php echo cl_translate('PayPal E-mail'); ?>:</b>
+                                    <span>
+                                        <?php echo $row['email']; ?>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

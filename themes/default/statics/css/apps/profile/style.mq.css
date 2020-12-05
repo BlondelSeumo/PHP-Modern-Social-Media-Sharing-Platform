@@ -1,0 +1,32 @@
+@media (max-width: 1024px) {
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-header div.lp div.profile-name-holder h5 {
+    font-size: 13px;
+    line-height: 14px;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-header div.lp div.profile-name-holder span {
+    font-size: 11px;
+    line-height: 14px; }
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-prof-info-area div.profile-avatar-holder {
+    bottom: -40px !important; }
+    body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-prof-info-area div.profile-avatar-holder div.profile-avatar {
+      width: 80px !important;
+      height: 80px !important; }
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile-main--info-holder div.profile-page-ctrls {
+    margin-bottom: 0px !important;
+    height: 50px !important; }
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile--user-info-block-set {
+    margin-bottom: 10px; }
+    body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile--user-info-block-set div.block-item {
+      margin-right: 5px !important;
+      margin-bottom: 5px !important; }
+      body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile--user-info-block-set div.block-item span.text {
+        font-size: 11px !important; }
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile--activity-stats-info div.stat-holder b, body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile--activity-stats-info div.stat-holder span {
+    font-size: 11px !important; }
+  body.cl-app-profile main.main-content-container div.main-content-container-inner div.timeline-container div.profile--activity-navbar {
+    border-top: 1px solid #e6ecf0; } }
+
+/*# sourceMappingURL=style.mq.css.map */

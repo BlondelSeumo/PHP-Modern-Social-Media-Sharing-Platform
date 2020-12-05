@@ -1,0 +1,72 @@
+<div class="timeline-container" data-app="connections">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="profile-name-holder">
+				<h5>
+					<?php echo ($cl['prof_user']['name']); ?>
+				</h5>
+				<span><?php echo cl_svg('md-time'); ?> <?php echo ($cl['prof_user']['last_active']); ?></span>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="profile--connectivity-list-navbar">
+		<?php if (not_empty($cl['prof_user']['followers'])): ?>
+			<a href="<?php echo(cl_strf('%s/followers',$cl['prof_user']['url'])); ?>" data-spa="true">
+				<button class="navbar-item-btn <?php if($cl['page_tab'] == 'followers') { echo 'active'; } ?>">
+					<?php echo cl_translate("Followers"); ?> (<?php echo cl_number($cl['prof_user']['followers']); ?>)
+				</button>
+			</a>
+		<?php else: ?>
+			<a href="#">
+				<button class="navbar-item-btn" disabled="true">
+					<?php echo cl_translate("Followers"); ?>
+				</button>
+			</a>
+		<?php endif; ?>
+
+		<?php if (not_empty($cl['prof_user']['following'])): ?>
+			<a href="<?php echo(cl_strf('%s/following',$cl['prof_user']['url'])); ?>" data-spa="true">
+				<button class="navbar-item-btn <?php if($cl['page_tab'] == 'following') { echo 'active'; } ?>">
+					<?php echo cl_translate("Following"); ?> (<?php echo cl_number($cl['prof_user']['following']); ?>)
+				</button>
+			</a>
+		<?php else: ?>
+			<a href="#">
+				<button class="navbar-item-btn" disabled="true">
+					<?php echo cl_translate("Following"); ?>
+				</button>
+			</a>
+		<?php endif; ?>
+	</div>
+
+	<div class="profile--connectivity-list-container">
+		<div class="connectivity-list" data-an="connectivity-list">
+			<?php if (not_empty($cl["users_list"])): ?>
+				<?php foreach ($cl["users_list"] as $cl['li']): ?>
+					<?php echo cl_template('connections/includes/list_item'); ?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</div>
+		<div class="load-more">
+			<button class="btn btn-custom main-outline lg" data-an="load-more">
+				<?php echo cl_translate("Show more"); ?>
+			</button>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template('connections/scripts/app_master_script'); ?>
+</div>

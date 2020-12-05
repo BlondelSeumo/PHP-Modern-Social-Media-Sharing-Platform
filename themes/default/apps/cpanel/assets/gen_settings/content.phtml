@@ -1,0 +1,187 @@
+<div class="cp-app-container" data-app="general-settings">
+    <div class="current-page-name">
+        <div class="lp">
+            <h2>
+                <?php echo cl_translate('General settings'); ?>
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="<?php echo cl_link('admin_panel'); ?>">
+                        <?php echo cl_translate('Control panel'); ?>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);">
+                        <?php echo cl_translate('General settings'); ?>
+                    </a>
+                </li> 
+            </ol>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        <?php echo cl_translate('Manage general site settings'); ?>
+                    </h2>
+                </div>
+                <div class="body">
+                    <form class="form" data-an="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="name-input">
+                                    <label>
+                                        <?php echo cl_translate('Site name'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config name%}" name="name" type="text" class="form-control" placeholder="<?php echo cl_translate('Enter the name of your site'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="title-input">
+                                    <label>
+                                        <?php echo cl_translate('Site title'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config title%}" name="title" type="text" class="form-control" placeholder="<?php echo cl_translate('Enter the title of your site'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="email-input">
+                                    <label>
+                                        <?php echo cl_translate('E-mail address'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config email%}" name="email" class="form-control" placeholder="<?php echo cl_translate('Enter the email address of your site'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" data-an="keywords-input">
+                                    <label>
+                                        <?php echo cl_translate('SEO keywords'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config keywords%}" name="keywords" class="form-control" placeholder="<?php echo cl_translate('Enter SEO keywords of your site'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group" data-an="description-input">
+                                    <label>
+                                        <?php echo cl_translate('Site description'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <textarea name="description" class="form-control" rows="2" placeholder="<?php echo cl_translate('Enter a description of your site'); ?>">{%config description%}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group" data-an="acc_validation-input">
+                                    <label>
+                                        <?php echo cl_translate('Account activation'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <select name="acc_validation" class="form-control selectpicker">
+                                            <option <?php if($cl['config']['acc_validation'] == 'on') {echo('selected');} ?> value="on">On</option>
+                                            <option <?php if($cl['config']['acc_validation'] == 'off') {echo('selected');} ?> value="off">Off</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group" data-an="language-input">
+                                    <label>
+                                        <?php echo cl_translate('Default language'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <select name="language" class="form-control selectpicker">
+                                            <?php foreach ($cl["languages"] as $k => $v): ?>
+                                                <option value="<?php echo($k); ?>" <?php if($k == $cl['config']['language']) { echo('selected'); } ?>>
+                                                    <?php echo($v); ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group" data-an="giphy_api_key-input">
+                                    <label>
+                                        <?php echo cl_translate('Giphy api'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config giphy_api_key%}" name="giphy_api_key" class="form-control" placeholder="<?php echo cl_translate('Enter Giphy GIFS API Key'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-sm-12">
+                                <div class="form-group" data-an="ffmpeg_binary-input">
+                                    <label>
+                                        <?php echo cl_translate('FFMPEG binary'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <input value="{%config ffmpeg_binary%}" name="ffmpeg_binary" class="form-control" placeholder="<?php echo cl_translate('Enter the path to the FFMPEG binary file'); ?>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group" data-an="site_currency-input">
+                                    <label>
+                                        <?php echo cl_translate('Default site currency'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <select name="site_currency" class="form-control selectpicker">
+                                            <?php foreach ($cl['site_currencies'] as $k => $v): ?>
+                                                <option value="<?php echo($k); ?>" <?php if($k == $cl['config']['site_currency']) { echo('selected'); } ?>>
+                                                    <?php echo($v['name']); ?> (<?php echo($v['symbol']); ?>)
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group" data-an="google_analytics-input">
+                                    <label>
+                                        <?php echo cl_translate('Google analytics'); ?>
+                                    </label>
+                                    <div class="form-line">
+                                        <textarea name="google_analytics" class="form-control" rows="5" placeholder="<?php echo cl_translate('Put your Google Analytics JS code here'); ?>">{%config google_analytics%}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 no-mb">
+                                <button data-an="submit-ctrl" type="submit" class="btn bg-blue btn-block btn-lg waves-effect ttup">
+                                    <?php echo cl_translate("Save changes"); ?>
+                                </button>
+                            </div>
+                        </div>
+                        <input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php echo cl_template('cpanel/assets/gen_settings/scripts/app_master_script'); ?>

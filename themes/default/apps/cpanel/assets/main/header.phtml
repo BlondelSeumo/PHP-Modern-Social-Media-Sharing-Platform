@@ -1,0 +1,64 @@
+<section class="header fixed-top" data-app="header">
+    <div class="main-content-block-header">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="navbar-nav-item acp-toggle-mainsidebar">
+                    <a href="javascript:void(0);" class="navbar-nav-item-link">
+                        <span class="material-icons">close</span>
+                    </a>
+                </li>
+                <li class="navbar-nav-item logo">
+                    <a href="<?php echo cl_link('/'); ?>" class="navbar-nav-item-link">
+                        <img src="{%config site_logo%}" alt="Logo">
+                    </a>
+                </li>
+                <li class="navbar-nav-item">
+                    <a href="<?php echo cl_link('chats'); ?>" class="navbar-nav-item-link">
+                        <span class="material-icons">mail_outline</span>
+                        <span class="info-indicators" data-an="new-messages"><?php echo fetch_or_get($me['new_messages']); ?></span>
+                    </a>
+                </li>
+                <li class="navbar-nav-item">
+                    <a href="<?php echo cl_link('notifications'); ?>" class="navbar-nav-item-link">
+                        <span class="material-icons">notifications_none</span>
+                        <span class="info-indicators" data-an="new-notifs"><?php echo fetch_or_get($me['new_notifs']); ?></span>
+                    </a>
+                </li>
+                <li class="navbar-nav-item">
+                    <a href="<?php echo cl_link('/'); ?>" class="navbar-nav-item-link">
+                        <span class="material-icons">home</span>
+                    </a>
+                </li>
+                <li class="dropdown user-info navbar-nav-item dropdown-menu-left">
+                    <a href="#" class="dropdown-toggle navbar-nav-item-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-circle" src="<?php echo($me['avatar']); ?>" alt="Avatar">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="<?php echo cl_link("/"); ?>">
+                            <?php echo cl_translate('Home'); ?>
+                        </a>
+                        <a class="dropdown-item" href="<?php echo($me["url"]); ?>">
+                            <?php echo cl_translate('Profile'); ?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?php echo cl_link("logout"); ?>">
+                            <?php echo cl_translate('Logout'); ?>
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown navbar-nav-item dropdown-menu-left">
+                    <a href="#" class="dropdown-toggle navbar-nav-item-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="material-icons">language</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <?php foreach ($cl["languages"] as $k => $v): ?>
+                            <a class="dropdown-item" href="<?php echo cl_link(cl_strf("language/%s",$k)); ?>">
+                                <?php echo($v); ?>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>

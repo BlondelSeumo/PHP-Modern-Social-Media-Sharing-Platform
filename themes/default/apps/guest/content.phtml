@@ -1,0 +1,76 @@
+<div class="welcome-page-container" data-app="guest">
+	<div class="welcome-page-slider carousel carousel-fade" data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active" style="background-image: url('<?php echo cl_get_media('themes/default/statics/img/welcomewp/1-1920x1080.jpeg'); ?>');"></div>
+			<div class="carousel-item" style="background-image: url('<?php echo cl_get_media('themes/default/statics/img/welcomewp/2-1920x1080.jpeg'); ?>');"></div>
+			<div class="carousel-item" style="background-image: url('<?php echo cl_get_media('themes/default/statics/img/welcomewp/3-1920x1080.jpeg'); ?>');"></div>
+			<div class="carousel-item" style="background-image: url('<?php echo cl_get_media('themes/default/statics/img/welcomewp/4-1920x1080.jpeg'); ?>');"></div>
+			<div class="carousel-item" style="background-image: url('<?php echo cl_get_media('themes/default/statics/img/welcomewp/5-1920x1080.jpeg'); ?>');"></div>
+		</div>
+	</div>
+	<div class="welcome-page-content-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="left-part">
+						<h1 class="welcome-title">
+							<?php echo cl_translate("Welcome to - {@name@}!", array('name' => $cl['config']['name'])); ?>
+						</h1>
+						<p class="welcome-text">
+							
+							<?php echo cl_translate("Join us to keep abreast of the most relevant topics and news from around the world, communicate with your friends, be the first to know about things that interest you, and also share your own publications with the public"); ?>
+						</p>
+
+						<div class="trending-htags">
+							<?php if (not_empty($cl['hot_topics'])): ?>
+								<?php foreach ($cl['hot_topics'] as $row): ?>
+									<a href="<?php echo($row['url']); ?>">
+										<?php echo($row['hashtag']); ?>
+									</a>
+								<?php endforeach; ?>
+							<?php else: ?>
+								<p>
+									<?php echo cl_translate("Here will be a (#hashtag) list of the most relevant topics and events"); ?>
+								</p>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-md-4 col-sm-6 col-xs-12">
+					<div class="right-part">
+						<div class="login-form">
+							<div class="welcome-back">
+								<h5>
+									<?php echo cl_translate("Welcome back!"); ?>
+								</h5>
+								<p>
+									<?php echo cl_translate("Login to your account"); ?>
+								</p>
+							</div>
+
+							<?php echo cl_template('auth/login'); ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="welcome-footer">
+						<?php echo cl_template('main/footer'); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+
+<?php echo cl_template('auth/register'); ?>
+
+<?php echo cl_template('auth/reset_password'); ?>
+
+<?php if (not_empty($cl['em_code'])): ?>
+	<?php echo cl_template('auth/new_password'); ?>
+<?php endif; ?>
+
+<?php echo cl_template('auth/scripts/app_master_script'); ?>
+

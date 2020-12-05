@@ -1,0 +1,12 @@
+<div class="hashtags-list-item">
+	<span class="hash">#</span>
+	<span class="hashtag-info">
+		<b class="tag">
+			<?php echo($cl['li']['hashtag']); ?>
+		</b> 
+		<span class="total"><?php echo($cl['li']['total']); ?> <?php echo cl_translate('Posts'); ?></span>
+	</span>
+	<a class="link" href="<?php echo($cl['li']['url']); ?>" data-spa="true">
+		<?php echo cl_svg('ios-arrow-forward'); ?>
+	</a>
+</div>

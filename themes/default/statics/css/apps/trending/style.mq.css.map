@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAYA,0BAA2B;EAOpB,uLAAsB;IACrB,OAAO,EAAE,SAAS;IAElB,iMAAS;MACR,KAAK,EAAE,IAAI;MACX,MAAM,EAAE,IAAI;MACZ,WAAW,EAAE,IAAI;IAIjB,+MAAK;MACJ,SAAS,EAAE,IAAI;MACf,WAAW,EAAE,IAAI;IAGlB,oNAAU;MACT,SAAS,EAAE,IAAI;MACf,WAAW,EAAE,IAAI",
+"sources": ["../../../scss/apps/trending/style.mq.scss"],
+"names": [],
+"file": "style.mq.css"
+}

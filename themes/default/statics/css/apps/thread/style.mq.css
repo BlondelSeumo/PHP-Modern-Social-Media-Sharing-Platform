@@ -1,0 +1,39 @@
+@media (max-width: 1024px) {
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publisher-info div.lp {
+    min-width: 30px !important;
+    max-width: 30px !important;
+    flex-basis: 30px !important; }
+    body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publisher-info div.lp div.avatar-holder {
+      width: 30px !important;
+      height: 30px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publisher-info div.rp a.uname span {
+    font-size: 11px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publisher-info div.rp button svg {
+    width: 18px !important;
+    height: 18px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publication-meta-info div.posted-time svg {
+    width: 14px;
+    height: 14px; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publication-meta-info div.posted-time time {
+    font-size: 11px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publication-meta-info div.publication-target div.post-reply span {
+    font-size: 11px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publication-footer-ctrls {
+    margin-top: 15px !important; }
+    body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-data-holder div.publication-data div.publication-footer-ctrls button.ctrls-item span.icon svg {
+      width: 20px !important;
+      height: 20px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-chain-holder div.post-list-item div.publisher-avatar:before {
+    top: 30px !important;
+    bottom: -30px !important;
+    left: 14px !important;
+    width: 2px !important; }
+  body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-replys-holder div.timeline-posts-container div.timeline-posts-ls div.timeline-posts-ls-group div.timeline-posts-ls-group-inner div.post-list-item div.publisher-avatar {
+    position: relative; }
+    body.cl-app-thread main.main-content-container div.main-content-container-inner div.timeline-container div.publication--thread-container div.publication--thread-replys-holder div.timeline-posts-container div.timeline-posts-ls div.timeline-posts-ls-group div.timeline-posts-ls-group-inner div.post-list-item div.publisher-avatar:before {
+      top: 30px !important;
+      bottom: -30px !important;
+      left: 14px !important;
+      width: 2px !important; } }
+
+/*# sourceMappingURL=style.mq.css.map */

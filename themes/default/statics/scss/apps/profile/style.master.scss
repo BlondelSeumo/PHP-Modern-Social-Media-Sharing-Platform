@@ -1,0 +1,698 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-profile{
+	main.main-content-container{
+		div.main-content-container-inner{
+			div.timeline-container{
+				div.timeline-header{
+					div.lp div.profile-name-holder{
+						display: block;
+						line-height: 0px;
+						padding: 0;
+						margin: 0;
+
+						h5{
+							padding: 0;
+							margin: 0;
+							line-height: 18px;
+							font-size: 14px;
+
+							span{
+								color: $black;
+								font-weight: 700;
+							}
+						}
+
+						& > span{
+							padding: 0;
+							margin: 0;
+							font-size: 12px;
+							color: $grey;
+							font-weight: 400;
+							line-height: 18px;
+
+							svg{
+								width: 10px;
+								height: 10px;
+								display: inline-block;
+								vertical-align: middle;
+								fill: $grey;
+							}
+						}
+					}
+				}
+
+				div.timeline-prof-info-area{
+					width: 100%;
+					display: block;
+					line-height: 0;
+
+					div.profile-info-header{
+						width: 100%;
+						display: block;
+						position: relative;
+
+						div.profile-cover-holder{
+							width: 100%;
+							display: block;
+							height: auto;
+							background: #444;
+							position: relative;
+							z-index: 10;
+							max-height: 200px;
+							overflow: hidden;
+
+							img.cover{
+								width: 100%;
+								object-fit: cover;
+
+								&.original-cover{
+									cursor: -webkit-grab;
+									cursor: grab;
+
+									&:active{
+										cursor: -webkit-grabbing;
+										cursor: grabbing;
+									}
+								}
+							}
+
+							div.cover-adjustment-ctrls{
+								background-color: rgba(0, 0, 0, 0.35);
+								line-height: 0px;
+								padding: 0px 10px;
+								width: 100px;
+								height: 35px;
+								border-radius: 10px;
+								z-index: 11;
+								display: flex;
+								flex-direction: row;
+								justify-content: center;
+								align-items: center;
+								position: absolute;
+								top: 0px;
+								left: 0px;
+								right: 0px;
+								bottom: 0px;
+								margin: auto;
+								border-radius: 10px;
+								transition: visibility 0.1s linear,opacity 0.1s linear;
+								opacity: 0;
+								visibility: hidden;
+
+								button.control-btn{
+									border: none;
+									line-height: 0px;
+									padding: 0px;
+									margin: 0px 10px;
+									width: 20px;
+									height: 20px;
+									cursor: pointer;
+									outline: 0;
+									background: transparent;
+									box-shadow: transparent;
+		
+									svg{
+										width: 100%;
+										height: 100%;
+										fill: #fff;
+										display: inline-block;
+										opacity: 0.9;
+									}
+
+									&:disabled{
+										cursor: wait !important;
+									}
+								}
+							}
+
+							&:hover{
+								div.cover-adjustment-ctrls{
+									visibility: visible;
+									opacity: 1;
+								}
+							}
+						}
+
+						div.profile-avatar-holder{
+							display: inline-block;
+							padding: 0px 15px;
+							line-height: 0px;
+							position: absolute;
+							z-index: 10;
+							left: 0px;
+							bottom: -60px;
+
+							div.profile-avatar{
+								width: 120px;
+								height: 120px;
+								border: none;
+								overflow: hidden;
+								border-radius: 10em;
+								box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px -1px;
+								position: relative;
+
+								img{
+									width: 100%;
+									height: 100%;
+									object-fit: cover;
+									padding: 0;
+									margin: 0;
+								}
+
+								button.upload-avatar{
+									border: none;
+									background-color: rgba(0, 0, 0, 0.35);
+									line-height: 0px;
+									padding: 0px;
+									width: 100%;
+									height: 100%;
+									display: flex;
+									flex-direction: row;
+									flex-wrap: nowrap;
+									visibility: hidden;
+									z-index: 13;
+									cursor: pointer;
+									justify-content: center;
+									align-items: center;
+									position: absolute;
+									top: 0px;
+									right: 0px;
+									bottom: 0px;
+									left: 0px;
+									outline: 0;
+									transition: visibility 0.1s linear,opacity 0.1s linear;
+									opacity: 0;
+
+									svg{
+										width: 25px;
+										height: 25px;
+										fill: #fff;
+										display: inline-block;
+										opacity: 0.9;
+									}
+
+									&:disabled{
+										cursor: wait !important;
+									}
+								}
+
+								&:hover{
+									button.upload-avatar{
+										visibility: visible;
+										opacity: 1;
+									}
+								}
+							}
+						}
+					}
+
+					div.profile-main--info-holder{
+						width: 100%;
+						border-bottom: 1px solid $border;
+						position: relative;
+
+						div.profile-page-ctrls{
+							width: 100%;
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							justify-content: flex-end;
+							height: 60px;
+							align-items: center;
+							padding: 0px 15px;
+							margin-bottom: 20px;
+
+							button.ctrl-item{
+								width: 30px;
+								height: 30px;
+								cursor: pointer;
+								background: transparent;
+								box-sizing: none;
+								border: 1px solid $blue;
+								position: relative;
+								border-radius: 10em;
+								margin-right: 10px;
+								outline: 0;
+								padding: 0px;
+
+
+								a.ctrl-inner,span.ctrl-inner{
+									width: 100%;
+									height: 100%;
+									position: relative;
+									display: inline-block;
+									line-height: 0px;
+									outline: 0;
+
+									svg{
+										position: absolute;
+										left: 0;
+										top: 0;
+										bottom: 0;
+										right: 0;
+										margin: auto;
+										width: 16px;
+										height: 16px;
+										fill: $blue;
+										
+										*{
+											stroke: $blue;
+										}
+									}
+
+									&:after,&:before{
+										display: none;
+									}
+								}
+
+								&:hover,&:active{
+									background: $el_hovbg;
+								}
+
+								div.dropdown-menu{
+									top: 25px !important;
+								}
+							}
+						}
+
+						div.profile-name-holder{
+							width: 100%;
+							line-height: 0px;
+							display: block;
+							padding: 0px 15px;
+							margin-bottom: 10px;
+
+							h4{
+								font-size: 18px;
+								line-height: 22px;
+								color: $black;
+								padding: 0;
+								margin: 0;
+								font-weight: 700;
+							}
+
+							a{
+								display: block;
+								color: $grey;
+								font-size: 13px;
+								padding: 0;
+								margin: 0;
+								line-height: 18px;
+								text-decoration: none;
+							}
+						}
+
+						div.profile-description-holder{
+							width: 100%;
+							display: block;
+							line-height: 0px;
+							padding: 0px 15px;
+							margin-bottom: 15px;
+
+							p{
+								font-size: 13px;
+								color: $black;
+								font-weight: 400;
+								line-height: 18px;
+								padding: 0;
+								margin: 0;
+								word-wrap: break-word;
+							}
+						}
+
+						div.profile--user-info-block-set{
+							width: 100%;
+							display: flex;
+							line-height: 0px;
+							display: flex;
+							flex-direction: row;
+							flex-wrap: wrap;
+							padding: 0px 15px;
+
+							div.block-item{
+								line-height: 0px;
+								margin-right: 15px;
+								margin-bottom: 15px;
+
+								&:last-child{
+									margin-right: 0px;
+								}
+
+								span.banner{
+									display: inline-block;
+									line-height: 0px;
+
+									svg{
+										width: 22px;
+										height: 13px;
+										vertical-align: middle;
+									}
+								}
+
+								span.icon{
+									display: inline-block;
+									line-height: 0px;
+									svg{
+										width: 15px;
+										height: 15px;
+										fill: $grey;
+										vertical-align: middle;
+									}
+								}
+
+								span.text{
+									font-size: 12px;
+									line-height: 12px;
+									color: $grey;
+									display: inline-block;
+
+									a{
+										color: $link;
+										text-decoration: underline;
+										font-size: inherit;
+										line-height: inherit;
+									}
+								}
+							}
+						}
+
+						div.profile--activity-stats-info{
+							margin-bottom: 15px;
+							width: 100%;
+							overflow: hidden;
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							padding: 0px 15px;
+
+							div.stat-holder{
+								margin-right: 25px;
+
+								&:last-child{
+									margin-right: 0px;
+								}
+
+								span.stat-holder-inner,a.stat-holder-inner{
+									display: inline-block;
+									line-height: 0px;
+									text-decoration: none;
+
+									span,b{
+										width: 100%;
+									}
+
+									span{
+										font-size: 13px;
+										line-height: 20px;
+										color: $grey;
+										margin-left: 5px;
+									}
+
+									b{
+										font-size: 16px;
+										color: $link;
+										font-weight: bold;
+										line-height: 16px;
+									}
+								}
+
+								a.stat-holder-inner{
+									&:hover,&:active{
+										span,b{
+											color: $blue;
+										}
+									}
+								}
+							}
+						}
+
+						div.profile--activity-navbar{
+							width: 100%;
+							overflow: hidden;
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							justify-content: space-between;
+							
+							a{
+								flex: 1;
+								outline: 0;
+								button.navbar-item-btn{
+									background: transparent;
+									font-size: 13px;
+									font-weight: 600;
+									color: $grey;
+									line-height: 13px;
+									box-shadow: none;
+									border: none;
+									padding: 15px 30px;
+									width: 100%;
+									cursor: pointer;
+									opacity: 0.9;
+									outline: 0;
+
+									&.active{
+										border-bottom: 2px solid $blue;
+									}
+
+									&:hover,&:active,&:focus{
+										background: $el_hovbg;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				div.timeline-posts-container {
+					div.timeline-posts-ls {
+						div.empty-profile-placeholder {
+							width: 100%;
+							display: flex;
+							flex-direction: column;
+							flex-wrap: nowrap;
+							justify-content: center;
+							align-items: center;
+							line-height: 0px;
+							padding: 50px;
+							height: 350px;
+							overflow: hidden;
+
+					 		div.icon{
+					 			line-height: 0px;
+								margin-bottom: 15px;
+								width: 100%;
+								text-align: center;
+
+					 			svg{
+						 			width: 50px;
+						 			height: 50px;
+						 			fill: $blue;
+
+						 			*{
+						 				stroke: $blue;
+						 			}
+						 		}
+					 		}
+
+					 		div.pl-message{
+								line-height: 0px;
+								width: 100%;
+								margin-bottom: 50px;
+
+								h4{
+									font-size: 20px;
+									padding: 0;
+									margin: 0 0 15px 0;
+									line-height: 20px;
+									color: $black;
+									font-weight: 700;
+									text-align: center;
+								}
+
+								p{
+									font-size: 13px;
+									line-height: 20px;
+									padding: 0;
+									margin: 0;
+									color: $grey;
+									text-align: center;
+									overflow-wrap: break-word;
+								}
+							}
+
+							div.c2action-single{
+								width: 100%;
+								line-height: 0px;
+								text-align: center;
+
+								a{
+									display: inline-block;
+									line-height: 0px;
+									text-decoration: none;
+
+									button{
+										padding-left: 40px;
+										padding-right: 40px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.modal.report-profile-modal{
+		div.modal-content{
+			div.modal-header{
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: space-between;
+
+				h5.modal-title{
+					font-size: 14px;
+					color: $black;
+					font-weight: 700;
+					padding: 0;
+					margin: 0;
+					line-height: 14px;
+				}
+
+				button{
+					padding: 0;
+					margin: 0;
+					line-height: 0;
+					width: 25px;
+					height: 25px;
+					outline: 0;
+					background: transparent;
+					border: none;
+
+					svg{
+						width: 100%;
+						height: 100%;
+						fill: $blue;
+
+						*{
+							stroke: $blue;
+						}
+					}
+				}
+			}
+
+			div.modal-body{
+				div.form-group{
+
+					label.form-label{
+						margin-bottom: 15px;
+					}
+
+					div.radio-box-holder{
+						width: 100%;
+						display: block;
+
+						div.radio-box{
+							display: flex;
+							width: 100%;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							align-items: center;
+							margin-bottom: 10px;
+							cursor: pointer;
+
+							&:last-child{
+								margin-bottom: 0px;
+							}
+
+							div.lp{
+								div.icon{
+									width: 25px;
+									height: 25px;
+									overflow: hidden;
+									line-height: 0;
+									
+									svg{
+										width: 100%;
+										height: 100%;
+										fill: $svg_col;
+
+										*{
+											stroke: $svg_col;
+										}
+									}
+
+									&.selected {
+										svg{
+											fill: $blue;
+											font-weight: bold;
+
+											*{
+												stroke: $blue;
+											}
+										}
+									}
+								}
+							}
+
+							div.rp{
+								padding: 0px 10px;
+								flex: 1;
+								overflow: hidden;
+								line-height: 0;
+
+								span{
+									font-size: 13px;
+									line-height: 18px;
+									color: $black;
+								}
+							}
+						}
+
+						&:last-child{
+							margin-bottom: 0px;
+						}
+					}
+
+					div.comment-input-holder{
+						textarea{
+							border: 2px solid $border;
+							border-radius: 6px;
+							min-height: 90px;
+
+							&:hover, &:active, &:focus{
+								border-color: $blue;
+							}
+						}
+					}
+
+					hr{
+						margin-top: 15px;
+						margin-bottom: 15px;
+					}
+				}
+			}
+
+			div.modal-footer{
+				button{
+					margin: 0;
+				}
+			}
+		}
+	}
+}

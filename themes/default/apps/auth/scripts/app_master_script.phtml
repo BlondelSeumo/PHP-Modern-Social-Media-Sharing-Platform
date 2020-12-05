@@ -1,0 +1,448 @@
+<script>
+	"use strict";
+	
+	$(document).ready(function($) {
+
+		Vue.use(window.vuelidate.default);
+
+		var {required, email, minLength, maxLength, sameAs} = window.validators;
+
+		var login_vue_app = new Vue({
+			"el": "#main_login_form",
+			data: {
+				email: "",
+				password: "",
+				submitting: false,
+				unsuccessful_attempt: false,
+				invalid_feedback_email: "",
+				invalid_feedback_pass: "",
+			},
+			computed: {
+				is_valid_email: function() {
+					if (this.$v.email.required == true && this.$v.email.$error) {
+						this.invalid_feedback_email = "<?php echo cl_translate("The email address you entered does not match the valid format."); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_email = "";
+						return false;
+					}
+				},
+				is_valid_password: function() {
+					if(this.$v.password.required == true && this.$v.password.$error) {
+						this.invalid_feedback_pass = "<?php echo cl_translate("The password you entered is not valid"); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_pass = "";
+						return false;
+					}
+				}
+			},
+			validations: {
+				email: {
+					required: required,
+					email: email,
+					min_length: minLength(8),
+					max_length: maxLength(55),
+				},
+				password: {
+					required: required,
+					min_length: minLength(6),
+					max_length: maxLength(20),
+				}
+			},
+			methods: {
+				submit_form: function(_self = false) {
+					_self.preventDefault();
+
+					var _app_ = this;
+
+					$(_self.target).ajaxSubmit({
+						url: "<?php echo cl_link("native_api/auth/login"); ?>",
+						type: 'POST',
+						dataType: 'json',
+						beforeSend: function() {
+							_app_.submitting = true;
+						},
+						success: function(data) {
+							if (data.status == 200) {
+								cl_redirect("<?php echo cl_link("home"); ?>");
+							}
+
+							else {
+								_app_.unsuccessful_attempt = true;
+
+								delay(function() {
+									_app_.unsuccessful_attempt = false;
+								}, 3000);
+							}
+						},
+						complete: function() {
+							_app_.submitting = false;
+						}
+					});
+				}
+			}
+		});
+
+		var signup_vue_app = new Vue({
+			"el": "#main_signup_form",
+			data: {
+				done: false,
+				email: "",
+				password: "",
+				password2: "",
+				uname: "",
+				fname: "",
+				lname: "",
+				submitting: false,
+				invalid_feedback_email: "",
+				invalid_feedback_pass: "",
+				invalid_feedback_pass2: "",
+				invalid_feedback_uname: "",
+				invalid_feedback_fname: "",
+				invalid_feedback_lname: "",
+				tos_agree: false,
+				uname_taken: false,
+				email_taken: false,
+				process_failed: false
+			},
+			computed: {
+				is_valid_fname: function() {
+					if (this.$v.fname.required == true && this.$v.fname.$error) {
+						this.invalid_feedback_fname = "<?php echo cl_translate("Please enter your first name, which is from 3 to 25 characters"); ?>";
+						return true;
+					}
+					else {
+						this.invalid_feedback_fname = "";
+						return false;
+					}
+				},
+				is_valid_lname: function() {
+					if (this.$v.lname.required == true && this.$v.lname.$error) {
+						this.invalid_feedback_lname = "<?php echo cl_translate("Please enter your last name, which is from 3 to 25 characters"); ?>";
+						return true;
+					}
+					else {
+						this.invalid_feedback_lname = "";
+						return false;
+					}
+				},
+				is_valid_uname: function() {
+					if (this.$v.uname.required == true && this.$v.uname.$error) {
+						this.invalid_feedback_uname = "<?php echo cl_translate("This username does not match the valid format. Please select a username of no more than 25 characters using only letters (a-z) numbers and underscores"); ?>";
+						return true;
+					}
+
+					else if(this.uname_taken == true) {
+						this.invalid_feedback_uname = "<?php echo cl_translate("This username is already taken, please select another"); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_uname = "";
+						return false;
+					}
+				},
+				is_valid_email: function() {
+					if (this.$v.email.required == true && this.$v.email.$error) {
+						this.invalid_feedback_email = "<?php echo cl_translate("The email address you entered does not match the valid format."); ?>";
+						return true;
+					}
+
+					else if (this.email_taken == true) {
+						this.invalid_feedback_email = "<?php echo cl_translate("This email address is already taken"); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_email = "";
+						return false;
+					}
+				},
+				is_valid_password: function() {
+					if (this.$v.password.required == true && this.$v.password.$error) {
+						this.invalid_feedback_pass = "<?php echo cl_translate("Password must be between 6 and 20 characters long"); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_pass  = "";
+						return false;
+					}
+				},
+				is_valid_password2: function() {	
+					if(this.$v.password2.required == true && this.$v.password2.$error) {
+						this.invalid_feedback_pass2 = "<?php echo cl_translate("Passwords do not mutch!"); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_pass2 = "";
+						return false;
+					}
+				},
+				is_valid_form: function() {
+					return (this.$v.$invalid == false && this.tos_agree == true);
+				}
+			},
+			validations: {
+				fname: {
+					required: required,
+					min_length: minLength(3),
+					max_length: maxLength(25),
+				},
+				lname: {
+					required: required,
+					min_length: minLength(3),
+					max_length: maxLength(25),
+				},
+				uname: {
+					required: required,
+					min_length: minLength(3),
+					max_length: maxLength(25),
+					is_alpha_num: cl_uname_valid
+				},
+				email: {
+					required: required,
+					email: email,
+					min_length: minLength(8),
+					max_length: maxLength(55)
+				},
+				password: {
+					required: required,
+					min_length: minLength(6),
+					max_length: maxLength(20)
+				},
+				password2: {
+					required: required,
+					sameAs: sameAs('password')
+				}
+			},
+			methods: {
+				submit_form: function(_self = false) {
+					_self.preventDefault();
+
+					var _app_ = this;
+
+					$(_self.target).ajaxSubmit({
+						url: "<?php echo cl_link("native_api/auth/signup"); ?>",
+						type: 'POST',
+						dataType: 'json',
+						beforeSend: function() {
+							_app_.submitting     = true;
+							_app_.uname_taken    = false;
+							_app_.email_taken    = false;
+							_app_.process_failed = false;
+						},
+						success: function(data) {
+							if (data.status == 200) {
+
+								_app_.done = true;
+
+								delay(function() {
+									cl_redirect("<?php echo cl_link("home"); ?>");
+								}, 1500);
+							}
+							else if(data.status == 401) {
+								_app_.done = true;
+
+								delay(function() {
+									cl_redirect("<?php echo cl_link("confirm_registration"); ?>");
+								}, 1500);
+							}
+							else {
+								if (data.err_code == "doubling_uname") {
+									_app_.uname_taken = true;
+								}
+
+								else if(data.err_code == "doubling_email") {
+									_app_.email_taken = true;
+								}
+
+								else {
+									_app_.process_failed = true;
+								}
+							}
+						},
+						complete: function() {
+							_app_.submitting = false;
+						}
+					});
+				}
+			}
+		});
+
+		var resetpass_vue_app = new Vue({
+			"el": "#main_resetpass_form",
+			data: {
+				email: "",
+				submitting: false,
+				invalid_feedback_email: "",
+				process_failed: false,
+				process_succeeded: false,
+				unknown_email: false,
+			},
+			computed: {
+				is_valid_email: function() {
+					if (this.$v.email.required == true && this.$v.email.$error) {
+						this.invalid_feedback_email = "<?php echo cl_translate("The email address you entered does not match the valid format."); ?>";
+						return true;
+					}
+
+					else if(this.unknown_email == true) {
+						this.invalid_feedback_email = "<?php echo cl_translate("We can not find an account with this email address!"); ?>";
+						return true;
+					}
+
+					else {
+						this.invalid_feedback_email = "";
+						return false;
+					}
+				},
+				is_valid_form: function() {
+					return (this.$v.$invalid == false);
+				}
+			},
+			validations: {
+				email: {
+					required: required,
+					email: email,
+					min_length: minLength(8),
+					max_length: maxLength(55)
+				}
+			},
+			methods: {
+				submit_form: function(_self = false) {
+					_self.preventDefault();
+
+					var _app_ = this;
+
+					$(_self.target).ajaxSubmit({
+						url: "<?php echo cl_link("native_api/auth/resetpass"); ?>",
+						type: 'POST',
+						dataType: 'json',
+						beforeSend: function() {
+							_app_.submitting     = true;
+							_app_.process_failed = false;
+							_app_.unknown_email  = false;
+						},
+						success: function(data) {
+							if (data.status == 200) {
+								_app_.process_succeeded = true;
+							}
+							else {
+								if (data.err_code == "unknown_email") {
+									_app_.unknown_email = true;
+								}
+
+								else {
+									_app_.process_failed = true;
+								}
+							}
+						},
+						complete: function() {
+							_app_.submitting = false;
+						}
+					});
+				}
+			}
+		});
+	});
+</script>
+
+<?php if (not_empty($cl['em_code'])): ?>
+	<script>
+		"use strict";
+
+		$(document).ready(function($) {
+			$("div#new_password_window").modal("show");
+
+			Vue.use(window.vuelidate.default);
+
+			var {required, minLength, maxLength, sameAs} = window.validators;
+
+			var savepass_vue_app = new Vue({
+				"el": "#main_savepass_form",
+				data: {
+					password: "",
+					password2: "",
+					submitting: false,
+					invalid_feedback_pass: "",
+					invalid_feedback_pass2: "",
+					process_failed: false
+				},
+				computed: {
+					is_valid_password: function() {
+						if (this.$v.password.required == true && this.$v.password.$error) {
+							this.invalid_feedback_pass = "<?php echo cl_translate("Password must be between 6 and 20 characters long"); ?>";
+							return true;
+						}
+
+						else {
+							this.invalid_feedback_pass  = "";
+							return false;
+						}
+
+					},
+					is_valid_password2: function() {	
+						if(this.$v.password2.required == true && this.$v.password2.$error) {
+							this.invalid_feedback_pass2 = "<?php echo cl_translate("Passwords do not mutch!"); ?>";
+							return true;
+						}
+
+						else {
+							this.invalid_feedback_pass2 = "";
+							return false;
+						}
+					},
+					is_valid_form: function() {
+						return (this.$v.$invalid == false);
+					}
+				},
+				validations: {
+					password: {
+						required: required,
+						min_length: minLength(6),
+						max_length: maxLength(20)
+					},
+					password2: {
+						required: required,
+						sameAs: sameAs('password')
+					}
+				},
+				methods: {
+					submit_form: function(_self = false) {
+						_self.preventDefault();
+
+						var _app_ = this;
+
+						$(_self.target).ajaxSubmit({
+							url: "<?php echo cl_link("native_api/auth/save_password"); ?>",
+							type: 'POST',
+							dataType: 'json',
+							beforeSend: function() {
+								_app_.submitting     = true;
+								_app_.process_failed = false;
+							},
+							success: function(data) {
+								if (data.status == 200) {
+									cl_redirect("<?php echo cl_link("home"); ?>");
+								}
+								else {
+									_app_.process_failed = true;
+								}
+							},
+							complete: function() {
+								_app_.submitting = false;
+							}
+						});
+					}
+				}
+			});
+		});
+	</script>
+<?php endif ?>

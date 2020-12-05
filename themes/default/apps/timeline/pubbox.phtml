@@ -1,0 +1,130 @@
+<div class="timeline-pubbox-container">
+	<div class="lp">
+		<div class="avatar">
+			<img src="<?php echo($me['avatar']); ?>" alt="Avatar">
+		</div>
+	</div>
+	<div class="rp">
+		<form class="form" id="vue-pubbox-app-<?php echo($cl['pb_id']); ?>" v-on:submit="publish($event)">
+			<div class="input-holder">
+				<textarea id="post-text" v-on:input="textarea_resize($event)" class="autoresize" name="post_text" placeholder="<?php echo cl_translate("What is happening? #Hashtag.. @Mention."); ?>"></textarea>
+			</div>
+			<div v-if="show_og_data" class="preview-og-holder">
+				<div class="preview-og-holder-inner">
+					<div class="og-image">
+						<div v-if="og_data.image" class="og-image-holder" v-bind:style="{'background-image': 'url(' + og_data.image + ')'}"></div>
+						<div v-else class="og-icon-holder">
+							<?php echo cl_svg('globe-outline'); ?>
+						</div>
+					</div>
+					<div class="og-url-data">
+						<h5>
+							{{og_data.title}}
+						</h5>
+						<p>
+							{{og_data.description}}
+						</p>
+						<a v-bind:href="og_data.url" target="_blank">
+							{{og_data.url}}
+						</a>
+					</div>
+				</div>
+				<button type="button" class="delete-preview-og" v-on:click="rm_preview_og">
+					<?php echo cl_svg('md-close'); ?>
+				</button>
+			</div>
+			<div v-if="images.length" class="preview-images-holder">
+				<div class="preview-images-list" data-an="post-images">
+					<div v-for="img in images" class="preview-images-list-item" v-bind:style="{height: equal_height}">
+						<div class="li-inner-content">
+							<img v-bind:src="img.url" alt="Image">
+							<button type="button" class="delete-preview-image" v-on:click="delete_image(img.id)">
+								<?php echo cl_svg('md-close'); ?>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="preview_video" class="preview-video-holder">
+				<div class="video-player" id="preview-video">
+					<video v-bind:poster="video.poster" width="550" height="300">
+						<source type="video/mp4" v-bind:src="video.source"/>
+						<source type="video/mov" v-bind:src="video.source"/>
+						<source type="video/3gp" v-bind:src="video.source"/>
+						<source type="video/webm" v-bind:src="video.source"/>
+					</video>
+				</div>
+				<button type="button" class="delete-preview-video" v-on:click="delete_video()">
+					<?php echo cl_svg('md-close'); ?>
+				</button>
+			</div>
+			<div class="preview-gif-orig-holder loading" v-if="gif_source">
+				<img v-bind:src="gif_source" alt="GIF-Image" v-on:load="rm_gif_preloader($event)">
+				<div class="gif-preloader">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve"><path opacity="0.2" fill="#1ca1f3" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946 s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634 c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path><path fill="#1ca1f3" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0 C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(299.57 20 20)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.7s" repeatCount="indefinite"></animateTransform></path></svg>
+				</div>
+				<button type="button" class="delete-preview-gif" v-on:click="rm_preview_gif()">
+					<?php echo cl_svg('md-close'); ?>
+				</button>
+			</div>
+			<div class="preview-gifs-holder" v-else-if="gifs">
+				<div class="search-bar-holder">
+					<input v-on:input="search_gifs($event)" type="text" class="form-control" placeholder="<?php echo cl_translate("Search GIF-files"); ?>">
+					<a href="#">
+						<?php echo cl_svg('md-search'); ?>
+					</a>
+					<button type="button" v-on:click="close_gifs">
+						<?php echo cl_svg('md-close'); ?>
+					</button>
+				</div>
+				<div class="preview-gifs-list" data-an="post-gifs">
+					<div class="row-column row-1">
+						<div v-for="gif_data in gifs_r1" class="preview-gifs-list-item">
+							<div class="li-inner-content loading">
+								<img v-on:click="preview_gif($event)" v-bind:src="gif_data.thumb" v-bind:data-source="gif_data.src" alt="GIF-Image" v-on:load="rm_gif_preloader($event)">
+								<div class="gif-preloader">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve"><path opacity="0.2" fill="#1ca1f3" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946 s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634 c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path><path fill="#1ca1f3" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0 C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(299.57 20 20)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.7s" repeatCount="indefinite"></animateTransform></path></svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row-column row-2">
+						<div v-for="gif_data in gifs_r2" class="preview-gifs-list-item">
+							<div class="li-inner-content loading">
+								<img v-on:click="preview_gif($event)" v-bind:src="gif_data.thumb" v-bind:data-source="gif_data.src" alt="GIF-Image" v-on:load="rm_gif_preloader($event)">
+								<div class="gif-preloader">
+									<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve"><path opacity="0.2" fill="#1ca1f3" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946 s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634 c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path><path fill="#1ca1f3" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0 C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(299.57 20 20)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.7s" repeatCount="indefinite"></animateTransform></path></svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="post-ctrls-holder">
+				<button type="button" class="ctrl-item" v-on:click="select_images" v-bind:disabled="image_ctrl != true">
+					<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><title>ionicons-v5-e</title><rect x='48' y='80' width='416' height='352' rx='48' ry='48' style='fill:none;stroke:#1ca1f3;stroke-linejoin:round;stroke-width:32px'/><circle cx='336' cy='176' r='32' style='fill:none;stroke:#1ca1f3;stroke-miterlimit:10;stroke-width:32px'/><path d='M304,335.79,213.34,245.3A32,32,0,0,0,169.47,244L48,352' style='fill:none;stroke:#1ca1f3;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M224,432,347.34,308.66a32,32,0,0,1,43.11-2L464,368' style='fill:none;stroke:#1ca1f3;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/></svg>
+				</button>
+				<button type="button" class="ctrl-item" v-on:click="select_video" v-bind:disabled="video_ctrl != true">
+					<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><title>ionicons-v5-g</title><path d='M374.79,308.78,457.5,367A16,16,0,0,0,480,352.38V159.62A16,16,0,0,0,457.5,145l-82.71,58.22A16,16,0,0,0,368,216.3v79.4A16,16,0,0,0,374.79,308.78Z' style='fill:none;stroke:#1ca1f3;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M268,384H84a52.15,52.15,0,0,1-52-52V180a52.15,52.15,0,0,1,52-52H268.48A51.68,51.68,0,0,1,320,179.52V332A52.15,52.15,0,0,1,268,384Z' style='fill:none;stroke:#1ca1f3;stroke-miterlimit:10;stroke-width:32px'/></svg>
+				</button>
+				<button v-on:click="emoji_picker('toggle')" type="button" class="ctrl-item">
+					<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><title>ionicons-v5-i</title><circle cx='184' cy='232' r='24'/><path d='M256.05,384c-45.42,0-83.62-29.53-95.71-69.83A8,8,0,0,1,168.16,304H343.85a8,8,0,0,1,7.82,10.17C339.68,354.47,301.47,384,256.05,384Z'/><circle cx='328' cy='232' r='24'/><circle cx='256' cy='256' r='208' style='fill:none;stroke:#1ca1f3;stroke-miterlimit:10;stroke-width:32px'/></svg>
+				</button>
+				<button type="button" class="ctrl-item" v-on:click="select_gifs" v-bind:disabled="gif_ctrl != true">
+					<?php echo cl_svg('md-gif'); ?>
+				</button>
+				<button type="button" class="ctrl-item text-length ml-auto">
+					<small v-show="text.length" v-bind:class="{'len-error': (text.length > 600) }">
+						{{text.length}}/600
+					</small>
+				</button>
+				<button v-bind:disabled="valid_form != true" type="submit" class="btn-custom main-inline md post-pub-btn">
+					<?php echo cl_translate("Publish"); ?>
+				</button>
+			</div>
+			<input multiple="multiple" type="file" class="d-none" data-an="images-input" accept="image/*" v-on:change="upload_images($event)">
+			<input type="file" class="d-none" data-an="video-input" accept="video/*" v-on:change="upload_video($event)">
+			<input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+		</form>
+	</div>
+</div>

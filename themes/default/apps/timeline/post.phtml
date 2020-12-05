@@ -1,0 +1,301 @@
+<?php if ($cl['li']['advertising']): ?>
+	<?php echo cl_template('timeline/ad'); ?>
+<?php else: ?>
+	<div class="post-list-item" data-list-item="<?php echo($cl['li']['id']); ?>" data-post-offset="<?php echo($cl['li']['offset_id']); ?>" <?php echo fetch_or_get($cl['li']['attrs'],''); ?>>
+		<?php if (not_empty($cl['li']['is_repost'])): ?>
+			<div class="post-list-item-header">
+				<div class="publication-repost">
+					<?php echo cl_svg('repeat-outline'); ?>
+					<?php if (not_empty($cl['li']['is_reposter'])): ?>
+						<a href="<?php echo $me['url']; ?>" data-spa="true">
+							<?php echo cl_translate('You reposted'); ?>
+						</a>
+					<?php else: ?>
+						<a href="<?php echo($cl['li']['reposter']['url']); ?>" data-spa="true">
+							<?php echo cl_translate('{@uname@} reposted', array('uname' => $cl['li']['reposter']['name'])) ?>
+						</a>
+					<?php endif; ?>
+				</div>
+			</div>
+		<?php endif; ?>
+		<div class="post-list-item-content">
+			<div class="publisher-avatar">
+				<div class="avatar-holder">
+					<img class="lozad" data-src="<?php echo($cl['li']['owner']['avatar']); ?>">
+				</div> 
+			</div>
+			<div class="publication-data">
+				<div class="publication-data-inner">
+					<div class="publisher-info">
+						<div class="lp">
+							<a href="<?php echo($cl['li']['owner']['url']); ?>" data-spa="true">
+								<b>
+									<span class="user-name-holder <?php if ($cl['li']['owner']['verified'] == '1') { echo('verified-badge'); } ?>">
+										<?php echo($cl['li']['owner']['name']); ?>
+									</span>
+								</b>
+								<span>
+									<?php echo($cl['li']['owner']['username']); ?>	
+								</span>
+							</a>
+						</div>
+						<div class="rp">
+							<span class="posted-time">
+								<?php echo cl_svg('md-time'); ?>
+								<time>
+									<?php echo($cl['li']['time']); ?>
+								</time>
+							</span>
+						</div>
+					</div>
+
+					<?php if ($cl['li']['target'] == 'pub_reply' && not_empty($cl['li']['reply_to'])): ?>
+						<div class="publication-target">
+							<?php if (not_empty($cl['li']['reply_to']['is_owner'])): ?>
+								<div class="post-reply">
+									<span>
+										<?php echo cl_translate('In response to your {@post_url@}', array(
+											'post_url' => cl_html_el('a', cl_translate('post'), array(
+												'href' => $cl['li']['reply_to']['thread_url'],
+												'data-spa' => 'true'
+											))
+										)); ?>
+									</span>
+								</div>
+							<?php else: ?>
+								<div class="post-reply">
+									<span>
+										<?php
+											$text_temp = 'In response {@uname@} to his {@post_url@}';
+
+											if ($cl['li']['reply_to']['gender'] == 'F') {
+												$text_temp = 'In response {@uname@} to her {@post_url@}';
+											}
+
+											echo cl_translate($text_temp, array(
+												'uname' => cl_html_el('a', $cl['li']['reply_to']['name'], array(
+													'href' => $cl['li']['reply_to']['url'],
+													'data-spa' => 'true'
+												)),
+												'post_url' => cl_html_el('a', cl_translate('publication'), array(
+													'href' => $cl['li']['reply_to']['thread_url'],
+													'data-spa' => 'true'
+												))
+											)); 
+										?>
+									</span>
+								</div>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+					
+					<div class="publication-content">
+						<?php if (not_empty($cl['li']['text'])): ?>
+							<?php 
+								$cl['li']['text'] = cl_rn2br($cl['li']['text']);
+								$cl['li']['text'] = cl_strip_brs($cl['li']['text']);
+							?>
+							<div class="publication-text">
+								<p>
+									<?php echo($cl['li']['text']); ?>
+								</p>
+							</div>
+						<?php endif; ?>
+
+						<?php if ($cl['li']['type'] == 'image' && not_empty($cl['li']['media'])): ?>
+							<?php if (count($cl['li']['media']) == 1): ?>
+								<div class="lozad-media" data-lozad-media="loading">
+									<div class="publication-image">
+										<a href="<?php echo cl_get_media(fetch_or_get($cl['li']['media'][0]['src'],'')); ?>" class="fbox-img">
+											<img onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="lozad" data-src="<?php echo cl_get_media(fetch_or_get($cl['li']['media'][0]['src'],'')); ?>" alt="Picture">
+										</a>
+									</div>
+									<div class="lozad-preloader" data-lozad-preloader="icon">
+										<div class="icon">
+											<?php echo cl_svg("image-outline"); ?>
+										</div>
+									</div>
+								</div>
+							<?php else: ?>
+								<div class="publication-images-slider">
+									<div id="post-slider-cr-<?php echo($cl['li']['id']); ?>" class="carousel slide" data-ride="carousel" data-interval="false">
+										<ol class="carousel-indicators">
+											<?php foreach ($cl['li']['media'] as $i => $row): ?>
+												<?php if ($i == 0): ?>
+													<li data-target="#post-slider-cr-<?php echo($cl['li']['id']); ?>" data-slide-to="0" class="active"></li>
+												<?php else: ?>
+													<li data-target="#post-slider-cr-<?php echo($cl['li']['id']); ?>" data-slide-to="<?php echo($i); ?>"></li>
+												<?php endif; ?>
+											<?php endforeach; ?>
+										</ol>
+										<div class="carousel-inner">
+											<?php foreach ($cl['li']['media'] as $i => $row): ?>
+												<?php if ($i == 0): ?>
+													<div class="carousel-item active">
+												<?php else: ?>
+													<div class="carousel-item">
+												<?php endif; ?>
+													<div class="lozad-media" data-lozad-media="loading">
+														<a href="<?php echo cl_get_media($row['src']); ?>" class="fbox-img">
+															<img onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="d-block w-100 lozad" data-src="<?php echo cl_get_media($row['src']); ?>" alt="Image">
+														</a>
+														<div class="lozad-preloader" data-lozad-preloader="icon">
+															<div class="icon">
+																<?php echo cl_svg("image-outline"); ?>
+															</div>
+														</div>
+													</div>
+												</div>
+											<?php endforeach; ?>
+										</div>
+										<a class="carousel-control-prev cr-slide-ctrl" href="#post-slider-cr-<?php echo($cl['li']['id']); ?>" role="button" data-slide="prev">
+											<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-a</title><polyline points="328 112 184 256 328 400" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
+										</a>
+										<a class="carousel-control-next cr-slide-ctrl" href="#post-slider-cr-<?php echo($cl['li']['id']); ?>" role="button" data-slide="next">
+											<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-a</title><polyline points="184 112 328 256 184 400" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
+										</a>
+									</div>
+								</div>
+							<?php endif; ?>
+						<?php elseif($cl['li']['type'] == 'video' && not_empty($cl['li']['media'])): ?>
+							<div class="lozad-media" data-lozad-media="loading">
+								<div class="publication-video">
+									<video onloadeddata="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="lozad" data-poster="<?php echo cl_get_media(fetch_or_get($cl['li']['media'][0]['x']['poster_thumb'],'')); ?>" width="550" height="280">
+								    	<source type="video/mp4" src="<?php echo cl_get_media(fetch_or_get($cl['li']['media'][0]['src'],'')); ?>" />
+								    </video>
+							    </div>
+								<div class="lozad-preloader" data-lozad-preloader="icon">
+									<div class="icon">
+										<?php echo cl_svg("videocam-outline"); ?>
+									</div>
+								</div>
+							</div>
+						<?php elseif($cl['li']['type'] == 'gif' && not_empty($cl['li']['media'])): ?>
+							<div class="lozad-media" data-lozad-media="loading">
+								<div class="publication-image">
+									<a href="<?php echo fetch_or_get($cl['li']['media'][0]['src'],''); ?>" class="fbox-img">
+										<img onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="lozad" data-src="<?php echo fetch_or_get($cl['li']['media'][0]['src'],''); ?>" alt="GIF-Image">
+									</a>
+								</div>
+								<div class="lozad-preloader" data-lozad-preloader="icon">
+									<div class="icon">
+										<?php echo cl_svg("image-outline"); ?>
+									</div>
+								</div>
+							</div>
+						<?php elseif(not_empty($cl['li']['og_data'])): ?>
+							<div class="publication-og-data">
+								<div class="publication-og-data-inner">
+									<div class="og-image">
+										<?php if (not_empty($cl['li']['og_data']['image'])): ?>
+											<div class="og-image-holder" style="background-image: url('<?php echo($cl['li']['og_data']['image']); ?>');"></div>
+										<?php else: ?>
+											<div class="og-icon-holder">
+												<?php echo cl_svg('globe-outline'); ?>
+											</div>
+										<?php endif; ?>
+									</div>
+									<div class="og-url-data">
+										<h5>
+											<?php echo($cl['li']['og_data']['title']); ?>
+										</h5>
+										<p>
+											<?php echo($cl['li']['og_data']['description']); ?>
+										</p>
+										<a href="<?php echo($cl['li']['og_data']['url']); ?>" target="_blank">
+											<?php echo($cl['li']['og_data']['url']); ?>
+										</a>
+									</div>
+								</div>
+							</div>
+						<?php endif; ?>
+					</div>
+					
+					<div class="publication-footer-ctrls">
+						<button class="ctrls-item">
+							<a class="icon" href="<?php echo $cl['li']['url']; ?>" data-spa="true">
+								<span class="icon">
+									<?php echo cl_svg('chatbubbles-outline'); ?>
+								</span>
+								<span class="num"><?php echo $cl['li']['replys_count']; ?></span>
+							</a>
+						</button>
+
+						<?php if (empty($cl['li']['has_liked'])): ?>
+							<button class="ctrls-item" onclick="SMColibri.like_post('<?php echo $cl['li']['id']; ?>', this);">
+								<span class="icon">
+									<?php echo cl_svg('heart-outline'); ?>
+								</span>
+								<span class="num" data-an="likes-count">
+									<?php echo $cl['li']['likes_count']; ?>
+								</span>
+							</button>
+						<?php else: ?>
+							<button class="ctrls-item liked" onclick="SMColibri.like_post('<?php echo $cl['li']['id']; ?>', this);">
+								<span class="icon">
+									<?php echo cl_svg('heart-outline'); ?>
+								</span>
+								<span class="num" data-an="likes-count">
+									<?php echo $cl['li']['likes_count']; ?>
+								</span>
+							</button>
+						<?php endif; ?>
+						
+						<?php if (empty($cl['li']['has_reposted'])): ?>
+							<button onclick="SMColibri.repost('<?php echo $cl['li']['id']; ?>', this);" class="ctrls-item" data-an="repost-ctrl">
+								<span class="icon">
+									<?php echo cl_svg('repeat-outline'); ?>
+								</span>
+								<span class="num" data-an="reposts-count">
+									<?php echo $cl['li']['reposts_count']; ?>
+								</span>
+							</button>
+						<?php else: ?>
+							<button onclick="SMColibri.repost('<?php echo $cl['li']['id']; ?>', this);" class="ctrls-item reposted" data-an="repost-ctrl">
+								<span class="icon">
+									<?php echo cl_svg('repeat-outline'); ?>
+								</span>
+								<span class="num" data-an="reposts-count">
+									<?php echo $cl['li']['reposts_count']; ?>
+								</span>
+							</button>
+						<?php endif; ?>
+
+						<button class="ctrls-item" onclick="SMColibri.share_post('<?php echo $cl['li']['url']; ?>','<?php echo urlencode($cl['li']['url']); ?>');">
+							<span class="icon">
+								<?php echo cl_svg('share-outline'); ?>
+							</span>
+						</button>
+						<button class="ctrls-item dropleft">
+							<a href="#" class="dropdown-toggle icon" data-toggle="dropdown">
+								<?php echo cl_svg('ellipsis-vertical-outline'); ?>
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="<?php echo $cl['li']['url']; ?>" data-spa="true">
+									<?php echo cl_translate('Show thread'); ?>
+								</a>
+								<?php if (not_empty($cl['li']['can_delete'])): ?>
+									<a onclick="SMColibri.delete_post('<?php echo $cl['li']['id']; ?>');" class="dropdown-item" href="javascript:void(0);">
+										<?php echo cl_translate('Delete'); ?>
+									</a>
+								<?php endif; ?>
+								<a onclick="SMColibri.show_likes('<?php echo $cl['li']['id']; ?>');" class="dropdown-item" href="javascript:void(0);">
+									<?php echo cl_translate('Show likes'); ?>
+								</a>
+								<a onclick="SMColibri.bookmark_post('<?php echo $cl['li']['id']; ?>', this);" class="dropdown-item" href="javascript:void(0);">
+									<?php echo ((empty($cl['li']['has_saved'])) ? cl_translate('Bookmark') : cl_translate('Unbookmark')); ?>
+								</a>
+								<a data-clipboard-text="<?php echo($cl['li']['url']); ?>" class="dropdown-item clip-board-copy" href="javascript:void(0);">
+									<?php echo cl_translate('Copy link'); ?>
+								</a>
+								<a onclick="SMColibri.share_post('<?php echo $cl['li']['url']; ?>','<?php echo urlencode($cl['li']['url']); ?>');" class="dropdown-item" href="javascript:void(0);">
+									<?php echo cl_translate('Share'); ?>
+								</a>
+							</div>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>

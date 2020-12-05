@@ -1,0 +1,1025 @@
+<script>
+	/* @*************************************************************************@
+	// @ @author Mansur Altamirov (Mansur_TL)									 @
+	// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+	// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+	// @ @author_email: highexpresstore@gmail.com                                @
+	// @*************************************************************************@
+	// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+	// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+	// @*************************************************************************@
+	*/
+
+	"use strict";
+
+	(function(window) {
+		function _SMColibri() {
+			var _evh = {};
+			var data = {
+				url: "{%config url%}"
+			};
+
+			var _smc = Object({
+				curr_pn: "<?php echo fetch_or_get($cl["pn"], "none"); ?>",
+				vue: Object({}),
+				is_logged_user: '<?php echo (($cl["is_logged"] == true) ? 1 : 0); ?>',
+				back_url: data.url,
+				upload_progress_int: false
+			});
+
+			_smc.page_meta_data = <?php echo (json($cl['json_data'], 1)); ?>;
+
+			if (_smc.curr_pn != "chat") {
+				if ($(window).width() > 1024) {
+					_smc.lsb = new StickySidebar('div#left-sb-container', {
+						topSpacing: 0,
+						bottomSpacing: 0
+					});
+
+					_smc.rsb = new StickySidebar('div#right-sb-container', {
+						topSpacing: 0,
+						bottomSpacing: 0
+					});
+				}
+			}
+
+			_smc.init = function() {
+				_smc.fix_sidebars();
+				_smc.update_msb_indicators();
+
+				if (cl_empty(window.history.state)) {
+					window.history.pushState({state: "new", back_url: window.location.href}, "", window.location.href);
+				}
+			}
+
+			_smc.fix_sidebars = function() {
+				if (_smc.curr_pn != "chat" && _smc.curr_pn != "notifications") {
+					if ($(window).width() > 1024) {
+						if (_smc.lsb) {
+							_smc.lsb.updateSticky();
+						}
+						
+						if (_smc.rsb) {
+							_smc.rsb.updateSticky();
+						}
+					}
+				}
+			}
+			
+			_smc.get_cookie = function(name = "") {
+			    var matches = document.cookie.match(new RegExp(
+			      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+			    ));
+
+			    return (matches ? decodeURIComponent(matches[1]) : undefined);
+			}
+
+			_smc.is_logged = function(){
+				if (_smc.is_logged_user == '1') {
+					return true;
+				}
+
+				return false;
+			}
+
+			_smc.confirm_action = function(data = {}) {
+				var modal    = "<div class='modal fadeIn confirm-actions-modal' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-body'><h4>{0}</h4><p>{1}</p></div><div class='modal-footer'><button id='confirm-actions-cancel' type='button' class='btn btn-custom main-grey lg'>{2}</button><button id='confirm-actions-confirm' type='button' class='btn btn-custom main-inline lg'>{3}</button></div></div></div></div>";
+				var title    = data['title'];
+				var message  = data['message'];
+				var btn_1    = data['btn_1'];
+				var btn_2    = data['btn_2'];
+				var modal    = modal.format(title,message,btn_1,btn_2);
+				var deferred = new $.Deferred();
+
+				$(document).on('click', '#confirm-actions-confirm', function(event) {
+					deferred.resolve();
+				});
+
+				$(document).on('click', '#confirm-actions-cancel', function(event) {
+					deferred.reject();
+				});
+
+				$('div[data-app="black-hole"]').append($(modal)).find('div.confirm-actions-modal').modal('show');
+
+				return deferred.promise();
+			}
+
+			_smc.req_auth = function() {
+				var modal = "<div class='modal fadeIn require-auth-modal' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-body'><h4><?php echo cl_translate('This action requires authorization!'); ?></h4><p><?php echo cl_translate('Please log in to your account in order to perform this action, or register if you do not already have an account on -{@site_name@}', array('site_name'=> cl_html_el('b', $cl['config']['name']))); ?></p></div><div class='modal-footer'><button data-dismiss='modal' type='button' class='btn btn-block btn-custom main-inline lg'><?php echo cl_translate('Okey!'); ?></button></div></div></div></div>";
+
+				$('div[data-app="black-hole"]').append($(modal)).find('div.require-auth-modal').modal('show');
+			}
+
+			_smc.pub_reply = function(id = false) {
+				if (_smc.is_logged()) {
+					if ($.isNumeric(id) && id) {
+						_smc.vue.pubbox2.thread_id = id;
+
+						$("div#add_new_post").modal('show');
+					}
+				}
+				else {
+					_smc.req_auth();
+				}
+			}
+
+			_smc.delete_post = function(id = false) {
+				if ($.isNumeric(id) && id) {
+					if (_smc.is_logged()) {
+						var main_left_sb = $('div[data-app="left-sidebar"]');
+			        	var promise      = SMColibri.confirm_action({
+							btn_1: "<?php echo cl_translate("Cancel"); ?>",
+							btn_2: "<?php echo cl_translate("Delete"); ?>",
+							title: "<?php echo cl_translate("Please confirm your actions!"); ?>",
+							message: "<?php echo cl_translate("Please note that if you delete this post, then with the removal of this post all posts related to this thread will also be permanently deleted!"); ?>",
+						});
+
+						promise.done(function() {
+							$.ajax({
+								url: '<?php echo cl_link("native_api/main/delete_post"); ?>',
+								type: 'POST',
+								dataType: 'json',
+								data: {id: id},
+							}).done(function(data) {
+								if (data.status != 200) {
+									cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+								}
+								else {
+									if (_smc.curr_pn == 'home') {
+										var hp_tl_app = $('div[data-app="homepage"]');
+
+										hp_tl_app.find('div[data-an="entry-list"]').find('div[data-list-item="{0}"]'.format(id)).slideUp(200, function() {
+											$(this).remove();
+
+											if (hp_tl_app.find('div[data-an="entry-list"]').find('div[data-list-item]').length < 1) {
+												$(window).reloadPage(50);
+											}
+										});
+
+										if (data.hasOwnProperty('posts_total')) {
+											main_left_sb.find('b[data-an="total-posts"]').text(data.posts_total);
+										}
+									}
+									else if (_smc.curr_pn == 'profile') {
+										var profile_app = $('div[data-app="profile"]');
+
+										profile_app.find('div[data-an="entry-list"]').find('div[data-list-item="{0}"]'.format(id)).slideUp(200, function() {
+											$(this).remove();
+
+											if (profile_app.find('div[data-an="entry-list"]').find('div[data-list-item]').length < 1) {
+												$(window).reloadPage(50);
+											}
+										});
+
+										if (data.hasOwnProperty('posts_total')) {
+											main_left_sb.find('b[data-an="total-posts"]').text(data.posts_total);
+										}
+									}
+									else if(_smc.curr_pn == 'bookmarks') {
+										var bookmarks_app = $('div[data-app="bookmarks"]');
+
+										bookmarks_app.find('div[data-an="entry-list"]').find('div[data-list-item="{0}"]'.format(id)).slideUp(200, function() {
+											$(this).remove();
+
+											if (bookmarks_app.find('div[data-an="entry-list"]').find('div[data-list-item]').length < 1) {
+												$(window).reloadPage(50);
+											}
+										});
+
+										if (data.hasOwnProperty('posts_total')) {
+											main_left_sb.find('b[data-an="total-posts"]').text(data.posts_total);
+										}
+									}
+									else if(_smc.curr_pn == 'search') {
+										var search_app = $('div[data-app="search"]');
+
+										search_app.find('div[data-an="entry-list"]').find('div[data-list-item="{0}"]'.format(id)).slideUp(200, function() {
+											$(this).remove();
+										});
+
+										if (data.hasOwnProperty('posts_total')) {
+											main_left_sb.find('b[data-an="total-posts"]').text(data.posts_total);
+										}
+									}
+									else {
+										cl_redirect(data.url);
+									}
+								}
+							}).always(function() {
+								$("div.confirm-actions-modal").modal("hide");
+							});
+				        });
+
+						promise.fail(function() {
+				            $("div.confirm-actions-modal").modal("hide");
+				        });
+					}
+					else{
+						_smc.req_auth();
+					}
+				}
+			}
+
+			_smc.like_post = function(id = false, event = false) {
+				if (_smc.is_logged()) {
+					if ($.isNumeric(id) && id) {
+						$(event).attr('disabled', 'true');
+
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/like_post"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							data: {id: id},
+						}).done(function(data) {
+							if (data.status == 200) {
+								if ($(event).hasClass('liked')) {
+									$(event).removeClass('liked');
+
+									$(event).removeClass('liked').addClass('animated bounceIn').promise().done(function(){
+										delay(function() {
+											$(event).removeClass('animated bounceIn');
+										}, 1000);
+									});
+
+									$(event).find('span[data-an="likes-count"]').text(data.likes_count);
+								}
+								else {
+									$(event).addClass('liked').addClass('animated bounceIn').promise().done(function(){
+										delay(function() {
+											$(event).removeClass('animated bounceIn');
+										}, 1000);
+									});
+
+									$(event).find('span[data-an="likes-count"]').text(data.likes_count);
+								}
+							}
+							else {
+								cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+							}
+
+						}).always(function() {
+							$(event).removeAttr('disabled');
+						});
+					}
+				}
+				else{
+					_smc.req_auth();
+				}
+			}
+
+			_smc.repost = function(id = false, event = false) {
+				if (_smc.is_logged()) {
+					if ($.isNumeric(id) && id) {
+						$(event).attr('disabled', 'true');
+
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/repost"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							data: {id: id},
+						}).done(function(data) {
+							if (data.status == 200) {
+								if ($(event).hasClass('reposted')) {
+									$(event).removeClass('reposted');
+
+									$(event).removeClass('reposted').addClass('animated bounceIn').promise().done(function(){
+										delay(function() {
+											$(event).removeClass('animated bounceIn');
+										}, 1000);
+									});
+
+									$(event).find('span[data-an="reposts-count"]').text(data.reposts_count);
+
+									if (_smc.curr_pn == 'home' || _smc.curr_pn == 'profile') {
+
+										var timeline_app = ((_smc.curr_pn == 'home') ? $('div[data-app="homepage"]') : $('div[data-app="profile"]'));
+										var orig_post    = timeline_app.find('div[data-an="entry-list"]').find('[data-list-item="{0}"]'.format(id));
+										var repost       = timeline_app.find('div[data-an="entry-list"]').find('[data-repost="{0}"]'.format(data.repost_id));
+
+										if (repost.length) {
+											repost.slideUp(200, function() {
+												$(this).remove();
+											});
+										}
+
+										if (orig_post.length) {
+											orig_post.find('button[data-an="repost-ctrl"]').removeClass('reposted');
+											orig_post.find('span[data-an="reposts-count"]').text(data.reposts_count);
+											orig_post.find('span[data-an="reposts-count"]').addClass('animated bounceIn').promise().done(function(){
+												delay(function() {
+													$(event).removeClass('animated bounceIn');
+												}, 1000);
+											});
+										}
+									}
+								}
+								else {
+									$(event).addClass('reposted').addClass('animated bounceIn').promise().done(function(){
+										delay(function() {
+											$(event).removeClass('animated bounceIn');
+										}, 1000);
+									});
+
+									$(event).find('span[data-an="reposts-count"]').text(data.reposts_count);
+								}
+							}
+							else {
+								cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+							}
+						}).always(function() {
+							$(event).removeAttr('disabled');
+						});
+					}
+				}
+				else{
+					_smc.req_auth();
+				}
+			}
+
+			_smc.share_post = function(url = false, encoded_url = false) {
+				if (url && encoded_url) {
+					var modal = "<div class='modal fadeIn share-post-modal vh-center' data-an='share-post' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-header'><div class='main---mh--block'><h5 class='modal-title'><?php echo cl_translate('Share post'); ?></h5><span class='dismiss-modal' data-dismiss='modal'><?php echo str_replace('"', '\'', cl_svg('md-close')); ?></span></div></div><div class='modal-body'><div class='social-media-links'><a href='https://twitter.com/intent/tweet?url={0}' target='_black' class='link-item twitter'><?php echo str_replace('"', '\'', cl_svg('logo-twitter')); ?></a><a href='https://www.facebook.com/sharer.php?u={0}' target='_black' class='link-item facebook'><?php echo str_replace('"', '\'', cl_svg('logo-facebook')); ?></a><a href='https://www.linkedin.com/shareArticle?mini=true&url={0}' target='_black' class='link-item linkedin'><?php echo str_replace('"', '\'', cl_svg('logo-linkedin')); ?></a><a href='https://www.pinterest.ru/pin/create/button/?url={0}' target='_black' class='link-item pinterest'><?php echo str_replace('"', '\'', cl_svg('logo-pinterest')); ?></a><a href='https://www.reddit.com/submit?url={0}' target='_black' class='link-item reddit'><?php echo str_replace('"', '\'', cl_svg('logo-reddit')); ?></a></div><div class='raw-link'><p><?php echo cl_translate('Or copy link'); ?></p><div class='link-input'><input type='text' readonly='true' value='{1}' id='copy-link-input'><button data-clipboard-target='#copy-link-input' data-clipboard-action='copy' class='clip-board-copy copy-link'><?php echo str_replace('"', '\'', cl_svg('copy-outline')); ?></button></div></div></div></div></div></div>";
+					var modal = modal.format(encoded_url,url);
+
+					$('body').find('[data-app="black-hole"]').append($(modal)).promise().done(function() {
+						$('body').find('[data-app="black-hole"]').find('[data-an="share-post"]').modal('show');
+					});
+				}
+			}
+
+			_smc.isURL = function(str = "") {
+				var regex = new RegExp("^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$", "i"); 
+			  	return regex.test(str);
+			}
+
+			_smc.show_likes = function(id = false) {
+				if ($.isNumeric(id) && id) {
+					$.ajax({
+						url: '<?php echo cl_link("native_api/main/show_likes"); ?>',
+						type: 'POST',
+						dataType: 'json',
+						data: {id: id},
+					}).done(function(data) {
+						if (data.status == 200) {
+							$('div[data-app="black-hole"]').append($(data.html)).find('div[data-app="post-likes-list"]').modal('show');
+						}
+						else {
+							cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+						}
+					});
+				}
+			}
+
+			_smc.bookmark_post = function(id = false, _self = false) {
+				if (_smc.is_logged()) {
+					if ($.isNumeric(id) && id) {
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/bookmark_post"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							data: {id: id, a: 'save'},
+						}).done(function(data) {
+							if (data.status == 200) {
+								if (data.status_code == '1') {
+									cl_bs_notify("<?php echo cl_translate("Post has been bookmarked!"); ?>",500);
+
+									$(_self).text("<?php echo cl_translate('Unbookmark'); ?>");
+								}
+								else {
+									cl_bs_notify("<?php echo cl_translate("Post has been deleted from bookmarks!"); ?>",500);
+									$(_self).text("<?php echo cl_translate('Bookmark'); ?>");
+								}
+							}
+							else {
+								cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+							}
+						});
+					}
+				}
+				else {
+					_smc.req_auth();
+				}
+			}
+
+			_smc.load_likes = function(id = false, event = false) {
+				if ($.isNumeric(id) && id) {
+					var _self     = $(event);
+					var likes_ls  = $('div[data-app="post-likes-list"]');
+					var last_item = likes_ls.find('div[data-list-item]').last();
+
+					if (last_item.length) {
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/load_likes"); ?>',
+							type: 'GET',
+							dataType: 'json',
+							data: {id: id, offset: last_item.data('list-item')},
+							beforeSend: function() {
+								_self.attr('disabled', 'true').text("<?php echo cl_translate("Please wait"); ?>");
+							}
+						}).done(function(data) {
+							if (data.status == 200) {
+								likes_ls.find('div[data-an="users-ls"]').append($(data.html));
+
+								_self.removeAttr('disabled').text("<?php echo cl_translate("Show more"); ?>");
+							}
+							else {
+								_self.text("<?php echo cl_translate("That is all for now!"); ?>");
+							}
+						});
+					}
+				}
+			}
+
+			_smc.follow = function(event = false) {
+				if (event) {
+					if (_smc.is_logged()) {
+						var target       = $(event);
+						var main_left_sb = $('div[data-app="left-sidebar"]');
+
+				        if(target.data('action') == 'unfollow') {
+				        	var promise = SMColibri.confirm_action({
+								btn_1: "<?php echo cl_translate("Cancel"); ?>",
+								btn_2: "<?php echo cl_translate("Unfollow"); ?>",
+								title: "<?php echo cl_translate("Please confirm your actions!"); ?>",
+								message: "<?php echo cl_translate("Please note that, if you unsubscribe then this user's posts will no longer appear in the feed on your main page."); ?>",
+							});
+
+							promise.done(function() {
+					            target.data('action','follow');
+								target.text("<?php echo cl_translate("Follow"); ?>");
+								target.replaceClass('main-inline','main-outline');
+
+								$.ajax({
+									url: '<?php echo cl_link("native_api/main/follow"); ?>',
+									type: 'POST',
+									dataType: 'json',
+									data: {id: target.data('id')},
+								}).done(function(data) {
+									if (data.status != 200) {
+										cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+									}
+									else {
+										main_left_sb.find('b[data-an="total-following"]').text(data.total_following);
+
+										if (_smc.curr_pn == "profile") { 
+											if (data.refresh != undefined) {
+												$(window).reloadPage(1000);
+											}
+										}
+									}
+								}).always(function() {
+									$("div.confirm-actions-modal").modal("hide");
+								});
+					        });
+
+							promise.fail(function() {
+					            $("div.confirm-actions-modal").modal("hide");
+					        });
+				        }
+
+				        else {
+				        	target.data('action','unfollow');
+							target.text("<?php echo cl_translate("Following"); ?>");
+							target.replaceClass('main-outline','main-inline');
+
+							delay(function(){
+								target.text("<?php echo cl_translate("Unfollow"); ?>");
+							}, 1500);
+
+				        	$.ajax({
+								url: '<?php echo cl_link("native_api/main/follow"); ?>',
+								type: 'POST',
+								dataType: 'json',
+								data: {id: target.data('id')},
+							}).done(function(data) {
+								if (data.status != 200) {
+									cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+								}
+								else {
+									main_left_sb.find('b[data-an="total-following"]').text(data.total_following);
+
+									if (_smc.curr_pn == "profile") { 
+										if (data.refresh != undefined) {
+											$(window).reloadPage(1000);
+										}
+									}
+								}
+							});
+				        }
+					}
+					else{
+						_smc.req_auth();
+					}
+				}
+			}
+
+			_smc.block = function(event = false) {
+				if (event) {
+					if (_smc.is_logged()) {
+						var target = $(event);
+
+				        if(target.data('action') == 'block') {
+				        	var promise = SMColibri.confirm_action({
+								btn_1: "<?php echo cl_translate("Cancel"); ?>",
+								btn_2: "<?php echo cl_translate("Block"); ?>",
+								title: "<?php echo cl_translate("Please confirm your actions!"); ?>",
+								message: "<?php echo cl_translate("Blocked users will no longer be able to write a message to you, follow you, or see your profile and publications, etc."); ?>",
+							});
+
+							promise.done(function() {
+					            target.data('action','unblock');
+								target.text("<?php echo cl_translate("Unblock"); ?>");
+
+								if (target.hasClass('toggle-class')) {
+									target.replaceClass('main-inline', 'main-outline');
+								}
+	
+								$.ajax({
+									url: '<?php echo cl_link("native_api/main/block"); ?>',
+									type: 'POST',
+									dataType: 'json',
+									data: {id: target.data('id')},
+								}).done(function(data) {
+									if (data.status != 200) {
+										SMColibri.errorMSG();
+									}
+									else {
+										if (_smc.curr_pn == 'profile') {
+											$(window).reloadPage();
+										}
+									}
+								}).always(function() {
+									$("div.confirm-actions-modal").modal("hide");
+								});
+					        });
+
+							promise.fail(function() {
+					            $("div.confirm-actions-modal").modal("hide");
+					        });
+				        }
+
+				        else if(target.data('action') == 'unblock') {
+				        	var promise = SMColibri.confirm_action({
+								btn_1: "<?php echo cl_translate("Cancel"); ?>",
+								btn_2: "<?php echo cl_translate("Unblock"); ?>",
+								title: "<?php echo cl_translate("Please confirm your actions!"); ?>",
+								message: "<?php echo cl_translate("Are you sure you want to unblock this user? Now they can follow you or see your posts, etc."); ?>",
+							});
+
+							promise.done(function() {
+					            target.data('action','block');
+								target.text("<?php echo cl_translate("Block"); ?>");
+
+								if (target.hasClass('toggle-class')) {
+									target.replaceClass('main-outline', 'main-inline');
+								}
+	
+								$.ajax({
+									url: '<?php echo cl_link("native_api/main/block"); ?>',
+									type: 'POST',
+									dataType: 'json',
+									data: {id: target.data('id')},
+								}).done(function(data) {
+									if (data.status != 200) {
+										SMColibri.errorMSG();
+									}
+									else {
+										if (_smc.curr_pn == 'profile') {
+											$(window).reloadPage();
+										}
+									}
+								}).always(function() {
+									$("div.confirm-actions-modal").modal("hide");
+								});
+					        });
+
+							promise.fail(function() {
+					            $("div.confirm-actions-modal").modal("hide");
+					        });
+				        }
+					}
+					else{
+						_smc.req_auth();
+					}
+				}
+			}
+
+			_smc.errorMSG = function() {
+				cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>", 3000);
+			}
+
+			_smc.extend_vue = function(app_name = "", vue_instance = {}) {
+				_smc.vue[app_name] = vue_instance;
+			}
+
+			_smc.update_afterglow = function() {
+				$('body').find('video').each(function(index, el) {
+					if ($(el).hasClass('afterglow') != true) {
+						$(el).addClass('afterglow');
+					}
+				}).promise().done(function() {
+					window.afterglow.init();
+				});
+			}
+
+			_smc.upload_progress_bar = function(a = 'show', title = "") {
+				if (a == 'show') {
+					var modal  = "<div data-app='upload-progress-bar' class='modal fadeIn upload-progress-bar vh-center' tabindex='-1' data-onclose='remove' role='dialog' aria-hidden='true' data-keyboard='false' data-backdrop='static'><div class='modal-dialog modal-md' role='document'><div class='modal-content'><div class='modal-body'><div class='progress-bar-title'><h3>{0} (<b data-an='num'>0</b>)<span><?php echo cl_translate('Please wait'); ?>...</span></h3></div><div class='progress-bar-state'><div class='progress-bar-bg'><div data-an='slider' class='progress-bar-slider'></div></div></div></div></div></div></div>";
+					var modal  = modal.format(title);
+					var random = cl_randint(30, 80);
+
+					$('div[data-app="black-hole"]').append($(modal)).find('div[data-app="upload-progress-bar"]').modal('show');
+
+					setTimeout(function() {
+						_smc.update_progress_bar(random);
+					}, 500);
+				}
+
+				else {
+					_smc.update_progress_bar(100);
+				}
+			}
+
+			_smc.destroy_progress_bar = function() {
+				$('div[data-app="upload-progress-bar"]').modal('hide');
+				clearInterval(_smc.upload_progress_int);
+			}
+
+			_smc.update_progress_bar = function(num = 0) {
+				let prog_bar = $('[data-app="upload-progress-bar"]');
+
+				if (prog_bar.length) {
+					if (num == 100) {
+						var bar_status           = prog_bar.data('status');
+						var bar_status           = Number(bar_status);
+						_smc.upload_progress_int = setInterval(function() {
+							if (bar_status >= 100) {
+								setTimeout(function() {
+									_smc.destroy_progress_bar();
+								}, 500);
+							}
+							else {
+								bar_status++;
+
+								prog_bar.find('[data-an="num"]').text("{0}%".format(bar_status));
+								prog_bar.find('[data-an="slider"]').css("width", "{0}%".format(bar_status));
+								prog_bar.find('[data-an="slider"]').css("min-width", "{0}%".format(bar_status));
+							}
+						}, 10);
+					}
+
+					else {
+						prog_bar.attr('data-status', num);
+
+						var i = 1;
+
+						_smc.upload_progress_int = setInterval(function() {
+							if (i >= num) {
+								clearInterval(_smc.upload_progress_int);
+							}
+							else {
+								i++;
+
+								prog_bar.find('[data-an="num"]').text("{0}%".format(i));
+								prog_bar.find('[data-an="slider"]').css("width", "{0}%".format(i));
+								prog_bar.find('[data-an="slider"]').css("min-width", "{0}%".format(i));
+							}
+						}, 10);
+					}
+				}
+			}
+
+			_smc.update_msb_indicators = function() {
+				if (_smc.is_logged()) {
+					var main_left_sb   = $('div[data-app="left-sidebar"]');
+					var main_bottom_nb = $('div[data-app="mobile-navbar"]');
+					var timer_id       = setInterval(function() {
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/update_msb_indicators"); ?>',
+							type: 'GET',
+							dataType: 'json',
+						}).done(function(data) {
+							if (data.status == 200) {
+								if (data.notifications > 0) {
+									var notifs_total = data.notifications;
+
+									if (data.notifications > 99) {
+										notifs_total = "99+";
+									}
+
+									main_left_sb.find('[data-an="new-notifs"]').text($.trim(notifs_total));
+									main_bottom_nb.find('[data-an="new-notifs"]').text($.trim(notifs_total));
+								}
+								else {
+									main_left_sb.find('[data-an="new-notifs"]').empty();
+									main_bottom_nb.find('[data-an="new-notifs"]').empty();
+								}
+
+								if (data.messages) {
+
+									var messages_total = data.messages;
+
+									if (data.messages > 99) {
+										messages_total = "99+";
+									}
+									
+									main_left_sb.find('[data-an="new-messages"]').text($.trim(messages_total));
+									main_bottom_nb.find('[data-an="new-messages"]').text($.trim(messages_total));
+								}
+								else {
+									main_left_sb.find('[data-an="new-messages"]').empty();
+									main_bottom_nb.find('[data-an="new-messages"]').empty();
+								}
+							}
+							else {
+								clearInterval(timer_id);
+							}
+						});
+					}, (30 * 1000));
+				}
+			}
+
+			_smc.load_media = function(e = false) {
+				if (e) {
+					var n = $(e).parents('[data-lozad-media="loading"]');
+					n.attr('data-lozad-media', 'loaded');
+					n.find('[data-lozad-preloader="icon"]').remove();
+				}
+			}
+
+			_smc.hide_sb = function() {
+				$('div[data-app="lsb-back-drop"]').trigger('click');
+			}
+
+			_smc.spa_load = function(url = "", push_state = true) {
+				var timeline  = $('[data-el="timeline-container-wrapper"]');
+				var preloader = timeline.find('[data-el="spa-preloader"]');
+
+				if (push_state == true) {
+					window.history.pushState({state: "new", back_url: url}, "", url);
+				}
+
+				if (window.mobileCheck()) {
+					_smc.hide_sb();location.reload();
+				}
+
+				$.ajax({
+					url: url,
+					type: 'GET',
+					data: {spa_load: '1'},
+					dataType: 'json',
+					async: true,
+					beforeSend: function() {
+						$("html, body").animate({
+							scrollTop: 0
+						}, 10).promise().done(function() {
+							preloader.removeClass('d-none');
+						});
+					}
+				}).done(function(data = {}) {
+
+					if (data.status == 200) {
+						var left_sidebar = $('[data-app="left-sidebar"]');
+						var prevapp      = _smc.curr_pn;
+						var json_data    = data.json_data;
+						_smc.curr_pn     = json_data.pn;
+
+						$('head').find('title').text(json_data.page_title);
+						$('head').find('meta[name="title"]').attr('content', json_data.page_title);
+						$('head').find('meta[name="description"]').attr('content', json_data.page_desc);
+						$('head').find('meta[name="keywords"]').attr('content', json_data.page_kw);
+
+						if ($('body').hasClass('cl-app-{0}'.format(prevapp))) {
+							$('body').removeClass('cl-app-{0}'.format(prevapp));
+							$('body').addClass('cl-app-{0}'.format(json_data.pn));
+						}
+						else {
+							$('body').addClass('cl-app-{0}'.format(json_data.pn));
+						}
+
+						timeline.find('[data-el="timeline-content"]').html(data.html);
+
+						left_sidebar.find('[data-navitem]').each(function(index, el) {
+							$(el).removeClass('active');
+						}).promise().done(function() {
+							left_sidebar.find('[data-navitem="{0}"]'.format(_smc.curr_pn)).addClass('active');
+						});
+					}
+					else if(data.status == 302) {
+						_smc.spa_load(data.redirect_url);
+					}
+
+					else {
+						_smc.spa_load("<?php echo cl_link('404'); ?>");
+					}
+				}).always(function() {
+					setTimeout(function() {
+						preloader.addClass('d-none');
+					}, 500);
+				});
+
+				return false;
+			}
+
+			_smc.spa_reload = function() {
+				if (window.location.href != undefined) {
+					_smc.spa_load(window.location.href);
+				}
+				else {
+					_smc.spa_load(data['url']);
+				}
+
+				return false;
+			}
+
+			_smc.go_back = function() {
+				history.back();
+			}
+
+			_smc.jump_back = function(step = 1) {
+				history.go(step);
+			}
+
+			_smc.ad_conversion = function(e = false) {
+				if (e) {
+					var _self = $(e);
+					var id    = _self.data('ad-id');
+					var url   = _self.data('ad-url');
+
+					if (_self.data('conversed') == undefined) {
+						$.ajax({
+							url: '<?php echo cl_link("native_api/ads/ad_conversion"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							data: {id: id},
+						});
+
+						_self.data('conversed', 'true');
+					}
+
+					window.open(url, '_blank');
+				}
+			}
+
+			return _smc;
+		} 
+
+		if (window.SMColibri === undefined) {
+			window.SMColibri = _SMColibri();
+		}
+	})(window);
+
+	$(document).ready(function($) {
+
+	    SMColibri.init();
+
+	    var clipboard   = new ClipboardJS('.clip-board-copy');
+	    var page_height = $(document).height();
+
+	    clipboard.on('success', function(event) {
+	    	cl_bs_notify("<?php echo cl_translate("Copied to your clipboard!"); ?>",500);
+	    });
+
+	    clipboard.on('error', function(event) {
+	    	cl_bs_notify("<?php echo cl_translate("Failed to copy to clipboard!"); ?>",3000);
+	    });
+
+	    if (navigator.cookieEnabled == false) {
+	    	$('[data-app="right-sidebar"]').find('[data-an="announcement"]').html("<div class='announcement-item disabled-cookies'><?php echo cl_translate('Oops! It looks like you have cookies disabled. For this site to work properly, you need to enable cookies.'); ?></div>");
+	    }
+
+	    setInterval(function() {
+
+	    	var new_page_height = $(document).height();
+	    	var _lozad_         = lozad();
+
+			_lozad_.observe();
+
+	    	if (page_height != new_page_height) {
+	    		page_height = page_height;
+	    		SMColibri.fix_sidebars();
+	    	}
+
+	    	$("a.fbox-img").fancybox({
+				arrows: true,
+				i18n: {
+				    en: {
+				    	ERROR: "The requested content could not be loaded. <br/> Please try again later.",
+				    }
+				}
+			});
+	    }, 500);
+
+	    $(document).on('click', 'a[data-spa]', function(event) {
+			event.preventDefault();
+			event.stopPropagation();
+			event.stopImmediatePropagation();
+
+			var page_url_source = $(this).attr('href');
+
+			SMColibri.spa_load(page_url_source);	
+
+			return false;
+		});
+
+		$(window).on("popstate", function () {
+			if (history.state) {
+				if ($.isEmptyObject(history.state.back_url) != true) {
+			  		SMColibri.spa_load(history.state.back_url, false);
+				}
+			}
+
+			return false;
+		});
+	});
+
+	var search_bar_app = new Vue({
+		el: "#vue-main-search-app",
+		data: {
+			searching: false,
+			search_query: "",
+			advanced_search: false,
+			search_result: false
+		},
+		computed: {
+			search_page_url: function() {
+				if (this.search_query.length > 2) {
+					var search_htags_url = "<?php echo cl_link("search/htags?q={0}"); ?>";
+					var search_users_url = "<?php echo cl_link("search/people?q={0}"); ?>";
+					this.advanced_search = true;
+
+					if (this.search_query.charAt(0) == '#') {
+						return search_htags_url.format(this.search_query.replace('#',''));
+					}
+					else {
+						return search_users_url.format(this.search_query);
+					}
+				}
+				else {
+
+					this.advanced_search = false;
+
+					return "javascript:void(0);";
+				}
+			},
+			query_type: function() {
+				if (this.search_query.charAt(0) == '#') {
+					return 'htags';
+				}
+
+				else {
+					return 'users';
+				}
+			}
+		},
+		methods: {
+			search_onsubmit: function(e = false) {
+				e.preventDefault();
+
+				this.search();
+			},
+			search: function() {
+				if (this.search_query.length > 2) {
+					var _app_ = this;
+					delay(function() {
+						$.ajax({
+							url: '<?php echo cl_link("native_api/main/search"); ?>',
+							type: 'GET',
+							dataType: 'json',
+							data: {
+								query: _app_.search_query.replace('#',''),
+								type: _app_.query_type
+							},
+							beforeSend: function() {
+								_app_.searching = true;
+							}
+						}).done(function(data) {
+							if (data.status == 200) {
+								_app_.search_result = true;
+								$(_app_.$el).find('[data-an="result"]').html($(data.html));
+							}
+							else {
+								$(_app_.$el).find('[data-an="result"]').empty('');
+								_app_.search_result = false;
+							}
+						}).always(function() {
+							_app_.searching = false;
+						});
+					}, 800);
+				}
+			},
+			cancel: function() {
+				var _app_             = this;
+				_app_.searching       = false;
+				_app_.search_query    = "";
+				_app_.advanced_search = false;
+				_app_.search_result   = false;
+				
+				$(_app_.$el).find('[data-an="result"]').empty('');
+			}
+		}
+	});
+</script>
+
+
+

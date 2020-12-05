@@ -1,0 +1,465 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-chat{
+	overflow: hidden;
+
+	main.main-content-container{
+		div.main-content-container-inner{
+			height: 100vh !important;
+			div.timeline-container{
+				height: 100%;
+				div.timeline-container-inner{
+					width: 100%;
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					overflow: hidden;
+
+					div.vue-app-body{
+						width: 100%;
+						flex: 1;
+						overflow: hidden;
+
+						div.vue-app-body-inner{
+							width: 100%;
+							height: 100%;
+							display: flex;
+							flex-direction: column;
+							flex-wrap: nowrap;
+							overflow: hidden;
+		
+							div.chat--search-form-wrapper{
+								width: 100%;
+								line-height: 0px;
+
+								form{
+									div.keyword-input{
+										width: 100%;
+										line-height: 0px;
+										position: relative;
+										padding: 15px;
+										border-bottom: 1px solid $border;
+
+										input{
+											border: 1px solid $border;
+											background: rgb(230, 236, 240);
+											border-radius: 5em;
+											padding: 0 0 3px 40px;
+											height: 35px;
+											width: 100%;
+											font-size: 12px;
+											color: $black;
+
+											&::placeholder{
+												color: $pl_holder;
+												font-size: 12px;
+											}
+
+											&:active,&:hover,&:focus{
+												box-shadow: none;
+												outline: none;
+												border: 2px solid $blue;
+
+												& + span.icon svg{
+													fill: $blue;
+													opacity: 1;
+												}
+											}
+										}
+
+										span.icon{
+											position: absolute;
+											left: 30px;
+											top: 23px;
+											text-decoration: none;
+											line-height: 0px;
+											z-index: 2;
+											width: 22px;
+											height: 22px;
+
+											svg{
+												width: 100%;
+												height: 100%;
+												fill: $grey;
+												opacity: 0.8;
+											}
+										}
+
+										span.spinner-icon{
+											position: absolute;
+											right: 30px;
+											top: 22px;
+											text-decoration: none;
+											line-height: 0px;
+											z-index: 2;
+											width: 22px;
+											height: 22px;
+
+											svg{
+												width: 100%;
+												height: 100%;
+												fill: $grey;
+												opacity: 0.8;
+											}
+										}
+									}
+								}
+							}
+
+							div.chat--contacts-list-wrapper{
+								width: 100%;
+								flex: 1;
+								line-height: 0px;
+								overflow: hidden;
+								
+								div.chat--contacts-list{
+									width: 100%;
+									line-height: 0px;
+									overflow-x: hidden;
+									overflow-y: auto;
+									height: 100%;
+
+									div.chat--contacts-list-item{
+										width: 100%;
+										line-height: 0px;
+										padding: 15px 15px;
+										border-bottom: 1px solid $border;
+										cursor: pointer;
+										overflow: hidden;
+
+										&:hover,&:active{
+											background: $el_hovbg;
+										}
+
+										a{
+											width: 100%;
+											display: block;
+											line-height: 0px;
+											text-decoration: none;
+											
+											div.chat--contacts-list-item-inner{
+												width: 100%;
+												max-width: 100%;
+												overflow: hidden;
+												display: flex;
+												flex-direction: row;
+												flex-wrap: nowrap;
+
+												div.lp{
+													width: 40px;
+													height: 40px;
+													max-width: 40px;
+													min-width: 40px;
+													flex-basis: 40px;
+													line-height: 0px;
+
+													div.avatar{
+														width: 100%;
+														height: 100%;
+														display: block;
+														overflow: hidden;
+														border-radius: 10em;
+
+														img{
+															width: 100%;
+															height: 100%;
+															object-fit: cover;
+														}
+													}
+												}
+
+												div.rp{
+													flex: 1;
+													line-height: 0px;
+													overflow: hidden;
+
+													div.rp-inner-content-header{
+														width: 100%;
+														max-width: 100%;
+														display: flex;
+														flex-direction: row;
+														flex-wrap: nowrap;
+														align-items: center;
+														padding-left: 15px;
+
+														b.name{
+															font-size: 13px;
+															line-height: 20px;
+															color: $black;
+															font-weight: 700;
+														}
+
+														span.uname{
+															font-size: 13px;
+															line-height: 20px;
+															color: $grey;
+															font-weight: 400;
+															margin-left: 5px;
+														}
+
+														span.time{
+															margin-left: auto;
+
+															svg{
+																width: 13px;
+																height: 13px;
+																display: inline-block;
+																vertical-align: middle;
+																fill: $grey;
+															}
+
+															time{
+																font-size: 11px;
+																line-height: 20px;
+																color: $grey;
+															}
+														}
+													}
+
+													div.rp-inner-content-body{
+														width: 100%;
+														line-height: 0px;
+														padding-left: 15px;
+														overflow: hidden;
+														max-width: 100%;
+
+														p{
+															display: inline-block;
+															white-space: nowrap;
+															text-overflow: ellipsis;
+															max-width: 80%;
+															overflow: hidden;
+															font-size: 13px;
+															line-height: 18px;
+															color: $grey;
+															padding: 0;
+															margin: 0;
+														}
+
+														span.badge{
+															background: $blue;
+															color: #fff;
+															border-radius: 5em;
+															font-size: 11px;
+															line-height: 18px;
+															display: inline-block;
+															vertical-align: top;
+															padding: 0 5px;
+															margin: 0;
+															font-weight: 400;
+														}
+													}
+												}
+											}
+										}
+
+										&.hidden{
+											display: none !important;
+										}
+									}
+
+									&::-webkit-scrollbar-track{
+										background-color: #e6ecf0;
+									}
+
+									&::-webkit-scrollbar{
+										width: 5px;
+										background-color: #e6ecf0;
+
+									}
+
+									&::-webkit-scrollbar-thumb{
+										background-color: #d1d1d1;
+										border: 0px;
+										border-radius: 0px;
+									}
+								}
+
+								div.empty-search-result{
+									width: 100%;
+									display: flex;
+									flex-direction: column;
+									flex-wrap: nowrap;
+									justify-content: center;
+									align-items: center;
+									line-height: 0px;
+									padding: 50px;
+									height: calc(100vh - 100px);
+									overflow: hidden;
+
+							 		div.icon{
+							 			line-height: 0px;
+										margin-bottom: 15px;
+										width: 100%;
+										text-align: center;
+
+							 			svg{
+								 			width: 80px;
+								 			height: 80px;
+								 			fill: $blue;
+
+								 			*{
+								 				stroke: $blue;
+								 			}
+								 		}
+							 		}
+
+							 		div.pl-message{
+										line-height: 0px;
+										width: 100%;
+										margin-bottom: 50px;
+
+										h4{
+											font-size: 20px;
+											padding: 0;
+											margin: 0 0 15px 0;
+											line-height: 20px;
+											color: $black;
+											font-weight: 700;
+											text-align: center;
+										}
+
+										p{
+											font-size: 13px;
+											line-height: 20px;
+											padding: 0;
+											margin: 0;
+											color: $grey;
+											text-align: center;
+											overflow-wrap: break-word;
+
+											span{
+												display: inline-block;
+												line-height: 0;
+												vertical-align: middle;
+												svg{
+													width: 15px;
+													height: 15px;
+													fill: $blue;
+
+													*{
+														stroke: $blue;
+													}
+												}
+											}
+										}
+									}
+								}
+
+								div.empty-chats-list{
+									width: 100%;
+									display: flex;
+									flex-direction: column;
+									flex-wrap: nowrap;
+									justify-content: center;
+									align-items: center;
+									line-height: 0px;
+									padding: 50px;
+									height: calc(100vh - 100px);
+									overflow: hidden;
+
+							 		div.icon{
+							 			line-height: 0px;
+										margin-bottom: 15px;
+										width: 100%;
+										text-align: center;
+
+							 			svg{
+								 			width: 80px;
+								 			height: 80px;
+								 			fill: $blue;
+
+								 			*{
+								 				stroke: $blue;
+								 			}
+								 		}
+							 		}
+
+							 		div.pl-message{
+										line-height: 0px;
+										width: 100%;
+										margin-bottom: 50px;
+
+										h4{
+											font-size: 20px;
+											padding: 0;
+											margin: 0 0 15px 0;
+											line-height: 20px;
+											color: $black;
+											font-weight: 700;
+											text-align: center;
+										}
+
+										p{
+											font-size: 13px;
+											line-height: 20px;
+											padding: 0;
+											margin: 0;
+											color: $grey;
+											text-align: center;
+											overflow-wrap: break-word;
+
+											span{
+												display: inline-block;
+												line-height: 0;
+												vertical-align: middle;
+												svg{
+													width: 15px;
+													height: 15px;
+													fill: $blue;
+
+													*{
+														stroke: $blue;
+													}
+												}
+											}
+										}
+									}
+
+									div.c2action-single{
+										width: 100%;
+										line-height: 0px;
+										text-align: center;
+
+										a{
+											display: inline-block;
+											line-height: 0px;
+											text-decoration: none;
+
+											button{
+												padding-left: 40px;
+												padding-right: 40px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			div.left-sb-container,div.right-sb-container{
+				height: 100%;
+				overflow-x: hidden;
+				overflow-y: auto;
+				scrollbar-width: none;
+				-ms-overflow-style: none;
+				&::-webkit-scrollbar{
+					display: none;
+				}
+			}
+		}
+	}
+}

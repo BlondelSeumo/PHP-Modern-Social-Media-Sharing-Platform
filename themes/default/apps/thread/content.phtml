@@ -1,0 +1,366 @@
+<div class="timeline-container" data-app="thread">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo $cl['thread_data']['post']['url']; ?>" data-spa="true">
+					<?php echo cl_translate("Publication"); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="publication--thread-container">
+		<div class="publication--thread-container-inner">
+			<?php if (not_empty($cl['thread_data']['parent'])): ?>
+				<div class="publication--thread-chain-holder">
+					<div class="timeline-posts-container">
+						<div class="timeline-posts-ls" data-an="chain-list">
+							<?php foreach ($cl['thread_data']['parent'] as $cl["li"]): ?>
+								<?php echo cl_template('timeline/post'); ?>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+
+			<div class="publication--thread-data-holder" data-an="thread-data">	
+				<div class="publication-data">
+					<div class="publication-data-inner">
+						<div class="publisher-info">
+							<div class="lp">
+								<div class="avatar-holder">
+									<img src="<?php echo($cl['thread_data']['post']['owner']['avatar']); ?>" alt="Avatar">
+								</div> 
+							</div>
+							<div class="rp">
+								<div class="flex-row">
+									<a class="uname" href="<?php echo($cl['thread_data']['post']['owner']['url']); ?>" data-spa="true">
+										<b>
+											<span class="user-name-holder <?php if ($cl['thread_data']['post']['owner']['verified'] == '1') { echo('verified-badge'); } ?>">
+												<?php echo($cl['thread_data']['post']['owner']['name']); ?>
+											</span>
+										</b>
+										<span><?php echo($cl['thread_data']['post']['owner']['username']); ?></span>
+									</a>
+									<button class="dropleft">
+										<a href="#" class="dropdown-toggle icon" data-toggle="dropdown">
+											<?php echo cl_svg('ellipsis-vertical-outline'); ?>
+										</a>
+										<div class="dropdown-menu">
+											<?php if (not_empty($cl['thread_data']['post']['can_delete'])): ?>
+												<a onclick="SMColibri.delete_post('<?php echo $cl['thread_data']['post']['id']; ?>');" class="dropdown-item" href="javascript:void(0);">
+													<?php echo cl_translate('Delete'); ?>
+												</a>
+											<?php endif; ?>
+											<a onclick="SMColibri.show_likes('<?php echo $cl['thread_data']['post']['id']; ?>');" class="dropdown-item" href="javascript:void(0);">
+												<?php echo cl_translate('Show likes'); ?>
+											</a>
+											<a onclick="SMColibri.bookmark_post('<?php echo $cl['thread_data']['post']['id']; ?>', this);" class="dropdown-item" href="javascript:void(0);">
+												<?php echo ((empty($cl['thread_data']['post']['has_saved'])) ? cl_translate('Bookmark') : cl_translate('Unbookmark')); ?>
+											</a>
+											<a data-clipboard-text="<?php echo($cl['thread_data']['post']['url']); ?>" class="dropdown-item clip-board-copy" href="javascript:void(0);">
+												<?php echo cl_translate('Copy link'); ?>
+											</a>
+
+											<a onclick="SMColibri.share_post('<?php echo $cl['thread_data']['post']['url']; ?>','<?php echo urlencode($cl['thread_data']['post']['url']); ?>');" class="dropdown-item" href="javascript:void(0);">
+												<?php echo cl_translate('Share'); ?>
+											</a>
+										</div>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="publication-content">
+							<?php if (not_empty($cl['thread_data']['post']['text'])): ?>
+								<div class="publication-text">
+									<p>
+										<?php 
+											$cl['thread_data']['post']['text'] = cl_rn2br($cl['thread_data']['post']['text']);
+											$cl['thread_data']['post']['text'] = cl_strip_brs($cl['thread_data']['post']['text']);
+										?>
+										<?php echo($cl['thread_data']['post']['text']); ?>
+									</p>
+								</div>
+							<?php endif; ?>
+
+							<?php if ($cl['thread_data']['post']['type'] == 'image' && not_empty($cl['thread_data']['post']['media'])): ?>
+								<?php if (count($cl['thread_data']['post']['media']) == 1): ?>
+									<div class="lozad-media" data-lozad-media="loading">
+										<div class="publication-image">
+											<a href="<?php echo cl_get_media(fetch_or_get($cl['thread_data']['post']['media'][0]['src'],'')); ?>" class="fbox-img">
+												<img onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="lozad" data-src="<?php echo cl_get_media(fetch_or_get($cl['thread_data']['post']['media'][0]['src'],'')); ?>" alt="Picture">
+											</a>
+										</div>
+										<div class="lozad-preloader" data-lozad-preloader="icon">
+											<div class="icon">
+												<?php echo cl_svg("image-outline"); ?>
+											</div>
+										</div>
+									</div>
+								<?php else: ?>
+									<div class="publication-images-slider">
+										<div id="post-slider-cr-<?php echo($cl['thread_data']['post']['id']); ?>" class="carousel slide" data-ride="carousel" data-interval="false">
+											<ol class="carousel-indicators">
+												<?php foreach ($cl['thread_data']['post']['media'] as $i => $row): ?>
+													<?php if ($i == 0): ?>
+														<li data-target="#post-slider-cr-<?php echo($cl['thread_data']['post']['id']); ?>" data-slide-to="0" class="active"></li>
+													<?php else: ?>
+														<li data-target="#post-slider-cr-<?php echo($cl['thread_data']['post']['id']); ?>" data-slide-to="<?php echo($i); ?>"></li>
+													<?php endif; ?>
+												<?php endforeach; ?>
+											</ol>
+											<div class="carousel-inner">
+												<?php foreach ($cl['thread_data']['post']['media'] as $i => $row): ?>
+													<?php if ($i == 0): ?>
+														<div class="carousel-item active">
+													<?php else: ?>
+														<div class="carousel-item">
+													<?php endif; ?>
+														<div class="lozad-media" data-lozad-media="loading">
+															<a href="<?php echo cl_get_media($row['src']); ?>" class="fbox-img">
+																<img onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="d-block w-100 lozad" data-src="<?php echo cl_get_media($row['src']); ?>" alt="Image">
+															</a>
+															<div class="lozad-preloader" data-lozad-preloader="icon">
+																<div class="icon">
+																	<?php echo cl_svg("image-outline"); ?>
+																</div>
+															</div>
+														</div>
+													</div>
+												<?php endforeach; ?>
+											</div>
+											<a class="carousel-control-prev cr-slide-ctrl" href="#post-slider-cr-<?php echo($cl['thread_data']['post']['id']); ?>" role="button" data-slide="prev">
+												<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-a</title><polyline points="328 112 184 256 328 400" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
+											</a>
+											<a class="carousel-control-next cr-slide-ctrl" href="#post-slider-cr-<?php echo($cl['thread_data']['post']['id']); ?>" role="button" data-slide="next">
+												<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-a</title><polyline points="184 112 328 256 184 400" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
+											</a>
+										</div>
+									</div>
+								<?php endif; ?>
+							<?php elseif($cl['thread_data']['post']['type'] == 'video' && not_empty($cl['thread_data']['post']['media'])): ?>
+								<div class="lozad-media" data-lozad-media="loading">
+									<div class="publication-video">
+										<video onloadeddata="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" poster="<?php echo cl_get_media(fetch_or_get($cl['thread_data']['post']['media'][0]['x']['poster_thumb'],'')); ?>" width="550" height="300">
+									    	<source type="video/mp4" src="<?php echo cl_get_media(fetch_or_get($cl['thread_data']['post']['media'][0]['src'],'')); ?>" />
+									    </video>
+								    </div>
+								    <div class="lozad-preloader" data-lozad-preloader="icon">
+										<div class="icon">
+											<?php echo cl_svg("videocam-outline"); ?>
+										</div>
+									</div>
+								</div>
+							<?php elseif($cl['thread_data']['post']['type'] == 'gif' && not_empty($cl['thread_data']['post']['media'])): ?>
+								<div class="lozad-media" data-lozad-media="loading">
+									<div class="publication-image">
+										<img onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" src="<?php echo fetch_or_get($cl['thread_data']['post']['media'][0]['src'],''); ?>" alt="GIF-Image">
+									</div>
+									<div class="lozad-preloader" data-lozad-preloader="icon">
+										<div class="icon">
+											<?php echo cl_svg("image-outline"); ?>
+										</div>
+									</div>
+								</div>
+							<?php endif; ?>
+						</div>
+
+						<div class="publication-meta-info">
+							<div class="posted-time">
+								<?php echo cl_svg('calendar-outline'); ?>
+								<time>
+									<?php echo date('h:m A, d M. Y',$cl['thread_data']['post']['time_raw']); ?>
+								</time>
+							</div>
+							<?php if ($cl['thread_data']['post']['target'] == 'pub_reply' && not_empty($cl['thread_data']['post']['reply_to'])): ?>
+								<div class="publication-target">
+									<?php if (not_empty($cl['thread_data']['post']['reply_to']['is_owner'])): ?>
+										<div class="post-reply">
+											<span>
+												<?php echo cl_translate('In response to your {@post_url@}', array(
+													'post_url' => cl_html_el('a', cl_translate('post'), array(
+														'href' => $cl['thread_data']['post']['reply_to']['thread_url'],
+														'data-spa' => 'true'
+													))
+												)); ?>
+											</span>
+										</div>
+									<?php else: ?>
+										<div class="post-reply">
+											<span>
+												<?php
+													$text_temp = 'In response {@uname@} to his {@post_url@}';
+
+													if ($cl['thread_data']['post']['reply_to']['gender'] == 'F') {
+														$text_temp = 'In response {@uname@} to her {@post_url@}';
+													}
+
+													echo cl_translate($text_temp, array(
+														'uname' => cl_html_el('a', $cl['thread_data']['post']['reply_to']['name'], array(
+															'href' => $cl['thread_data']['post']['reply_to']['url'],
+															'data-spa' => 'true'
+														)),
+														'post_url' => cl_html_el('a', cl_translate('publication'), array(
+															'href' => $cl['thread_data']['post']['reply_to']['thread_url'],
+															'data-spa' => 'true'
+														))
+													)); 
+												?>
+											</span>
+										</div>
+									<?php endif; ?>
+								</div>
+							<?php endif; ?>
+						</div>
+						
+						<div class="publication-footer-ctrls">
+							<?php if (not_empty($cl['thread_data']['can_reply'])): ?>
+								<button class="ctrls-item" onclick="SMColibri.pub_reply('<?php echo $cl['thread_data']['post']['id']; ?>');">
+									<span class="icon">
+										<?php echo cl_svg('create-outline'); ?>
+									</span>
+									<span class="num" data-an="pub-replys-total">
+										<?php echo $cl['thread_data']['post']['replys_count']; ?>
+									</span>
+								</button>
+							<?php else: ?>
+								<button class="ctrls-item" disabled="true">
+									<span class="icon">
+										<?php echo cl_svg('create-outline'); ?>
+									</span>
+									<span class="num" data-an="pub-replys-total">
+										<?php echo $cl['thread_data']['post']['replys_count']; ?>
+									</span>
+								</button>
+							<?php endif; ?>
+
+							<?php if (empty($cl['thread_data']['post']['has_liked'])): ?>
+								<button class="ctrls-item" onclick="SMColibri.like_post('<?php echo $cl['thread_data']['post']['id']; ?>', this);">
+									<span class="icon">
+										<?php echo cl_svg('heart-outline'); ?>
+									</span>
+									<span class="num" data-an="likes-count">
+										<?php echo $cl['thread_data']['post']['likes_count']; ?>
+									</span>
+								</button>
+							<?php else: ?>
+								<button class="ctrls-item liked" onclick="SMColibri.like_post('<?php echo $cl['thread_data']['post']['id']; ?>', this);">
+									<span class="icon">
+										<?php echo cl_svg('heart-outline'); ?>
+									</span>
+									<span class="num" data-an="likes-count">
+										<?php echo $cl['thread_data']['post']['likes_count']; ?>
+									</span>
+								</button>
+							<?php endif; ?>
+							
+							<button onclick="SMColibri.repost('<?php echo $cl['thread_data']['post']['id']; ?>', this);" class="ctrls-item" data-an="repost-ctrl">
+								<span class="icon">
+									<?php echo cl_svg('repeat-outline'); ?>
+								</span>
+								<span class="num" data-an="reposts-count">
+									<?php echo $cl['thread_data']['post']['reposts_count']; ?>
+								</span>
+							</button>
+
+							<button class="ctrls-item" onclick="SMColibri.share_post('<?php echo $cl['thread_data']['post']['url']; ?>','<?php echo urlencode($cl['thread_data']['post']['url']); ?>');">
+								<span class="icon">
+									<?php echo cl_svg('share-outline'); ?>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="publication--thread-replys-holder">
+				<?php if (not_empty($cl['thread_data']['next'])): ?>
+					<div class="timeline-posts-container">
+						<div class="timeline-posts-ls" data-an="replys-list">
+							<?php foreach ($cl['thread_data']['next'] as $cl["li"]): ?>
+								<?php if (empty($cl["li"]["replys"])): ?>
+									<?php echo cl_template('timeline/post'); ?>
+								<?php else: ?>
+									<div class="timeline-posts-ls-group">
+										<div class="timeline-posts-ls-group-inner">
+											<?php echo cl_template('timeline/post'); ?>
+
+											<?php
+												$parent_thread = $cl['li']; 
+												$post_replys   = $parent_thread['replys'];
+												$post_replys   = array_reverse($post_replys);
+
+												foreach ($post_replys as $cl['li']) {
+													echo cl_template('timeline/post');
+												}
+											?>
+										</div>
+
+										<a class="show-thread" href="<?php echo($parent_thread["url"]); ?>" data-spa="true">
+											<span class="txt-label">
+												(<?php echo($parent_thread["replys_count"]); ?>) <?php echo cl_translate("Show this thread"); ?>
+											</span>
+											<span class="icon">
+												<?php echo cl_svg('arrow-redo-outline'); ?>
+											</span>
+										</a>
+									</div>
+								<?php endif; ?>
+							<?php endforeach; ?>
+						</div>
+					</div>
+
+					<?php if (count($cl['thread_data']['next']) == 30): ?>
+						<div class="load-more">
+							<button class="btn btn-custom main-outline lg" data-an="load-more">
+								<?php echo cl_translate("Show more"); ?>
+							</button>
+						</div>
+					<?php else: ?>
+						<div class="load-more">
+							<button disabled="true" class="btn btn-custom main-outline lg" data-an="load-more">
+								<?php echo cl_translate("That is all for now!"); ?>
+							</button>
+						</div>
+					<?php endif; ?>
+				<?php else: ?>
+					<div class="no-thread-replys">
+						<div class="icon">
+							<?php echo cl_svg('chatbubbles-outline'); ?>
+						</div>
+						<div class="pl-message">
+							<h4>
+								<?php echo ("No replys yet!"); ?>
+							</h4>
+							<p>
+								<?php echo cl_translate("It seems that this publication does not yet have any comments. In order to respond to this publication from {@publisher_name@}, click on {@svg_icon@} at the bottom under it",array(
+									"svg_icon" => ('<span><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-n</title><path d="M384,224V408a40,40,0,0,1-40,40H104a40,40,0,0,1-40-40V168a40,40,0,0,1,40-40H271.48" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M459.94,53.25a16.06,16.06,0,0,0-23.22-.56L424.35,65a8,8,0,0,0,0,11.31l11.34,11.32a8,8,0,0,0,11.34,0l12.06-12C465.19,69.54,465.76,59.62,459.94,53.25Z"/><path d="M399.34,90,218.82,270.2a9,9,0,0,0-2.31,3.93L208.16,299a3.91,3.91,0,0,0,4.86,4.86l24.85-8.35a9,9,0,0,0,3.93-2.31L422,112.66A9,9,0,0,0,422,100L412.05,90A9,9,0,0,0,399.34,90Z"/></svg></span>'),
+									"publisher_name" => cl_html_el('a',$cl['thread_data']['post']['owner']['name'], array(
+										"href" => $cl['thread_data']['post']['owner']['url'],
+										"data-spa" => "true"
+									))
+								)); ?>
+							</p>
+						</div>
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template('thread/scripts/app_master_script'); ?>
+</div>

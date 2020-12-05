@@ -1,0 +1,324 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+@media (max-width: 1024px) { 
+	main.main-content-container{
+		div.main-content-container-inner{
+			padding-bottom: 50px;
+			div.left-sb-container {
+				height: unset !important;
+				display: block !important;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: -330px;
+				border-right: 1px solid $border;
+				z-index: 110;
+				box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+				overflow-x: hidden;
+				overflow-y: auto;
+				scrollbar-width: none;
+				-ms-overflow-style: none;
+				&::-webkit-scrollbar{
+					display: none;
+				}
+
+				div.publish-post-btn{
+					display: none;
+				}
+
+				div.sidebar__inner{
+					padding: 20px;
+
+					div.user-info{
+						align-items: flex-start;
+						div.avatar{
+							width: 40px;
+							min-width: 40px;
+							height: 40px;
+						}
+
+						div.uname{
+							text-align: left;
+							h5{
+								text-align: left;
+							}
+						}
+					}
+
+					div.account-stats{
+						justify-content: flex-start;
+						margin-bottom: 15px;
+
+						div.stat-holder{
+							margin-right: 15px;
+							b,span{
+								display: inline-block !important;
+								width: auto !important;
+							}
+
+							b{
+								font-size: 13px;
+							}
+						}
+					}
+					
+					div.sidebar-v-nav-wrapper{
+						border-bottom: 1px solid $border;
+						ul.sidebar-v-nav{
+							padding: 0px;
+
+							li.sidebar-v-nav-item{
+								span.icon{
+									svg{
+										width: 20px;
+										height: 20px;
+									}
+								}
+
+								span.nav-item-holder{
+									margin-left: 15px;
+									& > a{
+										font-size: 14px;
+										font-weight: 400;
+									}
+								}
+							}
+						}
+					}
+
+					div.mobile-sb-footer{
+						visibility: visible;
+						display: block;
+						opacity: 1;
+						margin-top: 15px;
+					}
+				}
+
+				&.show{
+					left: 0;
+				}
+			} 
+
+			div.right-sb-container{
+				display: none;
+				visibility: hidden;
+				opacity: 0;
+			}
+
+			div.timeline-container-wrapper{
+				width: 100%;
+				min-width: 100%;
+				max-width: 100%;
+			}
+
+			div.timeline-container{
+				width: 100%;
+				min-width: 100%;
+				max-width: 100%;
+				border-right: none;
+				border-left: none;
+
+				div.timeline-header{
+					height: 50px;
+
+					div.lp{
+						div.nav-link-holder{
+							a{
+								font-size: 14px;
+							}
+						}
+					}
+
+					div.cp{
+						width: 25px;
+						height: 25px;
+						a{
+							img{
+								width: 100%;
+								height: 100%;
+							}
+						}
+					}
+
+					div.rp{
+						div.nav-link-holder{
+							a{
+								line-height: 0px;
+								svg{
+									width: 18px;
+									height: 18px;
+								}
+							}
+						}
+					}
+				}
+
+				div.timeline-posts-container{
+					div.timeline-posts-ls{
+						div.post-list-item{
+							div.publisher-avatar{
+							    width: 30px !important;
+							    flex-basis: 30px !important;
+							    max-width: 30px !important;
+							    min-width: 30px !important;
+
+							    div.avatar-holder{
+							    	width: 30px !important;
+    								height: 30px !important;
+							    }
+							}
+
+							div.publication-data{
+								div.publisher-info{
+									align-items: flex-start !important;
+
+									div.lp{
+										a{
+											display: block;
+											b, span{
+												width: 100%;
+												display: block;
+											}
+
+											span{
+												line-height: 16px !important;
+												font-size: 11px !important;
+											}
+										}
+									}
+
+									div.rp{
+										span.posted-time{
+											time{
+												font-size: 11px !important;
+												line-height: 11px !important;
+											}
+										}
+									}
+								}
+
+								div.publication-footer-ctrls{
+									button.ctrls-item{
+										span.icon{
+											svg{
+												width: 15px !important;
+												height: 15px !important;
+											}
+										}
+
+										span.num{
+											font-size: 10px !important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	body{
+		div.sb-open-overlay{
+			cursor: pointer;
+			-moz-transition: right 0.5s;
+		    -o-transition: right 0.5s;
+		    -webkit-transition: right 0.5s;
+		    transition: right 0.5s;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			bottom: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, 0.4);
+			z-index: 105;
+		}
+	}
+
+	div.mobile-bottom-navbar{
+		display: block;
+	}
+
+	div.timeline-pubbox-container {
+		& > div.lp{
+			flex-basis: 30px;
+			width: 30px;
+			min-width: 30px;
+		}
+
+		& > div.rp{
+			form{
+				div.emojionearea{
+					div.emojionearea-editor{
+						font-size: 13px;
+						&::before{
+							font-size: 13px;
+						}
+					}
+				}
+
+				div.post-ctrls-holder{
+					button.ctrl-item{
+						height: 30px;
+						width: 15px;
+						margin-right: 15px;
+
+						svg{
+							width: 15px;
+							height: 15px;
+						}
+
+						&.text-length{
+							small{
+								line-height: 30px;
+							}
+						}
+
+						&:hover,&:active,&:focus{
+							&::after{
+								width: 30px;
+								height: 30px;
+								position: absolute;
+								left: -7px;
+								top: 0;
+								bottom: 0;
+								right: -7px;
+								background: #0074b01f;
+								content: "";
+								border-radius: 5em;
+							}
+						}
+					}
+
+
+					button.post-pub-btn{
+						padding: 5px 10px;
+						font-size: 11px;
+					}
+				}
+			}
+		}
+	}
+
+	.dropdown, .dropleft, .dropright, .dropup{
+		div.dropdown-menu{
+			a.dropdown-item{
+				font-size: 11px;
+				line-height: 24px;
+			}
+		}
+	}
+}

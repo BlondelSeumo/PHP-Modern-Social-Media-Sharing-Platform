@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAYA,0BAA2B;EAEzB,mDAAuB;IACtB,OAAO,EAAE,CAAC;IACV,kEAAc;MACb,cAAc,EAAE,MAAM;MACtB,MAAM,EAAE,IAAI;MAEZ,qEAAE;QACD,UAAU,EAAE,MAAM;QAClB,OAAO,EAAE,SAAS;QAClB,MAAM,EAAE,YAAY;QACpB,aAAa,EAAE,iBAAiB;QAChC,KAAK,EAAE,IAAI;QAEX,uEAAC;UACA,MAAM,EAAE,CAAC;UACT,OAAO,EAAE,CAAC;QAGX,gFAAY;UACX,aAAa,EAAE,IAAI;QAGpB,yJAAiB;UAChB,UAAU,EClBL,OAAO;EDwBhB,6CAAiB;IAChB,OAAO,EAAE,SAAS;EAGnB,4CAAgB;IACf,OAAO,EAAE,SAAS",
+"sources": ["../../../scss/apps/stat_pages/style.mq.scss","../../../scss/apps/main-variables.scss"],
+"names": [],
+"file": "style.mq.css"
+}

@@ -1,0 +1,54 @@
+<div class="main-footer">
+	<ul class="footer-nav">
+		<li class="footer-nav">
+			<a href="<?php echo cl_link('search'); ?>">
+				<?php echo cl_translate("Explore"); ?>
+			</a>
+		</li>
+		<?php if (not_empty($cl['is_logged'])): ?>
+			<li class="footer-nav">
+				<a href="<?php echo cl_link('ads'); ?>">
+					<?php echo cl_translate("Advertising"); ?>
+				</a>
+			</li>
+		<?php endif; ?>
+		<li class="footer-nav">
+			<a href="<?php echo cl_link('terms_of_use'); ?>">
+				<?php echo cl_translate("Terms of use"); ?>
+			</a>
+		</li>
+		<li class="footer-nav">
+			<a href="<?php echo cl_link('privacy_policy'); ?>">
+				<?php echo cl_translate("Privacy policy"); ?>
+			</a>
+		</li>
+		<li class="footer-nav">
+			<a href="<?php echo cl_link('cookies_policy'); ?>">
+				<?php echo cl_translate("Cookies"); ?>
+			</a>
+		</li>
+		<li class="footer-nav">
+			<a href="<?php echo cl_link('about_us'); ?>">
+				<?php echo cl_translate("About us"); ?>
+			</a>
+		</li>
+		<li class="footer-nav">
+			<a href="<?php echo cl_link('faqs'); ?>">F.A.Q</a>
+		</li>
+		<li class="footer-nav dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<?php echo cl_translate("Language"); ?>
+			</a>
+			<div class="dropdown-menu">
+				<?php foreach ($cl["languages"] as $k => $v): ?>
+					<a class="dropdown-item" href="<?php echo cl_link(cl_strf("language/%s",$k)); ?>">
+						<?php echo($v); ?>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		</li>
+		<li class="footer-nav">
+			<a href="#">&copy; {%config name%}, Inc., <?php echo date('Y') ?>.</a>
+		</li>
+	</ul>
+</div>

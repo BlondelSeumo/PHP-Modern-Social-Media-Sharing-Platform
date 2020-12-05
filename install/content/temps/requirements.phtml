@@ -1,0 +1,250 @@
+<?php
+# @*************************************************************************@
+# @ @author Mansur Altamirov (Mansur_TL)									@
+# @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+# @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+# @ @author_email: highexpresstore@gmail.com                                @
+# @*************************************************************************@
+# @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+# @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+# @*************************************************************************@
+
+$php_version              = version_compare(PHP_VERSION, '5.5.0', '>=');
+$mysqli_exists            = function_exists('mysqli_connect');
+$gdlib_exists             = (extension_loaded('gd') && function_exists('gd_info'));
+$mbstr_exists             = extension_loaded('mbstring');
+$phpzip_exists            = extension_loaded('zip');
+$config_exists            = (is_writable(PROJ_RP . '/core/settings.php'));
+$dbsql_exists             = (file_exists(PROJ_RP . '/colibri-db.sql') && is_readable(PROJ_RP . '/colibri-db.sql'));
+$curl_installed           = function_exists('curl_version');
+$reqs_exists              = array();
+$reqs_exists[]            = $php_version;
+$reqs_exists[]            = $mysqli_exists;
+$reqs_exists[]            = $gdlib_exists;
+$reqs_exists[]            = $mbstr_exists;
+$reqs_exists[]            = $phpzip_exists;
+$reqs_exists[]            = $config_exists;
+$reqs_exists[]            = $dbsql_exists;
+$reqs_exists[]            = $curl_installed;
+$_SESSION['init']         = array();
+$_SESSION['init']['reqs'] = in_array(false, $reqs_exists);
+?>
+
+<div class="main-cont-inner">
+	<div class="cont-header">
+		<h2>
+			<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M277 360h-42V235h42v125zm0-166h-42v-42h42v42z"/></svg>
+			Requirements
+		</h2>
+	</div>
+	<div class="cont-body">
+		<div class="requirements">
+			<div class="createdby">
+				<h6>Created by: MansurTL - Altamirov</h6>
+			</div>
+			<div class="requirements-def-title">
+				<p>
+					Please make sure all the necessary dependencies are installed on your server.
+				</p>
+			</div>
+			<table class="table">
+				<thead>
+					<th>
+						Name
+					</th>
+					<th>
+						Description
+					</th>
+					<th>
+						Status
+					</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							PHP 5.5.0+
+						</td>
+						<td>
+							Required PHP version 5.5.0 or more
+						</td>
+						<td>
+							<?php if ($php_version): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Installed
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not installed
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							MySQLi
+						</td>
+						<td>
+							Required MySQLi PHP extension
+						</td>
+						<td>
+							<?php if ($mysqli_exists): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Installed
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not installed
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							GD Library
+						</td>
+						<td>
+							Required GD Library for image cropping
+						</td>
+						<td>
+							<?php if ($gdlib_exists): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Installed
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not installed
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							MB-string
+						</td>
+						<td>
+							Required MB-string extension for UTF-8 Text
+						</td>
+						<td>
+							<?php if ($mbstr_exists): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Installed
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not installed
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							PHP Zip
+						</td>
+						<td>
+							Required ZIP extension for backuping data
+						</td>
+						<td>
+							<?php if ($phpzip_exists): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Installed
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not installed
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							settings.php
+						</td>
+						<td>
+							Required settings.php to be writable for the installation <strong>(Located in ./script)</strong>
+						</td>
+						<td>
+							<?php if ($config_exists): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Uploaded
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not uploaded
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							colibri-db.sql
+						</td>
+						<td>
+							Required colibri-db.sql for the installation <strong>(Located in ./script)</strong> 
+						</td>
+						<td>
+							<?php if ($dbsql_exists): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Uploaded
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not uploaded
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							cURL Module
+						</td>
+						<td>
+							Required cURL extension for oAuth logins
+						</td>
+						<td>
+							<?php if ($curl_installed): ?>
+								<span class="installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 48C141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208S370.4 48 256 48zm-42.7 318.9L106.7 260.3l29.9-29.9 76.8 76.8 162.1-162.1 29.9 29.9-192.1 191.9z"/></svg>
+								</span>
+								Installed
+							<?php else: ?>
+								<span class="not-installed">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M360 330.9L330.9 360 256 285.1 181.1 360 152 330.9l74.9-74.9-74.9-74.9 29.1-29.1 74.9 74.9 74.9-74.9 29.1 29.1-74.9 74.9z"/></svg>
+								</span>
+								Not installed
+							<?php endif; ?>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="next-action">
+				<div class="ml-auto">
+					<?php if (in_array(false, $reqs_exists)): ?>
+						<button class="btn btn-info btn-red" disabled="true">
+							Continue
+						</button>
+					<?php else: ?>
+						<a href="?p=installation">
+							<button class="btn btn-info btn-red">
+								Continue
+							</button>
+						</a>
+					<?php endif; ?>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

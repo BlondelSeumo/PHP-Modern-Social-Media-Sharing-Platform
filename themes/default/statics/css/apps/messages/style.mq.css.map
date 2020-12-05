@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAYA,0BAA2B;EAKtB,kIAA4B;IAC3B,OAAO,EAAE,oBAAoB;IAE7B,yIAAM;MACF,KAAK,EAAE,eAAe;MACtB,MAAM,EAAE,eAAe;MACvB,SAAS,EAAE,eAAe;MAC1B,SAAS,EAAE,eAAe;MAC1B,UAAU,EAAE,eAAe;IAK7B,+fAAa;MACZ,WAAW,EAAE,eAAe;EAWjC,qGAAuB;IACtB,MAAM,EAAE,8BAA8B",
+"sources": ["../../../scss/apps/messages/style.mq.scss"],
+"names": [],
+"file": "style.mq.css"
+}

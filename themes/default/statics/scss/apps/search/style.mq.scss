@@ -1,0 +1,82 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+@media (max-width: 1024px) {
+	body.cl-app-search{
+		main.main-content-container{
+			div.main-content-container-inner{
+				div.timeline-container{
+					div.vue-app-body{
+						div.main--search-area-content{
+							div.search-result-container{
+								div.hashtags-list{
+									div.hashtags-list-item{
+										padding: 10px 15px;
+										span.hash{
+											width: 30px;
+	   										height: 30px;
+	   										line-height: 28px;
+										}
+
+										span.hashtag-info{
+											b.tag{
+												font-size: 13px;
+												line-height: 16px;
+											}
+
+											span.total{
+												font-size: 11px;
+												line-height: 16px;
+											}
+										}
+									}
+								}
+
+								div.people-list{
+									div.people-list-item{
+										div.avatar{
+											width: 30px;
+											height: 30px;
+											min-width: 30px;
+	    									max-width: 30px;
+										}
+
+										div.user-info-holder{
+											a{
+												line-height: 16px;
+												font-size: 11px;
+											}
+
+											p{
+												font-size: 11px;
+												line-height: 16px;
+											}
+
+											button{
+												padding: 5px 10px;
+												font-size: 11px;
+											}
+										}
+
+										&:first-child{
+											padding-top: 10px !important;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

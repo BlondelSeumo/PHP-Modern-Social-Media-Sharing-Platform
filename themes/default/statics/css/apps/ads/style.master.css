@@ -1,0 +1,221 @@
+body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-header div.rp div.nav-link-holder span.new-action svg {
+  width: 30px;
+  height: 30px;
+  fill: #1ca1f3; }
+body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container {
+  width: 100%;
+  display: block;
+  line-height: 0px; }
+  body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner {
+    width: 100%;
+    display: block; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar {
+      width: 100%;
+      display: block; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        border-bottom: 1px solid #e6ecf0; }
+        body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner a {
+          flex: 1;
+          text-decoration: none;
+          line-height: 0px;
+          outline: 0; }
+          body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner a button.navbar-item-btn {
+            background: transparent;
+            font-size: 13px;
+            font-weight: 600;
+            color: #657786;
+            line-height: 13px;
+            box-shadow: none;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            opacity: 0.9;
+            width: 100%;
+            outline: 0; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner a button.navbar-item-btn.active {
+              border-bottom: 2px solid #1ca1f3; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner a button.navbar-item-btn:hover, body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner a button.navbar-item-btn:active, body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-navbar div.account--ads-list-navbar-inner a button.navbar-item-btn:focus {
+              background: #f5f8fa; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container {
+      width: 100%;
+      line-height: 0px; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container {
+        width: 100%;
+        display: block;
+        padding: 20px 15px; }
+        body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone {
+          width: 100%;
+          display: block; }
+          body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner {
+            width: 100%;
+            display: block;
+            border: 2px dashed #e6ecf0;
+            transition: all 0.27s ease;
+            cursor: pointer; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner:hover, body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner:active {
+              border-color: #1ca1f3; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner div.ad-cover-upload {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              padding: 25px 15px; }
+              body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner div.ad-cover-upload div.icon {
+                width: 45px;
+                height: 45px;
+                min-height: 45px;
+                min-width: 45px;
+                margin-bottom: 2px; }
+                body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner div.ad-cover-upload div.icon svg {
+                  width: 100%;
+                  height: 100%;
+                  fill: #1ca1f3; }
+                  body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner div.ad-cover-upload div.icon svg * {
+                    stroke: #1ca1f3; }
+              body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner div.ad-cover-upload div.txt-label {
+                text-align: center;
+                font-size: 11px;
+                color: #657786;
+                line-height: 18px;
+                text-transform: uppercase; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.ad-cover-dropzone div.ad-cover-dropzone-inner img {
+              width: 100%;
+              display: block; }
+        body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group.tos-agreement {
+          width: 100%;
+          line-height: 0px;
+          margin-bottom: 20px; }
+          body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group.tos-agreement label {
+            margin-bottom: 0px; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group.tos-agreement label span {
+              font-size: 11px;
+              line-height: 20px;
+              color: #657786; }
+            body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group.tos-agreement label a {
+              font-size: 10px;
+              line-height: 16px;
+              color: #1ca1f3;
+              font-weight: 500;
+              text-decoration: none; }
+        body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group p.form-info-label {
+          margin-top: 5px; }
+        body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.multiselect-toggle-all {
+          width: 100%;
+          display: block;
+          margin-top: 10px; }
+          body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.main-ads--settings-container-inner div.account--ads-list-container div.upsert-ads-form-container div.form-group div.multiselect-toggle-all label {
+            margin-bottom: 0px;
+            height: 20px;
+            line-height: 20px;
+            margin-right: 15px; }
+  body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    line-height: 0px;
+    padding: 50px 25px 50px 25px;
+    height: calc(100vh - 55px); }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.icon {
+      line-height: 0px;
+      margin-bottom: 15px;
+      width: 100%;
+      text-align: center; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.icon svg {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        vertical-align: middle; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.pl-message {
+      line-height: 0px;
+      width: 100%;
+      margin-bottom: 50px; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.pl-message h4 {
+        font-size: 20px;
+        padding: 0;
+        margin: 0 0 15px 0;
+        line-height: 20px;
+        color: #14171a;
+        font-weight: 700;
+        text-align: center; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.pl-message p {
+        font-size: 13px;
+        line-height: 18px;
+        padding: 0;
+        margin: 0;
+        color: #657786;
+        text-align: center;
+        overflow-wrap: break-word; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.c2action-single {
+      width: 100%;
+      line-height: 0px;
+      text-align: center; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.c2action-single a {
+        display: inline-block;
+        line-height: 0px;
+        text-decoration: none; }
+        body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.main-ads--settings-container div.feature-system-off-page div.c2action-single a button {
+          padding-left: 40px;
+          padding-right: 40px; }
+body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  line-height: 0px;
+  padding: 50px;
+  height: 350px;
+  overflow: hidden; }
+  body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.icon {
+    line-height: 0px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.icon svg {
+      width: 50px;
+      height: 50px;
+      fill: #1ca1f3; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.icon svg * {
+        stroke: #1ca1f3; }
+  body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.pl-message {
+    line-height: 0px;
+    width: 100%;
+    margin-bottom: 50px; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.pl-message h4 {
+      font-size: 20px;
+      padding: 0;
+      margin: 0 0 15px 0;
+      line-height: 20px;
+      color: #14171a;
+      font-weight: 700;
+      text-align: center; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.pl-message p {
+      font-size: 13px;
+      line-height: 20px;
+      padding: 0;
+      margin: 0;
+      color: #657786;
+      text-align: center;
+      overflow-wrap: break-word; }
+      body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.pl-message p a {
+        font-weight: 700;
+        color: #1b95e0;
+        text-decoration: underline; }
+  body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.c2action-single {
+    width: 100%;
+    line-height: 0px;
+    text-align: center; }
+    body.cl-app-ads main.main-content-container div.main-content-container-inner div.timeline-container div.empty-user-timeline div.c2action-single button {
+      padding-left: 40px;
+      padding-right: 40px; }
+
+/*# sourceMappingURL=style.master.css.map */

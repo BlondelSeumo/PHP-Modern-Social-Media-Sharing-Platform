@@ -1,0 +1,118 @@
+body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container {
+  width: 100%;
+  display: block;
+  line-height: 0px; }
+  body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list {
+    width: 100%;
+    display: block;
+    line-height: 0px; }
+    body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #e6ecf0; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hash {
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        margin: 0;
+        line-height: 33px;
+        text-align: center;
+        color: #657786;
+        border: 1px solid #e6ecf0;
+        border-radius: 10em; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hashtag-info {
+        flex: 1;
+        line-height: 0;
+        padding: 0px 15px;
+        overflow: hidden; }
+        body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hashtag-info b.tag {
+          font-size: 14px;
+          line-height: 16px;
+          font-weight: 700;
+          color: #14171a;
+          display: block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          max-width: 60%; }
+        body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item span.hashtag-info span.total {
+          font-size: 13px;
+          line-height: 16px;
+          font-weight: 300;
+          color: #657786;
+          display: block; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item a.link svg {
+        width: 15px;
+        height: 15px;
+        fill: #657786; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item:hover, body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item:active, body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item:focus {
+        background: #f5f8fa; }
+        body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item:hover a svg, body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item:active a svg, body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list div.hashtags-list-item:focus a svg {
+          fill: #1ca1f3; }
+  body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.load-more {
+    width: 100%;
+    display: block;
+    line-height: 0;
+    padding: 20px;
+    text-align: center; }
+    body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.load-more button {
+      padding-left: 30px;
+      padding-right: 30px; }
+  body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    line-height: 0px;
+    padding: 50px;
+    height: calc(100vh - 55px);
+    overflow: hidden; }
+    body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.icon {
+      line-height: 0px;
+      margin-bottom: 15px;
+      width: 100%;
+      text-align: center; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.icon svg {
+        width: 80px;
+        height: 80px;
+        fill: #1ca1f3; }
+        body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.icon svg * {
+          stroke: #1ca1f3; }
+    body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.pl-message {
+      line-height: 0px;
+      width: 100%;
+      margin-bottom: 50px; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.pl-message h4 {
+        font-size: 20px;
+        padding: 0;
+        margin: 0 0 15px 0;
+        line-height: 20px;
+        color: #14171a;
+        font-weight: 700;
+        text-align: center; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.pl-message p {
+        font-size: 13px;
+        line-height: 20px;
+        padding: 0;
+        margin: 0;
+        color: #657786;
+        text-align: center;
+        overflow-wrap: break-word; }
+    body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.c2action-single {
+      width: 100%;
+      line-height: 0px;
+      text-align: center; }
+      body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.c2action-single a {
+        display: inline-block;
+        line-height: 0px;
+        text-decoration: none; }
+        body.cl-app-trending main.main-content-container div.main-content-container-inner div.timeline-container div.main--trending-hashtags-container div.hashtags-list-placeholder div.c2action-single a button {
+          padding-left: 40px;
+          padding-right: 40px; }
+
+/*# sourceMappingURL=style.master.css.map */

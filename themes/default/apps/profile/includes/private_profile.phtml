@@ -1,0 +1,27 @@
+<div class="empty-profile-placeholder">
+	<div class="icon">
+		<?php echo cl_svg('lock-closed-outline'); ?>
+	</div>
+
+	<div class="pl-message">
+		<h4>
+			<?php echo cl_translate("This is a private profile!"); ?>
+		</h4>
+		<?php if ($cl['prof_user']['profile_privacy'] == 'followers'): ?>
+			<p>
+				<?php echo cl_translate("Only followers can see the publications and the contents of this profile, click the (Follow) button to see their posts!"); ?>
+			</p>
+		<?php else: ?>
+			<p>
+				<?php echo cl_translate("The activity of this profile is completely private, for all users!"); ?>
+			</p>
+		<?php endif; ?>	
+	</div>
+	<div class="c2action-single">
+		<a href="<?php echo cl_link('/'); ?>">
+			<button class="btn btn-custom main-outline lg">
+				<?php echo cl_translate("Go to the homepage"); ?>
+			</button>
+		</a>
+	</div>
+</div>

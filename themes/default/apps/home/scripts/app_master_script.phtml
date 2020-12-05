@@ -1,0 +1,83 @@
+<script>
+	"use strict";
+	
+	$(document).ready(function($) {
+		var _app     = $('[data-app="homepage"]');
+		var loading  = false;
+		var loadmore = true;
+
+		if (_app.find('[data-an="entry-list"]').find('[data-list-item]').length) {
+			_app.find('[data-an="entry-list"]').find('[data-list-item]').find('video').each(function(index, el) {
+				$(el).addClass('afterglow');
+			}).promise().done(function() {
+				afterglow.init();
+			});
+		}
+
+		$(window).on('scroll', function() {
+		    if(($(window).scrollTop() + $(window).height()) > ($(document).height() - 100)) {
+		    	if (cl_empty(loading) && loadmore) {
+	                
+		            var post_ls = _app.find('[data-an="entry-list"]');
+		            var offset  = 0;
+
+		            if (post_ls.find('div[data-post-offset]').length) {
+		            	offset = post_ls.find('div[data-post-offset]').last().data('post-offset');
+		            }
+
+		            if ($.isNumeric(offset) && offset) {
+						$.ajax({
+							url: '<?php echo cl_link("native_api/home/load_more"); ?>',
+							type: 'GET',
+							dataType: 'json',
+							data: {
+								offset: offset
+							},
+							beforeSend: function() {
+								loading = true;
+							}
+						}).done(function(data) {
+							if (data.status == 200) {
+								post_ls.append($(data.html)).promise().done(function() {
+									post_ls.find('video').each(function(index, el) {
+										$(el).addClass('afterglow').promise().done(function() {
+											afterglow.init();
+										});
+									});
+								});
+							}
+							else{
+								loadmore = false;
+							}
+						}).always(function() {
+							loading = false;
+						});
+					}
+	       		}
+		    }
+		});
+
+		<?php echo cl_js_template('apps/timeline/scripts/js/pubbox_mixin'); ?>
+
+		if ($("form#vue-pubbox-app-1").length) {
+			var pubbox_app_1 = new Vue({
+				el:"#vue-pubbox-app-1",
+				mixins: [pubbox_form_app_mixin]
+			});
+
+			$(pubbox_app_1.$el).find('textarea#post-text').emojioneArea({
+				pickerPosition: "bottom",
+				search: false,
+				filters: emoji_filters
+			});
+
+			$(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.on('emojibtn.click', function(event) {
+				pubbox_app_1.text = $(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.getText();
+			});
+
+			$(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.on('keyup', function(event) {
+				pubbox_app_1.text = $(pubbox_app_1.$el).find('textarea#post-text').get(0).emojioneArea.getText();
+			});
+		}
+	});
+</script>

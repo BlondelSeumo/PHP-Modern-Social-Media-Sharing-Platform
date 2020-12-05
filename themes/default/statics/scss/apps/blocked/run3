@@ -1,0 +1,1 @@
+scss --watch style.custom.scss:../../../css/apps/blocked/style.custom.css

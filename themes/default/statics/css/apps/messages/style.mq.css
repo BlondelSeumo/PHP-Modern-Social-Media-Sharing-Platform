@@ -1,0 +1,15 @@
+@media (max-width: 1024px) {
+  body.cl-app-chat main.main-content-container div.main-content-container-inner div.chat--contacts-list div.chat--contacts-list-item {
+    padding: 10px 15px !important; }
+    body.cl-app-chat main.main-content-container div.main-content-container-inner div.chat--contacts-list div.chat--contacts-list-item div.lp {
+      width: 30px !important;
+      height: 30px !important;
+      max-width: 30px !important;
+      min-width: 30px !important;
+      flex-basis: 30px !important; }
+    body.cl-app-chat main.main-content-container div.main-content-container-inner div.chat--contacts-list div.chat--contacts-list-item div.rp div.rp-inner-content-header b, body.cl-app-chat main.main-content-container div.main-content-container-inner div.chat--contacts-list div.chat--contacts-list-item div.rp div.rp-inner-content-header span, body.cl-app-chat main.main-content-container div.main-content-container-inner div.chat--contacts-list div.chat--contacts-list-item div.rp div.rp-inner-content-header time {
+      line-height: 13px !important; }
+  body.cl-app-chat main.main-content-container div.main-content-container-inner div.empty-search-result {
+    height: calc(100vh - 150px) !important; } }
+
+/*# sourceMappingURL=style.mq.css.map */

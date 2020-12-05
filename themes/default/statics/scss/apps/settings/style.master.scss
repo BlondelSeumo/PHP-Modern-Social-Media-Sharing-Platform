@@ -1,0 +1,228 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-settings{
+	main.main-content-container{
+		div.main-content-container-inner{
+			div.timeline-container{
+
+				div.main--profile-settings-container{
+					width: 100%;
+					display: block;
+					line-height: 0px;
+
+					div.profile-settings-nav{
+						width: 100%;
+						display: block;
+						line-height: 0px;
+
+						div.nav-list-itemset-title{
+							width: 100%;
+							overflow: hidden;
+							display: block;
+							line-height: 0px;
+							padding: 15px;
+							background: $el_hovbg;
+							border-bottom: 1px solid $border;
+
+							h4{
+								font-size: 13px;
+								color: $black;
+								padding: 0;
+								margin: 0;
+								font-weight: 700;
+							}
+						}
+
+						div.nav-list-item{
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							justify-content: space-between;
+							align-items: center;
+							padding: 15px 15px;
+							border-bottom: 1px solid $border;
+							text-decoration: none;
+							cursor: pointer;
+
+							div.lp{
+								span.preview-label{
+									font-size: 13px;
+									line-height: 17px;
+									font-weight: 500;
+									color: $black;
+									display: block;
+								}
+
+								span.preview-value{
+									font-size: 13px;
+									color: $grey;
+									line-height: 18px;
+									white-space: nowrap;
+									display: inline-block;
+									max-width: 300px;
+									overflow: hidden;
+									text-overflow: ellipsis;
+								}
+							}
+
+							div.rp{
+								line-height: 0px;
+								margin-left: auto;
+								svg{
+									width: 15px;
+									height: 15px;
+									vertical-align: middle;
+									fill: $grey;
+									font-weight: 400;
+								}
+							}
+
+							&:hover,&:active,&:focus{
+								background: $el_hovbg;
+
+								b{
+									color: $blue;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.modal {
+		div.popup-modal-form{
+			div.file-select-zone-wrapper{
+				width: 100%;
+				display: block;
+
+				div.file-select-zone{
+					width: 100%;
+					display: block;
+					border: 2px dashed $border;
+					padding: 0px;
+					background: $el_hovbg;
+					transition: all 0.27s;
+
+					button{
+						display: block;
+						width: 100%;
+						font-size: 13px;
+						color: $grey;
+						line-height: 18px;
+						padding: 30px 50px;
+						margin: 0;
+						box-shadow: none;
+						border: none;
+						outline: 0;
+						background: transparent;
+						text-align: center;
+						cursor: pointer;
+					}
+
+					&:hover, &:active{
+						border-color: $blue;
+					}
+				}
+			}
+		}
+
+		div.accoun-blocks-ls{
+			width: 100%;
+			line-height: 0px;
+			display: block;
+			padding: 0;
+			max-height: 300px;
+			overflow-x: hidden;
+			overflow-y: auto;
+
+			div.accoun-blocks-list-item{
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				line-height: 0px;
+				border-bottom: 1px solid $border;
+				padding: 10px 15px 10px 0px;
+				align-items: center;
+				justify-content: space-between;
+
+				div.avatar{
+					width: 40px;
+					height: 40px;
+					overflow: hidden;
+					min-width: 40px;
+					max-width: 40px;
+					border-radius: 10em;
+
+					img{
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+
+				div.user-info-holder{
+		 			flex: 1;
+		 			padding: 0 0 0 10px;
+		 			line-height: 0px;
+		 			position: relative;
+
+		 			div.user-info-holder-inner{
+		 				width: 100%;
+		 				display: flex;
+		 				flex-direction: row;
+		 				flex-wrap: nowrap;
+		 				justify-content: space-between;
+		 				align-items: center;
+
+		 				div.lp{
+		 					h4{
+				 				font-size: 13px;
+				 				padding: 0;
+				 				margin: 0;
+				 				line-height: 13px;
+				 				font-weight: 700;
+				 				color: $black;
+				 				white-space: nowrap;
+				 			}
+
+				 			a{
+				 				display: block;
+				 				text-decoration: none;
+				 				color: $grey;
+				 				font-size: 13px;
+				 				line-height: 20px;
+				 				overflow: hidden;
+				 				white-space: nowrap;
+				 				text-overflow: ellipsis;
+				 				max-width: 140px;
+				 			}
+		 				}
+
+		 				div.rp{
+		 					button{
+
+				 			}
+		 				}
+		 			}
+		 		}
+
+		 		&:last-child{
+		 			border-bottom: none;
+		 		}
+			}
+		}
+	}
+}

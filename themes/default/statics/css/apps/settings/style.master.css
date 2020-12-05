@@ -1,0 +1,149 @@
+body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container {
+  width: 100%;
+  display: block;
+  line-height: 0px; }
+  body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav {
+    width: 100%;
+    display: block;
+    line-height: 0px; }
+    body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-itemset-title {
+      width: 100%;
+      overflow: hidden;
+      display: block;
+      line-height: 0px;
+      padding: 15px;
+      background: #f5f8fa;
+      border-bottom: 1px solid #e6ecf0; }
+      body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-itemset-title h4 {
+        font-size: 13px;
+        color: #14171a;
+        padding: 0;
+        margin: 0;
+        font-weight: 700; }
+    body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 15px;
+      border-bottom: 1px solid #e6ecf0;
+      text-decoration: none;
+      cursor: pointer; }
+      body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item div.lp span.preview-label {
+        font-size: 13px;
+        line-height: 17px;
+        font-weight: 500;
+        color: #14171a;
+        display: block; }
+      body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item div.lp span.preview-value {
+        font-size: 13px;
+        color: #657786;
+        line-height: 18px;
+        white-space: nowrap;
+        display: inline-block;
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item div.rp {
+        line-height: 0px;
+        margin-left: auto; }
+        body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item div.rp svg {
+          width: 15px;
+          height: 15px;
+          vertical-align: middle;
+          fill: #657786;
+          font-weight: 400; }
+      body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item:hover, body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item:active, body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item:focus {
+        background: #f5f8fa; }
+        body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item:hover b, body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item:active b, body.cl-app-settings main.main-content-container div.main-content-container-inner div.timeline-container div.main--profile-settings-container div.profile-settings-nav div.nav-list-item:focus b {
+          color: #1ca1f3; }
+body.cl-app-settings div.modal div.popup-modal-form div.file-select-zone-wrapper {
+  width: 100%;
+  display: block; }
+  body.cl-app-settings div.modal div.popup-modal-form div.file-select-zone-wrapper div.file-select-zone {
+    width: 100%;
+    display: block;
+    border: 2px dashed #e6ecf0;
+    padding: 0px;
+    background: #f5f8fa;
+    transition: all 0.27s; }
+    body.cl-app-settings div.modal div.popup-modal-form div.file-select-zone-wrapper div.file-select-zone button {
+      display: block;
+      width: 100%;
+      font-size: 13px;
+      color: #657786;
+      line-height: 18px;
+      padding: 30px 50px;
+      margin: 0;
+      box-shadow: none;
+      border: none;
+      outline: 0;
+      background: transparent;
+      text-align: center;
+      cursor: pointer; }
+    body.cl-app-settings div.modal div.popup-modal-form div.file-select-zone-wrapper div.file-select-zone:hover, body.cl-app-settings div.modal div.popup-modal-form div.file-select-zone-wrapper div.file-select-zone:active {
+      border-color: #1ca1f3; }
+body.cl-app-settings div.modal div.accoun-blocks-ls {
+  width: 100%;
+  line-height: 0px;
+  display: block;
+  padding: 0;
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+  body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    line-height: 0px;
+    border-bottom: 1px solid #e6ecf0;
+    padding: 10px 15px 10px 0px;
+    align-items: center;
+    justify-content: space-between; }
+    body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item div.avatar {
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      min-width: 40px;
+      max-width: 40px;
+      border-radius: 10em; }
+      body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item div.avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item div.user-info-holder {
+      flex: 1;
+      padding: 0 0 0 10px;
+      line-height: 0px;
+      position: relative; }
+      body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item div.user-info-holder div.user-info-holder-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center; }
+        body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item div.user-info-holder div.user-info-holder-inner div.lp h4 {
+          font-size: 13px;
+          padding: 0;
+          margin: 0;
+          line-height: 13px;
+          font-weight: 700;
+          color: #14171a;
+          white-space: nowrap; }
+        body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item div.user-info-holder div.user-info-holder-inner div.lp a {
+          display: block;
+          text-decoration: none;
+          color: #657786;
+          font-size: 13px;
+          line-height: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 140px; }
+    body.cl-app-settings div.modal div.accoun-blocks-ls div.accoun-blocks-list-item:last-child {
+      border-bottom: none; }
+
+/*# sourceMappingURL=style.master.css.map */

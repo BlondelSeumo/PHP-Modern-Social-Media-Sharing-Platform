@@ -1,0 +1,63 @@
+<div class="timeline-container" data-app="trending">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link('trending'); ?>" data-spa="true">
+					<?php echo cl_translate("Hot topics"); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="main--trending-hashtags-container">
+		<?php if (not_empty($cl["htags"])): ?>
+			<div class="hashtags-list" data-an="hashtags-list">
+				<?php foreach ($cl["htags"] as $cl['li']): ?>
+					<?php echo cl_template('trending/includes/list_item'); ?>
+				<?php endforeach; ?>
+			</div>
+			<div class="load-more">
+				<button class="btn btn-custom main-outline lg" data-an="load-more">
+					<?php echo cl_translate("Show more"); ?>
+				</button>
+			</div>
+		<?php else: ?>
+			<div class="hashtags-list-placeholder">
+				<div class="icon">
+					<?php echo cl_svg('pulse-outline'); ?>
+				</div>
+				<div class="pl-message">
+					<h4>
+						<?php echo cl_translate("No topics to display"); ?>
+					</h4>
+					<p>
+						<?php echo cl_translate("Here will be (#hashtag) a list with navigation on the most relevant topics and events, which will allow you to quickly find media content on the topics you need!"); ?>
+					</p>
+				</div>
+				<div class="c2action-single">
+					<a href="<?php echo cl_link('/'); ?>" data-spa="true">
+						<button class="btn btn-custom main-outline lg">
+							<?php echo cl_translate("Go to the homepage"); ?>
+						</button>
+					</a>
+				</div>
+			</div>
+		<?php endif; ?>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template('trending/scripts/app_master_script'); ?>
+</div>
+

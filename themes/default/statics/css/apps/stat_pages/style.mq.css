@@ -1,0 +1,23 @@
+@media (max-width: 1024px) {
+  main.main-content-container header.stat-page-header {
+    padding: 0; }
+    main.main-content-container header.stat-page-header ul.h-inner-nav {
+      flex-direction: column;
+      height: auto; }
+      main.main-content-container header.stat-page-header ul.h-inner-nav li {
+        text-align: center;
+        padding: 15px 15px;
+        margin: 0 !important;
+        border-bottom: 1px solid #e6ecf0;
+        width: 100%; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav li a {
+          margin: 0;
+          padding: 0; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav li:last-child {
+          border-bottom: none; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav li:hover, main.main-content-container header.stat-page-header ul.h-inner-nav li:active {
+          background: #f5f8fa; }
+  main.main-content-container div.content-title {
+    padding: 15px 20px; }
+  main.main-content-container div.content-body {
+    padding: 15px 20px; } }

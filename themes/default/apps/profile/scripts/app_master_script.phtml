@@ -1,0 +1,241 @@
+<?php if (not_empty($cl["can_view"])): ?>
+	<script>
+
+		"use strict";
+
+		$(document).ready(function($) {
+			var page_tab  = "<?php echo($cl['page_tab']); ?>";
+			var prof_user = "<?php echo($cl['prof_user']['id']); ?>";
+			var loading   = false;
+			var loadmore  = true;
+			var _app      = $('[data-app="profile"]');
+
+			if (_app.find('[data-an="entry-list"]').find('[data-list-item]').length) {
+				_app.find('[data-an="entry-list"]').find('[data-list-item]').find('video').each(function(index, el) {
+					$(el).addClass('afterglow');
+				}).promise().done(function() {
+					afterglow.init();
+				});
+			}
+
+			$(window).on('scroll', function() {
+			    if(($(window).scrollTop() + $(window).height()) > ($(document).height() - 100)) {
+			    	if (cl_empty(loading) && loadmore) {
+		                
+			            var post_ls = _app.find('[data-an="entry-list"]');
+			            var offset  = 0;
+
+			            if (post_ls.find('div[data-post-offset]').length) {
+			            	offset = post_ls.find('div[data-post-offset]').last().data('post-offset');
+			            }
+
+			            if ($.isNumeric(offset) && offset) {
+							$.ajax({
+								url: '<?php echo cl_link("native_api/profile/load_more"); ?>',
+								type: 'GET',
+								dataType: 'json',
+								data: {
+									offset: offset, 
+									type: page_tab,
+									prof_id: prof_user
+								},
+								beforeSend: function() {
+									loading = true;
+								}
+							}).done(function(data) {
+								if (data.status == 200) {
+									post_ls.append($(data.html)).promise().done(function() {
+										post_ls.find('video').each(function(index, el) {
+											$(el).addClass('afterglow').promise().done(function() {
+												afterglow.init();
+											});
+										});
+									});
+								}
+								else{
+									loadmore = false;
+								}
+							}).always(function() {
+								loading = false;
+
+								delay(function() {
+									SMColibri.fix_sidebars();
+								}, 50);
+							});
+						}
+		       		}
+			    }
+			});
+		});
+	</script>
+<?php endif; ?>
+
+<?php if (not_empty($cl['prof_user']['owner'])): ?>
+	<script>
+		
+		"use strict";
+
+		$(document).ready(function($) {
+			var prof_cover_app = new Vue({
+				el: "#vue-profile-cover-app",
+				data: {
+					rep_position: 0,
+					submitting: false,
+					rep_opened: false,
+					avatar: "",
+					cover: ""
+				},
+				methods: {
+					rep_start: function() {
+						var _self        = this;
+						var rep_area     = $(_self.$el).find('div#rep-area');
+						_self.rep_opened = true;
+
+					    rep_area.find('img').draggable({
+				        	scroll: false,
+					        axis: "y",
+					        drag: function (event, ui) {
+					            var y1 = rep_area.height();
+					            var y2 = rep_area.find('img').height();
+					            if (ui.position.top >= 0) {
+					                ui.position.top = 0;
+					            }
+
+					            else {
+					            	if (ui.position.top <= (y1 - y2)) {
+					                    ui.position.top = (y1- y2);
+					                }
+					            } 
+				            },
+				            stop: function(event, ui) {
+				                _self.rep_position = ui.position.top;
+				            }
+				        });
+					},
+					rep_end: function() {
+						var _self        = this;
+						_self.rep_opened = false;
+
+						$(_self.$el).find('img.original-cover').draggable('destroy');
+					},
+					select_cover: function() {
+						$(this.$el).find("input#f1").trigger("click");
+					},
+					select_avatar: function() {
+						$(this.$el).find("input#f2").trigger("click");
+					},
+					upload_cover: function(_self = null) {
+						var app        = this;
+						var event      = _self;
+						var form_data  = new FormData();
+						app.submitting = true;
+						form_data.append('cover', event.target.files[0]);
+						form_data.append('hash', "<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>");
+						
+						SMColibri.upload_progress_bar('show', "<?php echo cl_translate('Uploading cover image'); ?>");
+
+						$.ajax({
+							url: '<?php echo cl_link("native_api/settings/upload_profile_cover"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							enctype: 'multipart/form-data',
+							data: form_data,
+							cache: false,
+					        contentType: false,
+					        processData: false,
+					        timeout: 600000,
+							success: function(data) {
+								if (data.status == 200) {
+									cl_bs_notify("<?php echo cl_translate("Your new profile cover has been successfully saved!"); ?>");
+
+									setTimeout(function() {
+										SMColibri.spa_reload();
+									}, 1200);
+								}
+								else {
+									app.submitting = false;
+									cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+								}
+							},
+							complete: function() {
+								setTimeout(function() {
+									SMColibri.upload_progress_bar('end');
+								}, 1500);
+							}
+						});
+					},
+					upload_avatar: function(_self = null) {
+						var app        = this;
+						var event      = _self;
+						var form_data  = new FormData();
+						app.submitting = true;
+						form_data.append('avatar', event.target.files[0]);
+						form_data.append('hash', "<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>");
+						_self.submitting = true;
+
+						SMColibri.upload_progress_bar('show', "<?php echo cl_translate('Uploading avatar image'); ?>");
+
+						$.ajax({
+							url: '<?php echo cl_link("native_api/settings/upload_profile_avatar"); ?>',
+							type: 'POST',
+							dataType: 'json',
+							enctype: 'multipart/form-data',
+							data: form_data,
+							cache: false,
+					        contentType: false,
+					        processData: false,
+					        timeout: 600000,
+							success: function(data) {
+								if (data.status == 200) {
+									cl_bs_notify("<?php echo cl_translate("Your new avatar has been successfully saved!"); ?>");
+
+									setTimeout(function() {
+										SMColibri.spa_reload();
+									}, 1200);
+								}
+								else {
+									app.submitting = false;
+									cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+								}
+							},
+							complete: function() {
+								setTimeout(function() {
+									SMColibri.upload_progress_bar('end');
+								}, 1500);
+							}
+						});
+					},
+					rep_save: function() {
+						var _self = this;
+
+						if ($.isNumeric(_self.rep_position)) {
+
+							_self.submitting = true;
+							
+							$(_self.$el).find('img.original-cover').draggable('destroy');
+
+							$.ajax({
+								url: "<?php echo cl_link("native_api/settings/save_profcover_rep"); ?>",
+								type: 'POST',
+								dataType: 'json',
+								data: {position: _self.rep_position},
+							}).done(function(data) {
+								if (data.status == 200) {
+									cl_bs_notify("<?php echo cl_translate("Your changes has been successfully saved!"); ?>");
+
+									setTimeout(function() {
+										SMColibri.spa_reload();
+									}, 1200);
+								}
+								else {
+									_self.submitting = false;
+									cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+								}
+							});
+						}
+					}
+				}
+			});
+		});
+	</script>
+<?php endif; ?>

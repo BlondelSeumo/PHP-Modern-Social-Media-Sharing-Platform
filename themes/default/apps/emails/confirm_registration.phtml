@@ -1,0 +1,23 @@
+<!--
+Attention, this markup template is not part of the interface as such, 
+but is used by this system to send an emails to the users, 
+and that is why this file contains linine CSS styles
+-->
+<div style="background: #fff; border-radius: 5px; border:1px solid #eee; padding: 30px 50px;">
+	<h3 style="padding: 0px; margin: 0 0 15px 0; font-size: 24px; line-height: 24px; color: #192a32;">
+		<?php echo cl_translate("Hello"); ?>: <b><?php echo($cl['email_data']["name"]); ?></b>,
+	</h3>
+	<p style="padding: 0; margin: 0 0 30px 0; font-size: 16px; color: #666;">
+		<?php echo cl_translate("Here is your activation code for your account ({@code_val@}), copy it, open the link below, then on the account activation page, paste the code into the field and click the registration confirmation button!", array('code_val' => $cl['email_data']['code'])); ?>
+	</p>
+	<div style="width: 100%; margin-bottom: 30px;">
+		<a href="<?php echo cl_link('confirm_registration'); ?>" style="color: #fff; text-decoration: none; background: #1ca1f3; padding: 15px 30px; border-radius: 5px; border: 1px solid #1ca1f3; font-size: 13px; line-height: 13px;">
+			<?php echo cl_translate("Confirm registration"); ?>
+		</a>
+	</div>
+	<p style="font-size: 12px; color: #999;">
+		<span>
+			{%config name%} - <?php echo cl_translate("Support team"); ?>.
+		</span>
+	</p>
+</div>

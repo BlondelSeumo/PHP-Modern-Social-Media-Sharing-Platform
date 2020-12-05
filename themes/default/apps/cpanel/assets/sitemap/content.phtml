@@ -1,0 +1,72 @@
+<div class="cp-app-container" data-app="sitemap">
+    <div class="current-page-name">
+        <div class="lp">
+            <h2>
+                <?php echo cl_translate('Sitemap'); ?>
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="<?php echo cl_link('admin_panel'); ?>">
+                        <?php echo cl_translate('Control panel'); ?>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);">
+                        <?php echo cl_translate('Sitemap'); ?>
+                    </a>
+                </li> 
+            </ol>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card" data-an="info-content">
+                <div class="header">
+                    <h2>
+                        <?php echo cl_translate('Generate sitemap'); ?>
+                    </h2>
+                </div>
+                <div class="body">
+                    <form class="form" data-an="form">
+                        <div class="inline-alertbox-wrapper">
+                            <div class="inline-alertbox warning">
+                                <div class="icon">
+                                    <i class="material-icons">warning</i>
+                                </div>
+                                <div class="alert-message">
+                                    <p>
+                                        <?php echo('Please note that the process of creating a site map can take several minutes or even more, depending on the amount of content on your site, so after clicking the button update the site map, wait until the process is complete without leaving the page, otherwise, the process will fail!'); ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php if (not_empty($cl['config']['sitemap_update'])): ?>
+                                <h5>
+                                    <span>
+                                        <?php echo cl_translate('Last sitemap update'); ?>
+                                    </span>
+                                    <time data-an="last-sitemap-date">
+                                        (<?php echo date('d F, Y - h:m', $cl['config']['sitemap_update']); ?>)
+                                    </time>    
+                                </h5>
+                            <?php else: ?>
+                                <h5>
+                                    <span><?php echo cl_translate('Last sitemap update'); ?></span>
+                                    <time data-an="last-sitemap-date">(00/00/0000 - 00:00)</time>
+                                </h5>
+                            <?php endif; ?>
+                        </div>
+                        <div class="form-group no-mb">
+                            <button data-an="submit-ctrl" type="submit" class="btn bg-blue btn-block btn-lg waves-effect ttup">
+                                <?php echo cl_translate("Update sitemap!"); ?>
+                            </button>
+                        </div>
+                        <input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo cl_template('cpanel/assets/sitemap/scripts/app_master_script'); ?>

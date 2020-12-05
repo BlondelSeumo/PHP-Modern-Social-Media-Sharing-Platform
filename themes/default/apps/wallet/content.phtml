@@ -1,0 +1,113 @@
+<div class="timeline-container" data-app="wallet">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link('wallet'); ?>" data-spa="true">
+					<?php echo cl_translate("Wallet"); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="account-wallet-container">
+		<div class="account-balance-card">
+			<h4>
+				<?php echo cl_translate("Your account balance"); ?>
+			</h4>
+			<div class="account-balance-holder">
+				<span>
+					<?php echo cl_money($me['wallet']); ?>
+				</span>
+				<small>
+					<?php echo cl_translate("Your account's available funds"); ?>
+				</small>
+			</div>
+			<hr>
+			<h5>
+				<?php echo cl_translate("Top-up my account balance"); ?>
+			</h5>
+			<form class="form" id="vue-wallet-topup-app" v-on:submit="submit_form($event)">
+				<div class="form-group">
+					<label>
+						<?php echo cl_translate("Select a top-up value"); ?> (Min. <?php echo cl_money('50'); ?>)
+					</label>
+					<input v-model.trim="$v.topup_amount.$model" type="text" class="form-control" placeholder="E.g. <?php echo cl_money('50'); ?>">
+					<div v-if="is_invalid_amount" class="invalid-main-feedback">
+						<?php echo cl_translate("The value of the top-up amount you entered is invalid"); ?>
+					</div>
+				</div>
+				<div class="form-group">
+					<p class="form-info-label">
+						<?php echo cl_translate("Please note that the amount you deposit can only be used within your current account. The wallet will be replenished through Paypal."); ?>
+                    </p>
+				</div>
+				<div class="form-group no-mb">
+					<button v-if="submitting" disabled="true" class="btn btn-custom main-inline lg btn-block">
+						<?php echo cl_translate('Please wait'); ?>
+					</button>
+					<button v-else v-bind:disabled="is_invalid_form" class="btn btn-custom main-inline lg btn-block">
+						<?php echo cl_translate("Continue"); ?>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="account-wallet-history">
+			<h4>
+				<?php echo cl_translate("Your wallet operations history"); ?>
+			</h4>
+			<?php if (not_empty($cl["wallet_history"])): ?>
+				<div class="wallet-transactions-history">
+					<?php foreach ($cl["wallet_history"] as $row): ?>
+						<div class="wallet-transactions-record">
+							<div class="lp">
+								<div class="icon">
+									<?php echo cl_svg('arrow-down-circle-outline'); ?>
+								</div>
+							</div>
+							<div class="mp">
+								<div class="amount">
+									<span class="col-green">
+										+<?php echo cl_money($row['amount']); ?>
+									</span>
+								</div>
+								<div class="trans-info">
+									<p>
+										<?php echo cl_translate("Account replenishment via paypal"); ?>
+									</p>
+								</div>
+							</div>
+							<div class="rp">
+								<time><?php echo $row['time']; ?></time>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			<?php else: ?>
+				<div class="wallet-no-history">
+					<div class="wallet-no-history-inner">
+						<div class="icon">
+							<?php echo cl_svg('hourglass-outline'); ?>
+						</div>
+						<p>
+							<?php echo cl_translate("No transactions in your wallet history yet!"); ?>
+						</p>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<?php echo cl_template("wallet/scripts/app_master_script"); ?>
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+</div>

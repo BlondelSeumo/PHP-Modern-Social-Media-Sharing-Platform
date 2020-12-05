@@ -1,0 +1,48 @@
+<div class="profile--notifs-list-item" data-list-item="<?php echo($cl['li']['id']); ?>">
+	<div class="main-flex-cr">
+		<div class="avatar-holder">
+			<div class="avatar">
+				<img src="<?php echo($cl['li']['avatar']); ?>" alt="Avatar">
+			</div>
+		</div>
+		<div class="notifier-info-holder">
+			<a href="<?php echo($cl['li']['url']); ?>" class="block-nav-link" data-spa="true">
+				<div class="el-block-header">
+					<div class="notifier-name">
+						<p>
+							<b>
+								<span class="user-name-holder <?php if ($cl['li']['verified'] == '1') {echo('verified-badge');} ?>">
+									<?php echo cl_croptxt($cl['li']['name'], 15, '..'); ?>
+								</span>
+							</b>
+							<span class="left-side <?php if($cl['li']['status'] == '0') {echo('unseen');}; ?>">
+								<?php if ($cl['li']['subject'] == 'verified'): ?>
+									<?php echo cl_translate('Your verification request has been accepted'); ?>
+								<?php elseif ($cl['li']['subject'] == 'reply'): ?>
+									<?php echo cl_translate('Replied to your post'); ?>
+								<?php elseif($cl['li']['subject'] == 'subscribe'): ?>
+									<?php echo cl_translate('Started following you'); ?>
+								<?php elseif($cl['li']['subject'] == 'mention'): ?>
+									<?php echo cl_translate('Mentioned you in a post'); ?>
+								<?php elseif($cl['li']['subject'] == 'like'): ?>
+									<?php echo cl_translate('Liked your post'); ?>
+								<?php elseif($cl['li']['subject'] == 'repost'): ?>
+									<?php echo cl_translate('Shared your publication'); ?>
+								<?php endif; ?>
+							</span>
+						</p>
+					</div>
+					<div class="notif-time">
+						<?php echo cl_svg('md-time'); ?>
+						<time>
+							<?php echo($cl['li']['time']); ?>
+						</time>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div class="select-checkbox">
+			<input data-on-change="notif-chbox" id="chbox-<?php echo($cl['li']['id']); ?>" type="checkbox" class="filled-in chk-col-main"><label for="chbox-<?php echo($cl['li']['id']); ?>"></label>
+		</div>
+	</div>
+</div>

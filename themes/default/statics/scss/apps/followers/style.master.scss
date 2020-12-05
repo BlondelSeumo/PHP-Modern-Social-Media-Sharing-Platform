@@ -1,0 +1,201 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-connections{
+	main.main-content-container {
+		div.main-content-container-inner {
+			div.timeline-container{
+				div.timeline-header{
+					div.lp div.profile-name-holder{
+						display: block;
+						line-height: 0px;
+						padding: 0;
+						margin: 0;
+
+						h5{
+							padding: 0;
+							margin: 0;
+							font-size: 14px;
+							color: $black;
+							font-weight: 700;
+							line-height: 18px;
+						}
+
+						span{
+							padding: 0;
+							margin: 0;
+							font-size: 12px;
+							color: $grey;
+							font-weight: 400;
+							line-height: 18px;
+
+							svg{
+								width: 10px;
+								height: 10px;
+								display: inline-block;
+								vertical-align: middle;
+								fill: $grey;
+							}
+						}
+					}
+				}
+				
+				div.profile--connectivity-list-navbar{
+					width: 100%;
+					overflow: hidden;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					justify-content: space-between;
+					border-bottom: 1px solid $border;
+
+					a{
+						flex: 1;
+						text-decoration: none;
+						line-height: 0px;
+						outline: 0;
+
+						button.navbar-item-btn{
+							background: transparent;
+							font-size: 13px;
+							font-weight: 600;
+							color: $grey;
+							line-height: 13px;
+							box-shadow: none;
+							border: none;
+							padding: 15px 30px;
+							cursor: pointer;
+							opacity: 0.9;
+							width: 100%;
+							outline: 0;
+
+							&.active{
+								border-bottom: 2px solid $blue;
+							}
+
+							&:hover,&:active,&:focus{
+								background: $el_hovbg;
+							}
+
+							&:disabled{
+								opacity: 0.5;
+								cursor: default;
+							}
+						}
+					}
+				}
+
+				div.profile--connectivity-list-container{
+					width: 100%;
+					line-height: 0px;
+					display: block;
+
+					div.connectivity-list{
+						width: 100%;
+						line-height: 0px;
+						display: block;
+						padding: 0;
+
+						div.connectivity-list-item{
+							width: 100%;
+							display: flex;
+							flex-direction: row;
+							flex-wrap: nowrap;
+							line-height: 0px;
+							border-bottom: 1px solid $border;
+							padding: 10px 15px;
+
+							&:first-child{
+								padding-top: 20px;
+							}
+
+							div.avatar{
+								width: 40px;
+								height: 40px;
+								overflow: hidden;
+								min-width: 40px;
+								max-width: 40px;
+								border-radius: 10em;
+
+								img{
+									width: 100%;
+									height: 100%;
+									object-fit: cover;
+								}
+							}
+
+							div.user-info-holder{
+					 			flex: 1;
+					 			padding: 0 0 0 10px;
+					 			line-height: 0px;
+					 			position: relative;
+
+					 			h4{
+					 				font-size: 13px;
+					 				padding: 0;
+					 				margin: 0;
+					 				line-height: 13px;
+					 				font-weight: 700;
+					 				color: $black;
+					 				white-space: nowrap;
+					 			}
+
+					 			a{
+					 				display: block;
+					 				text-decoration: none;
+					 				color: $grey;
+					 				font-size: 13px;
+					 				line-height: 20px;
+					 				overflow: hidden;
+					 				white-space: nowrap;
+					 				text-overflow: ellipsis;
+					 				max-width: 140px;
+					 			}
+
+					 			p{
+					 				font-size: 13px;
+					 				line-height: 18px;
+					 				padding: 0;
+					 				margin: 5px 0 0 0;
+					 				padding-right: 40px;
+					 			}
+
+					 			button{
+					 				position: absolute;
+					 				right: 0;
+					 				top: 0;
+					 			}
+					 		}
+
+					 		&:hover,&:active{
+					 			background: $el_hovbg;
+					 		}
+						}
+					}
+
+					div.load-more{
+						width: 100%;
+						display: block;
+						line-height: 0;
+						padding: 20px;
+						text-align: center;
+
+						button{
+							padding-left: 30px;
+							padding-right: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

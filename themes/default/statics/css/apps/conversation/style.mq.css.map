@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAYA,0BAA2B;EAOpB,2IAAE;IACD,SAAS,EAAE,eAAe;IAC1B,WAAW,EAAE,eAAe;EAG7B,6IAAI;IACH,SAAS,EAAE,eAAe;IAC1B,WAAW,EAAE,eAAe",
+"sources": ["../../../scss/apps/conversation/style.mq.scss"],
+"names": [],
+"file": "style.mq.css"
+}

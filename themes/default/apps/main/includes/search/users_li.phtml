@@ -1,0 +1,17 @@
+<li class="htag-list-item user">
+	<a href="<?php echo($cl['li']['url']); ?>" data-spa="true">
+		<div class="avatar">
+			<img src="<?php echo($cl['li']['avatar']); ?>" alt="Avatar">
+		</div>
+		<div class="user-info">
+			<div class="uname">
+				<b class="name">
+					<span class="user-name-holder <?php if ($cl['li']['verified'] == '1') {echo('verified-badge');} ?>">
+						<?php echo($cl['li']['name']); ?>
+					</span>
+				</b>
+				<span class="username"><?php echo($cl['li']['username']); ?></span>
+			</div>
+		</div>
+	</a>
+</li>

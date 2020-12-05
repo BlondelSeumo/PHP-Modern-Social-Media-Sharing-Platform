@@ -1,0 +1,98 @@
+<div class="modal fadeIn" id="sign_up_window" tabindex="-1" role="dialog" aria-labelledby="sign_up_window" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="auth-modal-window">
+                	<form class="form" id="main_signup_form" v-on:submit="submit_form($event)">
+                		<div class="form-title">
+                			<div class="logo">
+                				<a href="<?php echo cl_link('/'); ?>">
+									<img src="{%config site_logo%}" alt="Logo">
+								</a>
+                			</div>
+                			<h4><?php echo cl_translate("Sign up"); ?></h4>
+                			<p>
+                				<?php echo cl_translate("Please fill out this information to create an account!"); ?>
+                			</p>
+                		</div>
+	                	<div class="form-group">
+	                		<div class="cell-row">
+	                			<div class="cell-50">
+	                				<label><?php echo cl_translate("First name"); ?></label>
+					                <input name="fname" v-model.trim.lazy="$v.fname.$model" type="text" class="form-control" placeholder="<?php echo cl_translate("Enter your first name"); ?>">
+					                <div class="invalid-main-feedback" v-if="is_valid_fname">
+										{{invalid_feedback_fname}}
+									</div>
+	                			</div>
+	                			<div class="cell-50">
+	                				<label><?php echo cl_translate("Last name"); ?></label>
+					                <input name="lname" v-model.trim.lazy="$v.lname.$model" type="text" class="form-control" placeholder="<?php echo cl_translate("Enter your last name"); ?>">
+					                <div class="invalid-main-feedback" v-if="is_valid_lname">
+										{{invalid_feedback_lname}}
+									</div>
+	                			</div>
+	                		</div>
+		                </div>
+	                	<div class="form-group">
+	                		<label><?php echo cl_translate("Username"); ?></label>
+			                <input name="uname" v-model.trim.lazy="$v.uname.$model" type="text" class="form-control" placeholder="<?php echo cl_translate("Choose your username"); ?>">
+			                <div class="invalid-main-feedback" v-if="is_valid_uname">
+								{{invalid_feedback_uname}}
+							</div>
+		                </div>
+	                	<div class="form-group">
+		                    <label><?php echo cl_translate("Email address"); ?></label>
+		                    <input name="email" v-model.trim.lazy="$v.email.$model" type="email" class="form-control" placeholder="<?php echo cl_translate("Enter your email address"); ?>">
+							<div class="invalid-main-feedback" v-if="is_valid_email">
+								{{invalid_feedback_email}}
+							</div>
+		                </div>
+	                	<div class="form-group">
+		                    <label><?php echo cl_translate("Password"); ?></label>
+		                    <input name="password" v-model.trim.lazy="$v.password.$model" type="password" class="form-control" placeholder="<?php echo cl_translate("Create a password for your account"); ?>">
+		                    <div class="invalid-main-feedback" v-if="is_valid_password">
+								{{invalid_feedback_pass}}
+							</div>
+		                </div>
+	                	<div class="form-group">
+		                    <label><?php echo cl_translate("Confirm the password"); ?></label>
+		                    <input name="conf_pass" v-model.trim="$v.password2.$model" type="password" class="form-control" placeholder="<?php echo cl_translate("Confirm the password"); ?>">
+		                    <div class="invalid-main-feedback" v-if="is_valid_password2">
+								{{invalid_feedback_pass2}}
+							</div>
+		                </div>
+	                	<div class="form-group">
+							<input v-model="tos_agree" id="tos-agree" type="checkbox" class="filled-in chk-col-main">
+							<label for="tos-agree" class="tos-agree">
+								<span>
+									<?php echo cl_translate("By continuing, you agree to {@site_name@}",array(
+										"site_name" => $cl["config"]["name"]
+									)); ?>
+								</span>
+								<a href="<?php echo cl_link('terms_of_use'); ?>"><?php echo cl_translate("Terms of Use"); ?></a>
+								<a href="<?php echo cl_link('privacy_policy'); ?>"><?php echo cl_translate("Privacy policy"); ?></a>
+							</label>
+						</div>
+						<div class="form-group" v-if="process_failed">
+							<div class="invalid-main-feedback">
+								<?php echo cl_translate("The registration process failed, please check the entered data, and try again!!!"); ?>
+							</div>
+						</div>
+	                	<div class="form-group no-mb">
+							<button v-if="done" disabled="true" class="btn btn-custom main-inline lg btn-block">
+								<?php echo cl_translate("Done! Please wait.."); ?>
+							</button>
+							<button v-else-if="submitting != true" v-bind:disabled="is_valid_form != true" class="btn btn-custom main-inline lg btn-block">
+								<?php echo cl_translate("Sign up"); ?>
+							</button>
+							<button v-else disabled="true" type="button" class="btn btn-custom main-inline lg btn-block">
+								<?php echo cl_translate("Please wait"); ?>
+							</button>
+						</div>
+						<input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+	                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

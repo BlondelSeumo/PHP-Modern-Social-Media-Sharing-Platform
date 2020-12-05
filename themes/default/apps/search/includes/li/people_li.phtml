@@ -1,0 +1,33 @@
+<div class="people-list-item" data-list-item="<?php echo($cl['li']['id']); ?>">
+	<div class="avatar">
+		<img src="<?php echo($cl['li']['avatar']); ?>" alt="Avatar">
+	</div>
+	<div class="user-info-holder">
+		<h4>
+			<span class="user-name-holder <?php if ($cl['li']['verified'] == '1') {echo('verified-badge');} ?>">
+				<?php echo cl_croptxt($cl['li']['name'], 15, '..'); ?>
+			</span>
+		</h4>
+		<a href="<?php echo($cl['li']['url']); ?>" data-spa="true">
+			<?php echo($cl['li']['username']); ?>
+		</a>
+
+		<?php if (not_empty($cl['li']['about'])): ?>
+			<p>
+				<?php echo $cl['li']['about']; ?>
+			</p>
+		<?php endif; ?>
+
+		<?php if (empty($cl['li']['is_user'])): ?>
+			<?php if (empty($cl['li']['is_following'])): ?>
+				<button onclick="SMColibri.follow(this);" class="btn btn-custom md main-outline" data-action="follow" data-id="<?php echo($cl['li']['id']); ?>">
+					<?php echo cl_translate("Follow"); ?>
+				</button>
+			<?php else: ?>
+				<button onclick="SMColibri.follow(this);" class="btn btn-custom md main-inline" data-action="unfollow" data-id="<?php echo($cl['li']['id']); ?>">
+					<?php echo cl_translate("Unfollow"); ?>
+				</button>
+			<?php endif; ?>
+		<?php endif; ?>
+	</div>
+</div>

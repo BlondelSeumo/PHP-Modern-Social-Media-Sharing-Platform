@@ -1,0 +1,52 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+@media (max-width: 1024px) { 
+	main.main-content-container{
+		header.stat-page-header{
+			padding: 0;
+			ul.h-inner-nav{
+				flex-direction: column;
+				height: auto;
+
+				li{
+					text-align: center;
+					padding: 15px 15px;
+					margin: 0 !important;
+					border-bottom: 1px solid $border;
+					width: 100%;
+
+					a{
+						margin: 0;
+						padding: 0;
+					}
+
+					&:last-child{
+						border-bottom: none;
+					}
+
+					&:hover, &:active{
+						background: $el_hovbg;
+					}
+				}
+			}
+		}
+
+		div.content-title{
+			padding: 15px 20px;
+		}
+
+		div.content-body{
+			padding: 15px 20px;
+		}
+	}
+}

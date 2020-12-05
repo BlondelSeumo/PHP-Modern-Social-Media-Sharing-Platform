@@ -1,0 +1,90 @@
+<?php
+# @*************************************************************************@
+# @ @author Mansur Altamirov (Mansur_TL)                                    @
+# @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+# @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+# @ @author_email: highexpresstore@gmail.com                                @
+# @*************************************************************************@
+# @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+# @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+# @*************************************************************************@
+
+require_once("../core/web_req_init.php");
+
+$docs_page = fetch_or_get($_GET['page'], false);
+?>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>ColibriSM API - Documentation</title>
+        <meta name="description" content="">
+        <meta name="author" content="ticlekiwi">
+
+        <meta http-equiv="cleartype" content="on">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="css/hightlightjs-dark.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500|Source+Code+Pro:300" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css" media="all">
+        <link rel="icon" href="images/favicon.png" type="image/png">
+
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </head>
+
+    <body class="one-content-column-version">
+        <div class="left-menu">
+            <div class="content-logo">
+                <img alt="Logo" src="images/logo.png" height="32" />
+                <span>API Documentation</span>
+            </div>
+            <div class="content-menu">
+                <ul>
+                    <li class="scroll-to-link <?php if(empty($docs_page)) { echo("active"); } ?>">
+                        <a href="<?php echo cl_link("api_docs"); ?>">Get started</a>
+                    </li>
+                    <li class="scroll-to-link <?php if($docs_page == 'login') { echo("active"); } ?>">
+                        <a href="<?php echo cl_link("api_docs?page=login"); ?>">Login</a>
+                    </li>
+                    <li class="scroll-to-link <?php if($docs_page == 'signup') { echo("active"); } ?>">
+                        <a href="<?php echo cl_link("api_docs?page=signup"); ?>">Signup</a>
+                    </li>
+                    <li class="scroll-to-link <?php if($docs_page == 'resetpassword') { echo("active"); } ?>">
+                        <a href="<?php echo cl_link("api_docs?page=resetpassword"); ?>">Reset password</a>
+                    </li>
+                    <li class="scroll-to-link <?php if($docs_page == 'feeds') { echo("active"); } ?>">
+                        <a href="<?php echo cl_link("api_docs?page=feeds"); ?>">Timeline feed</a>
+                    </li>
+                    <li class="scroll-to-link <?php if($docs_page == 'profile') { echo("active"); } ?>">
+                        <a href="<?php echo cl_link("api_docs?page=profile"); ?>">Profile data</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-page">
+            <div class="content">
+                <?php if (empty($docs_page)): ?>
+                    <div class="overflow-hidden content-section">
+                        <?php require_once("endpoints/getstarted/content.phtml"); ?>
+                    </div>
+                <?php else: ?>
+                    <?php if (file_exists(cl_strf("endpoints/%s/content.phtml", $docs_page))): ?>
+                        <div class="overflow-hidden content-section">
+                            <?php require_once(cl_strf("endpoints/%s/content.phtml", $docs_page)); ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="overflow-hidden content-section">
+                            <?php require_once("endpoints/getstarted/content.phtml"); ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+    </body>
+</html>

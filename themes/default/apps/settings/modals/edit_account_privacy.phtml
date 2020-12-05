@@ -1,0 +1,96 @@
+<div class="modal fade vh-center" id="edit_account_privacy" tabindex="-1" role="dialog" aria-labelledby="edit_account_privacy" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form" id="edit_account_privacy_form" v-on:submit="submit_form($event)">
+                <div class="modal-header">
+                    <div class="main---mh--block">
+                        <h5 class="modal-title">
+                            <?php echo cl_translate("Account privacy settings"); ?>
+                        </h5>
+                        <span class="dismiss-modal" data-dismiss="modal">
+                            <?php echo cl_svg('md-close'); ?>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="popup-modal-form">
+                        <div class="form-group">
+                            <label>
+                                <?php echo cl_translate("Who can view my profile?"); ?>   
+                            </label>
+                            <div class="dropdown vue-dropdown-select">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{dropdowns.profile_privacy}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a v-on:click="dropdown_select('profile_privacy','everyone', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("Everyone"); ?>
+                                    </a>
+                                    <a v-on:click="dropdown_select('profile_privacy','followers', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("My followers"); ?>
+                                    </a>
+                                    <a v-on:click="dropdown_select('profile_privacy','nobody', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("Nobody"); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <?php echo cl_translate("Who can direct message me?"); ?>   
+                            </label>
+                            <div class="dropdown vue-dropdown-select">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{dropdowns.contact_privacy}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a v-on:click="dropdown_select('contact_privacy','everyone', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("Everyone"); ?>
+                                    </a>
+                                    <a v-on:click="dropdown_select('contact_privacy','followed', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("The people I follow"); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group no-mb">
+                            <label>
+                                <?php echo cl_translate("Show your profile in search engines?"); ?>   
+                            </label>
+                            <div class="dropdown vue-dropdown-select">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{dropdowns.index_privacy}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a v-on:click="dropdown_select('index_privacy','Y', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("Yes"); ?>
+                                    </a>
+                                    <a v-on:click="dropdown_select('index_privacy','N', $event)" class="dropdown-item" href="javascript:void(0);">
+                                        <?php echo cl_translate("No"); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group no-mb" v-if="unsuccessful_attempt">
+                            <div class="invalid-main-feedback">
+                                <?php echo cl_translate("Something went wrong while trying to save your changes, please try again later"); ?>
+                            </div>
+                        </div>
+                        <input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+                        <input v-model="profile_privacy" type="hidden" class="d-none" name="profile_privacy">
+                        <input v-model="contact_privacy" type="hidden" class="d-none" name="contact_privacy">
+                        <input v-model="index_privacy" type="hidden" class="d-none" name="index_privacy">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button v-if="submitting != true" v-bind:disabled="$v.$invalid == true" type="submit" class="btn btn-custom main-inline md">
+                        <?php echo cl_translate("Save changes"); ?>
+                    </button>
+                    <button v-else disabled="true" type="button" class="btn btn-custom main-inline md">
+                        <?php echo cl_translate("Please wait"); ?>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

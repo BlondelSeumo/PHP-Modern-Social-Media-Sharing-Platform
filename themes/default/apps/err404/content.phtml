@@ -1,0 +1,48 @@
+<div class="timeline-container" data-app="err404">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link("404"); ?>" data-spa="true">
+					<?php echo cl_translate('Error 404'); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.jump_back(-2);">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="err404-page-not-found">
+		<div class="icon">
+			<?php echo cl_svg('paw-outline'); ?>
+		</div>
+		<div class="pl-message">
+			<h4>
+				<?php echo cl_translate('Page not found!'); ?>
+			</h4>
+			<p>
+				<?php echo cl_translate("Sorry, we cannot find the page you are looking for. If you still need help, visit our {@link@} page.", array(
+					'link' => cl_html_el('a', 'F.Q.As', array('href' => cl_link('fqas')))
+				)); ?>
+			</p>
+		</div>
+		<div class="c2action-single">
+			<a href="<?php echo cl_link('/'); ?>" data-spa="true">
+				<button class="btn btn-custom main-outline lg">
+					<?php echo cl_translate("Go to your feed"); ?>
+				</button>
+			</a>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+</div>

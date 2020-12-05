@@ -1,0 +1,124 @@
+<div class="post-list-item post-ad-item" data-ad="<?php echo $cl['li']['id']; ?>">
+	<div class="post-list-item-content">
+		<div class="publisher-avatar">
+			<div class="avatar-holder">
+				<img class="lozad" data-src="<?php echo($cl['li']['owner']['avatar']); ?>">
+			</div> 
+		</div>
+		<div class="publication-data">
+			<div class="publication-data-inner">
+				<div class="publisher-info">
+					<div class="lp">
+						<a href="<?php echo($cl['li']['owner']['url']); ?>" data-spa="true">
+							<b>
+								<span class="user-name-holder <?php if ($cl['li']['owner']['verified'] == '1') { echo('verified-badge'); } ?>">
+									<?php echo($cl['li']['owner']['name']); ?>
+								</span>
+							</b>
+						</a>
+						<span class="ad-badge">
+							<?php echo cl_translate("Advertising"); ?>
+						</span>
+					</div>
+					<div class="rp">
+						<span class="posted-time">
+							<?php echo cl_svg('md-time'); ?>
+							<time>
+								<?php echo $cl['li']['time']; ?>
+							</time>
+						</span>
+					</div>
+				</div>
+				<div class="publication-content">
+					<div class="publication-text">
+						<h4>
+							<?php echo $cl['li']['company']; ?>
+						</h4>
+						<p>
+							<?php echo $cl['li']['description']; ?>
+						</p>
+					</div>
+					<div class="lozad-media" data-lozad-media="loading">
+						<div class="publication-image">
+							<a href="<?php echo $cl['li']['cover']; ?>" class="fbox-img">
+								<img  onload="SMColibri.load_media(this);" onerror="SMColibri.load_media(this);" class="lozad" data-src="<?php echo $cl['li']['cover']; ?>" alt="Picture">
+							</a>
+
+							<div class="ad-target-ctrls">
+								<div class="ad-target-ctrls-inner">
+									<div class="lp">
+										<span>
+											<?php echo $cl['li']['cta']; ?>
+										</span>
+										<a target="_blank" href="<?php echo $cl['li']['target_url']; ?>">
+											<?php echo $cl['li']['domain']; ?>
+										</a>
+									</div>
+									<div class="rp">
+										<?php if (not_empty($cl['li']['is_owner']) || not_empty($cl['li']['is_conversed'])): ?>
+											<a target="_blank" href="<?php echo $cl['li']['target_url']; ?>">
+												<button class="btn target-url-btn btn-custom main-outline lg btn-block">
+													<?php echo cl_translate("Learn more"); ?>
+												</button>
+											</a>
+										<?php else: ?>
+											<button onclick="SMColibri.ad_conversion(this);" data-ad-id="<?php echo $cl['li']['id']; ?>" data-ad-url="<?php echo $cl['li']['target_url']; ?>" class="btn target-url-btn btn-custom main-outline lg btn-block">
+												<?php echo cl_translate("Learn more"); ?>
+											</button>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="lozad-preloader" data-lozad-preloader="icon">
+							<div class="icon">
+								<?php echo cl_svg("megaphone-outline"); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php if (not_empty($cl['li']['show_stats'])): ?>
+					<div class="publication-footer-ctrls">
+						<button class="ctrls-item">
+							<span class="icon">
+								<?php echo cl_svg('finger-print-outline'); ?>
+							</span>
+							<span class="num">
+								<?php echo $cl['li']['clicks']; ?>
+							</span>
+						</button>
+						<button class="ctrls-item">
+							<span class="icon">
+								<?php echo cl_svg('eye-outline'); ?>
+							</span>
+							<span class="num">
+								<?php echo $cl['li']['views']; ?>
+							</span>
+						</button>
+						<button class="ctrls-item">
+							<span class="icon">
+								<?php echo cl_svg('cash-outline'); ?>
+							</span>
+							<span class="num">
+								<?php echo $cl['li']['budget']; ?>
+							</span>
+						</button>
+						<button class="ctrls-item dropleft">
+							<a href="javascrip:void(0);" class="dropdown-toggle icon" data-toggle="dropdown">
+								<?php echo cl_svg('ellipsis-vertical-outline'); ?>
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="<?php echo $cl['li']['edit']; ?>" data-spa="true">
+									<?php echo cl_translate('Edit'); ?>
+								</a>
+								<a onclick="SMCAccountAds.delete(<?php echo $cl['li']['id']; ?>);" class="dropdown-item" href="javascript:void(0);">
+									<?php echo cl_translate('Delete'); ?>
+								</a>
+							</div>
+						</button>
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</div>

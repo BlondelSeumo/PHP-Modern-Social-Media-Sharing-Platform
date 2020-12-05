@@ -1,0 +1,105 @@
+html {
+  scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif; }
+
+body {
+  font-family: inherit !important; }
+
+main.main-content-container header.stat-page-header {
+  width: 100%;
+  line-height: 0px;
+  padding: 0px 50px;
+  background: #fff; }
+  main.main-content-container header.stat-page-header ul.h-inner-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    line-height: 0px;
+    height: 40px;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    main.main-content-container header.stat-page-header ul.h-inner-nav > li {
+      line-height: 0px; }
+      main.main-content-container header.stat-page-header ul.h-inner-nav > li.logo {
+        margin-right: auto; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav > li.logo img {
+          width: 25px;
+          height: 25px; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav > li.logo a {
+          margin: 0px;
+          text-decoration: none;
+          line-height: 0px; }
+      main.main-content-container header.stat-page-header ul.h-inner-nav > li > a {
+        font-size: 11px;
+        line-height: 11px;
+        color: #1ca1f3;
+        margin-left: 20px;
+        font-weight: 300;
+        cursor: pointer; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav > li > a.active {
+          opacity: 0.7;
+          cursor: default !important;
+          text-decoration: none; }
+      main.main-content-container header.stat-page-header ul.h-inner-nav > li.dropdown {
+        position: relative; }
+        main.main-content-container header.stat-page-header ul.h-inner-nav > li.dropdown a:after, main.main-content-container header.stat-page-header ul.h-inner-nav > li.dropdown a:before {
+          display: none; }
+main.main-content-container div.content-title {
+  padding: 15px 50px;
+  background: #1ca1f3; }
+  main.main-content-container div.content-title h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+    color: #fff;
+    line-height: 34px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center; }
+    main.main-content-container div.content-title h1 svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff; }
+      main.main-content-container div.content-title h1 svg * {
+        stroke: #fff; }
+    main.main-content-container div.content-title h1 span {
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+      margin-left: 10px; }
+main.main-content-container div.content-body {
+  padding: 30px 50px;
+  background: #fff;
+  min-height: calc(100vh - 150px); }
+  main.main-content-container div.content-body h1, main.main-content-container div.content-body h2, main.main-content-container div.content-body h3, main.main-content-container div.content-body h4, main.main-content-container div.content-body h5, main.main-content-container div.content-body h6, main.main-content-container div.content-body p, main.main-content-container div.content-body article, main.main-content-container div.content-body span, main.main-content-container div.content-body b, main.main-content-container div.content-body strong, main.main-content-container div.content-body small, main.main-content-container div.content-body time, main.main-content-container div.content-body s {
+    color: #14171a; }
+main.main-content-container div.content-footer {
+  width: 100%;
+  padding: 10px 50px;
+  line-height: 0px;
+  text-align: center;
+  background: #1ca1f3; }
+  main.main-content-container div.content-footer small {
+    color: #fff;
+    font-size: 12px;
+    line-height: 12px; }
+main.main-content-container .dropdown div.dropdown-menu {
+  border: none;
+  box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+  padding: 0px; }
+  main.main-content-container .dropdown div.dropdown-menu a.dropdown-item {
+    font-size: 13px;
+    line-height: 32px;
+    color: #14171a; }
+    main.main-content-container .dropdown div.dropdown-menu a.dropdown-item:hover, main.main-content-container .dropdown div.dropdown-menu a.dropdown-item:active {
+      background: #f5f8fa !important; }
+  main.main-content-container .dropdown div.dropdown-menu div.dropdown-divider {
+    padding: 0;
+    margin: 0;
+    border-color: #e6ecf0; }

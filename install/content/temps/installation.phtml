@@ -1,0 +1,350 @@
+<?php 
+# @*************************************************************************@
+# @ @author Mansur Altamirov (Mansur_TL)									@
+# @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+# @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+# @ @author_email: highexpresstore@gmail.com                                @
+# @*************************************************************************@
+# @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+# @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+# @*************************************************************************@
+
+if (isset($_POST['install'])) {
+
+	require_once(PROJ_RP . '/core/libs/DB/vendor/autoload.php');
+
+	$errors             = array();
+	$form_fields        = array(
+		'sql_host'      => ((empty($_POST['sql_host'])) ? null : strval($_POST['sql_host'])),
+		'sql_user'      => ((empty($_POST['sql_user'])) ? null : strval($_POST['sql_user'])),
+		'sql_pass'      => ((empty($_POST['sql_pass'])) ? null : strval($_POST['sql_pass'])),
+		'sql_db_name'   => ((empty($_POST['sql_db_name'])) ? null : strval($_POST['sql_db_name'])),
+		'site_url'      => ((empty($_POST['site_url'])) ? null : strval($_POST['site_url'])),
+		'site_name'     => ((empty($_POST['site_name'])) ? null : strval($_POST['site_name'])),
+		'site_title'    => ((empty($_POST['site_title'])) ? null : strval($_POST['site_title'])),
+		'site_email'    => ((empty($_POST['site_email'])) ? null : strval($_POST['site_email'])),
+		'site_password' => ((empty($_POST['site_password'])) ? null : strval($_POST['site_password'])),
+	);
+
+	$_SESSION['sql_host']      = $sql_host      = $form_fields['sql_host'];
+	$_SESSION['sql_user']      = $sql_user      = $form_fields['sql_user'];
+	$_SESSION['sql_pass']      = $sql_pass      = $form_fields['sql_pass'];
+	$_SESSION['sql_db_name']   = $sql_db_name   = $form_fields['sql_db_name'];
+	$_SESSION['site_url']      = $site_url      = $form_fields['site_url'];
+	$_SESSION['site_name']     = $site_name     = $form_fields['site_name'];
+	$_SESSION['site_title']    = $site_title    = $form_fields['site_title'];
+	$_SESSION['site_email']    = $site_email    = $form_fields['site_email'];
+	$_SESSION['site_password'] = $site_password = $form_fields['site_password'];
+
+
+	$mysqlcon = mysqli_connect($sql_host, $sql_user, $sql_pass, $sql_db_name);
+	$db       = new MysqliDb($mysqlcon);
+	
+	if (mysqli_connect_errno()) {
+		$errors[] = "Failed to connect to MySQL: " . mysqli_connect_error();
+	}
+
+	else if (empty($site_url)) {
+       $errors[] = "The site url field is required!";
+   	}
+
+	else if (filter_var($site_url, FILTER_VALIDATE_URL) != true) {
+       $errors[] = "The site url you entered is not valid!";
+   	}
+
+	else if (empty($site_name)) {
+       $errors[] = "The site name field is required. Please enter your site name!";
+   	}
+
+	else if (mb_strlen($site_name) > 32) {
+       $errors[] = "The site name you entered is too long!";
+   	}
+
+	else if (empty($site_title)) {
+       $errors[] = "The title field is required. Please enter your site title!";
+   	}
+
+	else if (mb_strlen($site_title) > 55) {
+       $errors[] = "The site title you entered is too long!";
+   	}
+   	
+	else if (empty($site_email)) {
+       $errors[] = "The site email field is required. Please enter your site email address!";
+   	}
+
+	else if (filter_var($site_email, FILTER_VALIDATE_EMAIL) != true) {
+       $errors[] = "The site email address you entered is not valid. Please enter a valid email address!";
+   	}
+
+   	else if (empty($site_password)) {
+       $errors[] = "Please enter an admin password!";
+   	}
+
+   	else if (mb_strlen($site_password) < 6) {
+       $errors[] = "An admin password must be at least 6 characters!";
+   	}
+
+   	else if (mb_strlen($site_password) > 20) {
+       $errors[] = "The admin password you entered is too long!";
+   	}
+
+   	else {
+		$settings_file_content = '<?php
+# @*************************************************************************@
+# @ @author Mansur Altamirov (Mansur_TL)									@
+# @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+# @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+# @ @author_email: highexpresstore@gmail.com                                @
+# @*************************************************************************@
+# @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+# @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+# @*************************************************************************@
+
+
+# MySQL db host name
+$sql_db_host = "' . $sql_host . '";
+# MySQL db User
+$sql_db_user = "' . $sql_user . '";
+# MySQL db Password
+$sql_db_pass = "' . $sql_pass . '";
+# MySQL db Name
+$sql_db_name = "' . $sql_db_name. '";
+# Site URL
+$site_url    = "' . $site_url . '"; // E.g (http://example.com)
+?>';
+
+		$config_file = file_put_contents(PROJ_RP . '/core/settings.php', trim($settings_file_content));
+		if ($config_file) {
+			$db_sql_query  = file_get_contents(PROJ_RP . '/colibri-db.sql');
+			$insert_status = true;
+
+			preg_match_all('/\{\%begin\%\}(.+?)\{\%end\%\}/is',$db_sql_query, $matches, PREG_PATTERN_ORDER);
+
+			if (isset($matches[1]) && is_array($matches[1])) {
+				
+				$set_names   = $mysqlcon->query("SET NAMES utf8");
+				$set_charset = $mysqlcon->set_charset('utf8mb4');
+				$set_charset = $mysqlcon->query("SET collation_connection = utf8mb4_unicode_ci");
+
+				foreach ($matches[1] as $query) {
+		        	$query_status = mysqli_query($mysqlcon, $query);
+
+		        	if (empty($query_status)) {
+		        		$errors[]      = mysqli_error($mysqlcon);
+		        		$errors[]      = "Error at: <code>$query</code>";
+		        		$insert_status = false;
+
+						foreach ($cl_tables as $t_name) {
+							try {
+								mysqli_query($mysqlcon,"DROP TABLE `{$t_name}`");
+							} catch (Exception $e) { /*pass*/ }
+						}
+
+						break;
+		        	}
+		        }
+
+		        if ($insert_status) {
+					$site_name        = mysqli_real_escape_string($mysqlcon, $site_name);
+					$site_title       = mysqli_real_escape_string($mysqlcon, $site_title);
+					$site_email       = mysqli_real_escape_string($mysqlcon, $site_email);
+					$db               = $db->where('name','name');
+					$qr               = $db->update('cl_configs',array('value' => $site_name));
+					$db               = $db->where('name','title');
+					$qr               = $db->update('cl_configs',array('value' => $site_title));
+					$db               = $db->where('name','email');
+					$qr               = $db->update('cl_configs',array('value' => $site_email));
+
+					$insert_data      = array(
+						'fname'       => 'Site',
+						'lname'       => 'Admin',
+						'username'    => 'administrator',
+						'email'       => $site_email,
+						'admin'       => '1',
+						'active'      => '1',
+						'country_id'  => '1',
+						'language'    => 'english',
+						'last_active' => time(),
+						'joined'      => time(),
+						'ip_address'  => '0.0.0.0',
+						'password'    => password_hash($site_password, PASSWORD_DEFAULT),
+					);
+
+					$user_id = $db->insert('cl_users',$insert_data);
+					$success = true;
+				}
+			}
+
+			else {
+				$errors[] = "Error found while installing, please contact us.";
+			}
+		}
+   	}
+}
+?>
+<div class="main-cont-inner">
+	<div class="cont-header">
+		<h2>
+			<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 90c44.3 0 86 17.3 117.4 48.6C404.7 170 422 211.7 422 256s-17.3 86-48.6 117.4C342 404.7 300.3 422 256 422s-86-17.3-117.4-48.6C107.3 342 90 300.3 90 256s17.3-86 48.6-117.4C170 107.3 211.7 90 256 90m0-42C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48z"/><path d="M277 360h-42V235h42v125zm0-166h-42v-42h42v42z"/></svg>
+			Installation
+		</h2>
+	</div>
+	<div class="cont-body">
+		<div class="installation">
+			<div class="createdby">
+				<h6>Created by: MansurTL - Altamirov</h6>
+			</div>
+			<?php if (empty($success) != true): ?>
+				<div class="form-content">
+					<div class="row">
+						<div class="col-sm-8 offset-sm-2">
+							<div class="success">
+								<h2>Congratulations</h2>
+								<p>
+									Congratulations, your site has been successfully installed and ready to go.
+								</p>
+								<a href="<?php echo($site_url); ?>" class="lets-go">
+									<button class="btn btn-success">
+										Let's Go!
+									</button>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php else: ?>
+				<form id="install-site" class="form" method="post" action="?p=installation">
+					<div class="installation-def-title">
+						<p>
+							Please provide the following info, to begin installing your site.	
+						</p>
+					</div>
+					<div class="form-content">
+						<div class="row">
+							<?php if (empty($errors) != true): ?>
+								<div class="col-sm-8 offset-sm-2">
+									<div class="errors">
+										<?php foreach ($errors as $err): ?>
+											<p>
+												<?php echo($err); ?>
+											</p>
+										<?php endforeach; ?>
+									</div>
+								</div>
+							<?php endif; ?>
+
+							
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										SQL host name
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['sql_host'])) ? $_SESSION['sql_host'] : ''); ?>" class="form-control" type="text" name="sql_host" placeholder="Enter your DB host name. E.g 127.0.0.1">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										SQL username
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['sql_user'])) ? $_SESSION['sql_user'] : ''); ?>" class="form-control" type="text" name="sql_user" placeholder="Enter your DB user name. E.g root_user">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										SQL password
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['sql_pass'])) ? $_SESSION['sql_pass'] : ''); ?>" class="form-control" type="text" name="sql_pass" placeholder="Enter your DB user password..">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										SQL database name
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['sql_db_name'])) ? $_SESSION['sql_db_name'] : ''); ?>" class="form-control" type="text" name="sql_db_name" placeholder="Enter your DB name. E.g. highexpress_db">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										Site url
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['site_url'])) ? $_SESSION['site_url'] : ''); ?>" class="form-control" type="text" name="site_url" placeholder="Enter your site url address. E.g. http(s)://www.my-online-store.com">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<hr>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										Site name
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['site_name'])) ? $_SESSION['site_name'] : ''); ?>" class="form-control" type="text" name="site_name" placeholder="Enter your site name.">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										Site title
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['site_title'])) ? $_SESSION['site_title'] : ''); ?>" class="form-control" type="text" name="site_title" placeholder="Enter your site title">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										Site E-mail
+									</label>
+									<div class="form-input">
+										<input value="<?php echo ((isset($_SESSION['site_email'])) ? $_SESSION['site_email'] : ''); ?>" class="form-control" type="text" name="site_email" placeholder="Enter your site E-mail address">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 offset-sm-2">
+								<div class="form-group">
+									<label class="form-input-label">
+										Enter a password for admin
+									</label>
+									<div class="form-input">
+										<input class="form-control" type="text" name="site_password" placeholder="Enter a password">
+									</div>
+
+									<small class="info-message">
+										Please note that this email and password will be requested to Log-in the site as an administrator!
+									</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="next-action">
+						<div class="ml-auto">
+							<button type="submit" class="btn btn-info btn-red" name="install">
+								Install
+							</button>
+							<button disabled="true" type="button" class="btn btn-info btn-red d-none">
+								Please wait...
+							</button>
+						</div>
+					</div>
+				</form>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>

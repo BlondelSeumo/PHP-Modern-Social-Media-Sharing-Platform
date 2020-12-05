@@ -1,0 +1,1 @@
+scss --watch style.custom.scss:../../../css/apps/err500/style.custom.css

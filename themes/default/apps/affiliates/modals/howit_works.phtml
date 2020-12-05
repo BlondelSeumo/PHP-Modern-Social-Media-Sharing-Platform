@@ -1,0 +1,70 @@
+<div class="modal fade vh-center how-it-works" id="aff-how-it-works" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="main---mh--block">
+                    <h5 class="modal-title">
+                        <?php echo cl_translate('How it works?'); ?>
+                    </h5>
+                    <span class="dismiss-modal" data-dismiss="modal">
+                        <?php echo cl_svg('md-close'); ?>
+                    </span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6 col-12">
+                        <div class="list-item">
+                            <div class="tp">
+                                <div class="icon">
+                                    <?php echo cl_svg('md-share'); ?>
+                                </div>
+                            </div>
+                            <div class="bp">
+                                <?php echo cl_translate('You share your affiliate URL link. This attracts potential users to our site!'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="list-item">
+                            <div class="tp">
+                                <div class="icon">
+                                    <?php echo cl_svg('person-add-outline'); ?>
+                                </div>
+                            </div>
+                            <div class="bp">
+                                <?php echo cl_translate('The user registers on our website by clicking on your affiliate link'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="list-item">
+                            <div class="tp">
+                                <div class="icon">
+                                    <?php echo cl_svg('checkmark-circle-outline'); ?>
+                                </div>
+                            </div>
+                            <div class="bp">
+                                <?php echo cl_translate('After completing each registration of a user using your affiliate link, you earn {@aff_bonus_rate@}', array(
+                                    'aff_bonus_rate' => cl_html_el("b", cl_money($cl['config']['aff_bonus_rate']))
+                                )); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="list-item no-mb">
+                            <div class="tp">
+                                <div class="icon">
+                                    <?php echo cl_svg('card-outline'); ?>
+                                </div>
+                            </div>
+                            <div class="bp">
+                                <?php echo cl_translate('And at the end, you withdraw your earnings by requesting via PayPal'); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

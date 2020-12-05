@@ -1,0 +1,126 @@
+<div class="timeline-container">
+	<div class="timeline-container-inner">
+		<div class="timeline-header">
+			<div class="lp">
+				<div class="profile-name-holder">
+					<h5>
+						<span class="user-name-holder <?php if ($cl['interlocutor']['verified'] == '1') {echo('verified-badge');} ?>">
+							<?php echo($cl['interlocutor']['name']); ?>
+						</span>
+					</h5>
+					<span><?php echo cl_svg('md-time'); ?> <?php echo($cl['interlocutor']['last_active']); ?></span>
+				</div>
+			</div>
+			<div class="cp">
+				<a href="<?php echo cl_link('/'); ?>">
+					<img src="{%config site_logo%}" alt="Logo">
+				</a>
+			</div>
+			<div class="rp">
+				<div class="nav-link-holder">
+					<span class="go-back" onclick="SMColibri.go_back();">
+						<?php echo cl_svg('md-arrow-back'); ?>
+					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="vue-app-body" id="vue-conversation-app">
+			<div class="vue-app-body-inner">
+				<div class="conversation--search-form-wrapper">
+					<form class="form" v-on:submit="search_messages_onsubmit">
+						<div class="interlocutor-info-holder">
+							<a href="<?php echo($cl['interlocutor']['url']); ?>" data-spa="true">
+								<button type="button">
+									<?php echo cl_svg('information-circle-outline'); ?>
+								</button>
+							</a>
+						</div>
+						<div class="keyword-input">
+							<input v-model="search_query" v-on:input="search_messages" type="text" placeholder="<?php echo cl_translate("Search for messages ..."); ?>">
+							<span class="icon">
+								<?php echo cl_svg('md-search'); ?>
+							</span>
+							<span class="spinner-icon" v-if="search_inquiries">
+								<?php echo cl_svg('spinner-icon'); ?>
+							</span>
+						</div>
+						<div class="dropdown-menu-holder dropdown">
+							<button type="button" class="dropdown-toggle" data-toggle="dropdown">
+								<?php echo cl_svg('ellipsis-horizontal-outline'); ?>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" v-on:click="delete_chat">
+									<?php echo cl_translate("Delete chat"); ?>
+								</a>
+								<a class="dropdown-item" v-on:click="clear_chat">
+									<?php echo cl_translate("Clear chat"); ?>
+								</a>
+							</div>
+						</div>
+					</form>
+				</div>
+
+				<div class="conversation--messages-list-wrapper">
+					<div v-on:scroll="get_old_messages($event)" data-an="messages-list" class="conversation--messages-list" style="background-image: url('<?php echo cl_static_file_path($cl['config']['chat_wp']); ?>');">
+						<?php if (not_empty($cl["messages"])): ?>
+							<?php foreach ($cl["messages"] as $cl['li']): ?>
+								<?php echo cl_template('conversation/includes/list_item'); ?>
+							<?php endforeach; ?>
+						<?php endif; ?>
+					</div>
+				</div>
+
+				<div class="conversation--messages-form-wrapper">
+					<div v-if="searching" class="conversation--messages-search-results">
+						<div class="fc-row">
+							<div class="lp">
+								<b>({{search_curr_match}}/{{search_matches}})</b><span><?php echo cl_translate("matches found"); ?></span>
+							</div>
+							<div class="rp">
+								<button v-on:click="scroll_sr('up')" v-bind:disabled="(scroll_sr_up != true)" class="sr-ctrls">
+									<?php echo cl_svg("chevron-up-outline"); ?>
+								</button>
+								<button v-on:click="scroll_sr('down')" v-bind:disabled="(scroll_sr_down != true)" class="sr-ctrls">
+									<?php echo cl_svg("chevron-down-outline"); ?>
+								</button>
+								<button v-on:click="cancel_search" class="sr-ctrls">
+									<?php echo cl_svg("close-circle-outline"); ?>
+								</button>
+							</div>
+						</div>
+					</div>
+					<?php if (not_empty($cl["can_contact"])): ?>
+						<form v-else class="form" v-on:submit="send_message($event)" data-an="message-form">
+							<div class="message-inputs-holder">
+								<button v-on:click="select_image" type="button" class="btn-inline-controls">
+									<?php echo cl_svg('image-outline'); ?>
+								</button>
+								<div class="message-input">
+									<input data-an="msg-input" v-model="message" type="text" class="form-control" placeholder="<?php echo cl_translate("Write a message and hit Enter ..."); ?>" autofocus="true">
+								</div>
+								<button data-an="submit-btn" v-bind:disabled="is_invalid_form" type="submit" class="btn-inline-controls">
+									<?php echo cl_svg('send-outline'); ?>
+								</button>
+							</div>
+							<input v-on:change="send_image($event)" type="file" class="d-none hidden" name="image" accept="image/*" data-an="media-input">
+						</form>
+					<?php else: ?>
+						<div v-else class="ghost-form">
+							<div class="message-inputs-holder">
+								<button type="button" class="btn-inline-controls"></button>
+								<div class="message-input">
+									<input type="text" class="form-control" readonly="true" placeholder="<?php echo cl_translate("You do not have permission direct messages to this chat"); ?>">
+								</div>
+								<button type="button" class="btn-inline-controls"></button>
+							</div>
+						</div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template('conversation/scripts/app_master_script'); ?>
+</div>

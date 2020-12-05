@@ -1,0 +1,49 @@
+<div class="timeline-container" data-app="ads">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link('ads'); ?>">
+					<?php echo cl_translate('Advertisement'); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="main-ads--settings-container">
+		<div class="feature-system-off-page">
+			<div class="icon">
+				<svg enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><g><g><g><g><g><g><g><g><g><g><circle cx="256" cy="256" fill="#1ca1f3" r="256"></circle></g></g></g></g></g></g></g></g></g><g fill="#1ca1f3"><path d="m291.757 125.801-210.549 206.483 86.848 86.848-.702.65 92.194 92.194c112.654-1.53 207.731-75.825 240.366-178.018z"></path><path d="m310.574 115.352 96.031 96.031-3.006 5.129 100.971 100.971c4.854-19.695 7.43-40.288 7.43-61.483 0-7.327-.308-14.582-.911-21.753l-153.018-153.018z"></path></g><g><g><path d="m408.228 168.8h28.716v50.948h-28.716z" fill="#ffda00" transform="matrix(.344 .939 -.939 .344 459.795 -269.339)"></path></g></g><g><g><path d="m398.935 203.769 4.663 12.744 47.845-17.51-4.61-12.598z" fill="#fdba12"></path></g></g><g><g><path d="m402.77 299.083h28.716v50.948h-28.716z" fill="#fdba12" transform="matrix(-.421 .907 -.907 -.421 887.137 82.846)"></path></g></g><g><g><path d="m319.964 72.817h28.716v50.948h-28.716z" fill="#ffda00" transform="matrix(.907 .421 -.421 .907 72.458 -131.621)"></path></g></g><g><g><path d="m197.107 428.751c-12.982 3.332-26.782-2.621-34.21-14.759l-55.533-90.744 63.224-16.228 44.259 72.321c11.696 19.113 2.701 44.163-17.74 49.41z" fill="#afb4c8"></path></g></g><g><g><path d="m327.759 261.036-10.551 2.708c-13.797 3.541-27.852-4.773-31.394-18.57l-2.033-7.921c-3.541-13.797 4.773-27.852 18.57-31.394l10.551-2.708c13.797-3.541 27.852 4.773 31.394 18.57l2.033 7.921c3.541 13.798-4.773 27.853-18.57 31.394z" fill="#fe6a16"></path></g></g><g><g><path d="m345.058 224.693-60.386 16.034 1.142 4.448c3.541 13.797 17.597 22.111 31.394 18.57l10.551-2.708c13.797-3.541 22.111-17.597 18.57-31.394z" fill="#fa5d0f"></path></g></g><g><g><path d="m346.481 339.009-216.271-6.188-25.01-97.439 186.557-109.581z" fill="#fff"></path></g></g><g><g><path d="m117.935 285 12.275 47.821 216.271 6.188-27.56-107.376z" fill="#e9edf5"></path></g></g><g><g><path d="m105.2 235.382-22.067 5.664c-16.745 4.298-26.598 22.281-22.007 40.167l8.385 32.669c4.591 17.886 21.886 28.901 38.631 24.603l22.067-5.664z" fill="#dce1eb"></path></g></g><g><g><path d="m65.661 298.88 3.851 15.002c4.591 17.886 21.886 28.901 38.631 24.603l22.067-5.664-12.275-47.821z" fill="#cdd2e1"></path></g></g></g></svg>
+			</div>
+			<div class="pl-message">
+				<h4>
+					<?php echo cl_translate('This feature is not available!'); ?>
+				</h4>
+				<p>
+					<?php echo cl_translate('Sorry, it looks like the site owner has disabled the ads feature. If you have questions or complaints, please contact our email address {@site_email@}', array(
+						'site_email' => cl_html_el('a', $cl['config']['email'], array('href' => cl_strf("mailto:%s", $cl['config']['email'])))
+					)); ?>
+				</p>
+			</div>
+			<div class="c2action-single">
+				<a href="<?php echo cl_link('/'); ?>">
+					<button class="btn btn-custom main-outline lg">
+						<?php echo cl_translate("Go to the homepage"); ?>
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+</div>

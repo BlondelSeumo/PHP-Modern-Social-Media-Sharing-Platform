@@ -1,0 +1,275 @@
+body.cl-app-notifications main.main-content-container div.main-content-container-inner {
+  height: 100vh !important; }
+  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container {
+    height: 100%; }
+    body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body {
+      width: 100%;
+      display: block;
+      overflow: hidden;
+      height: calc(100vh - 55px); }
+      body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        height: 100%; }
+        body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar {
+          width: 100%;
+          flex-shrink: 0; }
+          body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            border-bottom: 1px solid #e6ecf0; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner a {
+              flex: 1;
+              text-decoration: none;
+              line-height: 0px;
+              outline: 0; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner a button.navbar-item-btn {
+                background: transparent;
+                font-size: 13px;
+                font-weight: 600;
+                color: #657786;
+                line-height: 13px;
+                box-shadow: none;
+                border: none;
+                padding: 15px 30px;
+                cursor: pointer;
+                opacity: 0.9;
+                width: 100%;
+                outline: 0; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner a button.navbar-item-btn.active {
+                  border-bottom: 2px solid #1ca1f3; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner a button.navbar-item-btn:hover, body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner a button.navbar-item-btn:active, body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-navbar div.profile--notifs-list-navbar-inner a button.navbar-item-btn:focus {
+                  background: #f5f8fa; }
+        body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container {
+          width: 100%;
+          line-height: 0px;
+          overflow: hidden;
+          flex: 1; }
+          body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list {
+            width: 100%;
+            overflow: hidden;
+            padding: 0px;
+            display: block;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item {
+              width: 100%;
+              padding: 15px 15px;
+              border-bottom: 1px solid #e6ecf0;
+              transition: background 0.27s ease-in-out; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item:hover, body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item:active {
+                background: #f5f8fa; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item a.block-nav-link {
+                display: block;
+                width: 100%;
+                text-decoration: none;
+                color: none; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.avatar-holder div.avatar {
+                  width: 40px;
+                  height: 40px;
+                  min-width: 40px;
+                  max-width: 40px;
+                  overflow: hidden;
+                  line-height: 0px;
+                  border-radius: 10em; }
+                  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.avatar-holder div.avatar img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder {
+                  flex: 1;
+                  line-height: 0px;
+                  padding-left: 15px; }
+                  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header {
+                    width: 100%;
+                    line-height: 0px;
+                    display: block; }
+                    body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notifier-name p {
+                      padding: 0;
+                      margin: 0;
+                      font-size: 13px;
+                      line-height: 18px; }
+                      body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notifier-name p b {
+                        color: #14171a; }
+                      body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notifier-name p span {
+                        opacity: 0.8;
+                        position: relative;
+                        color: #14171a; }
+                        body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notifier-name p span.unseen {
+                          opacity: 1;
+                          font-weight: 700; }
+                    body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notif-time {
+                      width: 100%;
+                      display: block; }
+                      body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notif-time svg {
+                        width: 12px;
+                        height: 12px;
+                        display: inline-block;
+                        vertical-align: middle;
+                        fill: #657786; }
+                      body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-header div.notif-time time {
+                        font-size: 12px;
+                        line-height: 22px;
+                        color: #657786; }
+                  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-body {
+                    width: 100%;
+                    display: block;
+                    line-height: 0px;
+                    margin-top: 10px; }
+                    body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-body div.event-content-wrapper {
+                      width: 100%;
+                      display: block;
+                      border: 1px solid #e6ecf0;
+                      border-radius: 10px;
+                      padding: 10px;
+                      background: #f5f8fa; }
+                      body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.notifier-info-holder div.el-block-body div.event-content-wrapper p.event-desc {
+                        font-size: 13px;
+                        line-height: 18px;
+                        color: #657786;
+                        padding: 0;
+                        margin: 0; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.select-checkbox {
+                  width: 20px;
+                  height: 20px;
+                  line-height: 0px;
+                  align-self: center; }
+                  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.select-checkbox label {
+                    margin: 0;
+                    padding: 0;
+                    vertical-align: middle;
+                    width: 20px;
+                    height: 20px; }
+                  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list div.profile--notifs-list-item div.main-flex-cr div.select-checkbox input {
+                    position: fixed !important; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list::-webkit-scrollbar-track {
+              background-color: #e6ecf0; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list::-webkit-scrollbar {
+              width: 5px;
+              background-color: #e6ecf0; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.profile--notifs-list::-webkit-scrollbar-thumb {
+              background-color: #d1d1d1;
+              border: 0px;
+              border-radius: 0px; }
+          body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            line-height: 0px;
+            padding: 50px;
+            height: 100%;
+            overflow: hidden; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.icon {
+              line-height: 0px;
+              margin-bottom: 15px;
+              width: 100%;
+              text-align: center; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.icon svg {
+                width: 80px;
+                height: 80px;
+                fill: #1ca1f3; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.icon svg * {
+                  stroke: #1ca1f3; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.pl-message {
+              line-height: 0px;
+              width: 100%;
+              margin-bottom: 50px; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.pl-message h4 {
+                font-size: 20px;
+                padding: 0;
+                margin: 0 0 15px 0;
+                line-height: 20px;
+                color: #14171a;
+                font-weight: 700;
+                text-align: center; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.pl-message p {
+                font-size: 13px;
+                line-height: 20px;
+                padding: 0;
+                margin: 0;
+                color: #657786;
+                text-align: center;
+                overflow-wrap: break-word; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.c2action-single {
+              width: 100%;
+              line-height: 0px;
+              text-align: center; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.c2action-single a {
+                display: inline-block;
+                line-height: 0px;
+                text-decoration: none; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.profile--notifs-list-container div.notifications-empty-list-placeholder div.c2action-single a button {
+                  padding-left: 40px;
+                  padding-right: 40px; }
+        body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control {
+          width: 100%;
+          flex-shrink: 0;
+          border-top: 1px solid #e6ecf0; }
+          body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner {
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner.disabled {
+              opacity: 0.5;
+              cursor: not-allowed; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner div.info-render {
+              line-height: 0px;
+              flex: 1; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner div.info-render span {
+                font-size: 13px;
+                line-height: 13px;
+                vertical-align: middle;
+                color: #1ca1f3;
+                font-weight: 400;
+                text-transform: uppercase; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner div.info-render b {
+                font-size: 13px;
+                line-height: 13px;
+                font-weight: 700;
+                color: #1ca1f3;
+                vertical-align: middle; }
+            body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner div.action-ctrls {
+              line-height: 0px; }
+              body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner div.action-ctrls button {
+                border: none;
+                box-shadow: none;
+                outline: 0;
+                line-height: 0px;
+                background: transparent;
+                cursor: pointer;
+                margin: 0;
+                padding: 0; }
+                body.cl-app-notifications main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.vue-app-body-inner div.notifs-selection-control div.notifs-selection-control-inner div.action-ctrls button svg {
+                  width: 20px;
+                  height: 20px;
+                  fill: #1ca1f3;
+                  vertical-align: middle; }
+  body.cl-app-notifications main.main-content-container div.main-content-container-inner div.left-sb-container, body.cl-app-notifications main.main-content-container div.main-content-container-inner div.right-sb-container {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none; }
+    body.cl-app-notifications main.main-content-container div.main-content-container-inner div.left-sb-container::-webkit-scrollbar, body.cl-app-notifications main.main-content-container div.main-content-container-inner div.right-sb-container::-webkit-scrollbar {
+      display: none; }
+
+/*# sourceMappingURL=style.master.css.map */

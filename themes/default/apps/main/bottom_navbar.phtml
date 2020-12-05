@@ -1,0 +1,49 @@
+<div class="mobile-bottom-navbar" data-app="mobile-navbar">
+	<div class="mobile-bottom-navbar-inner">
+		<button class="navbar-ctrl" data-an="show-lsb">
+			<?php echo cl_svg('ellipsis-horizontal-circle-outline'); ?>
+		</button>
+		<button class="navbar-ctrl" data-anchor="<?php echo cl_link('notifications'); ?>">
+			<?php echo cl_svg('notifications-outline'); ?>
+			<span class="info-indicators" data-an="new-notifs"><?php echo fetch_or_get($me['new_notifs']); ?></span>
+		</button>
+		<button class="navbar-ctrl" data-toggle="modal" data-target="#add_new_post">
+			<?php echo cl_svg('add-circle-outline'); ?>
+		</button>
+		<button class="navbar-ctrl" data-anchor="<?php echo cl_link("chats"); ?>">
+			<?php echo cl_svg('chatbubbles-outline'); ?>
+			<span class="info-indicators" data-an="new-messages"><?php echo fetch_or_get($me['new_messages']); ?></span>
+		</button>
+		<button class="navbar-ctrl" data-anchor="<?php echo cl_link("search"); ?>">
+			<?php echo cl_svg('search-outline'); ?>
+		</button>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function($) {
+		var _app = $('[data-app="mobile-navbar"]');
+
+		_app.find('[data-an="show-lsb"]').on('click', function(event) {
+			event.preventDefault();
+			
+			$('div[data-app="left-sidebar"]').addClass('show').promise().done(function() {
+				var attrs         = Object({});
+				attrs['class']    = 'sb-open-overlay';
+				attrs['data-app'] = 'lsb-back-drop';
+
+				$('body').addClass('ov-h').append($('<div>', attrs));
+			});		
+		});
+
+		$(document).on('click', 'div[data-app="lsb-back-drop"]', function(event) {
+			event.preventDefault();
+			var _self = $(this);
+
+			$('div[data-app="left-sidebar"]').removeClass('show').promise().done(function() {
+				_self.remove();
+				$('body').removeClass('ov-h');
+			});
+		});
+	});
+</script>

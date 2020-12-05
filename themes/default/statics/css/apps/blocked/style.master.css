@@ -1,0 +1,55 @@
+body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  line-height: 0px;
+  padding: 50px;
+  height: calc(100vh - 120px);
+  overflow: hidden; }
+  body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.icon {
+    line-height: 0px;
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: center; }
+    body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.icon svg {
+      width: 80px;
+      height: 80px;
+      fill: #1ca1f3; }
+      body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.icon svg * {
+        stroke: #1ca1f3; }
+  body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.pl-message {
+    line-height: 0px;
+    width: 100%;
+    margin-bottom: 50px; }
+    body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.pl-message h4 {
+      font-size: 20px;
+      padding: 0;
+      margin: 0 0 15px 0;
+      line-height: 20px;
+      color: #14171a;
+      font-weight: 700;
+      text-align: center; }
+    body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.pl-message p {
+      font-size: 13px;
+      line-height: 20px;
+      padding: 0;
+      margin: 0;
+      color: #657786;
+      text-align: center;
+      overflow-wrap: break-word; }
+  body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.c2action-single {
+    width: 100%;
+    line-height: 0px;
+    text-align: center; }
+    body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.c2action-single a {
+      display: inline-block;
+      line-height: 0px;
+      text-decoration: none; }
+      body.cl-app-blocked main.main-content-container div.main-content-container-inner div.timeline-container div.user-blocked-page div.c2action-single a button {
+        padding-left: 40px;
+        padding-right: 40px; }
+
+/*# sourceMappingURL=style.master.css.map */

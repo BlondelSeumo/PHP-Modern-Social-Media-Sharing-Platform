@@ -1,0 +1,92 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+body.cl-app-err404{
+	main.main-content-container {
+		div.main-content-container-inner {
+			div.timeline-container{
+				div.err404-page-not-found{
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					justify-content: center;
+					align-items: center;
+					line-height: 0px;
+					padding: 50px;
+					height: calc(100vh - 120px);
+					overflow: hidden;
+
+			 		div.icon{
+			 			line-height: 0px;
+						margin-bottom: 15px;
+						width: 100%;
+						text-align: center;
+
+			 			svg{
+				 			width: 80px;
+				 			height: 80px;
+				 			fill: $blue;
+
+				 			*{
+				 				stroke: $blue;
+				 			}
+				 		}
+			 		}
+
+			 		div.pl-message{
+						line-height: 0px;
+						width: 100%;
+						margin-bottom: 50px;
+
+						h4{
+							font-size: 20px;
+							padding: 0;
+							margin: 0 0 15px 0;
+							line-height: 20px;
+							color: $black;
+							font-weight: 700;
+							text-align: center;
+						}
+
+						p{
+							font-size: 13px;
+							line-height: 20px;
+							padding: 0;
+							margin: 0;
+							color: $grey;
+							text-align: center;
+							overflow-wrap: break-word;
+						}
+					}
+
+					div.c2action-single{
+						width: 100%;
+						line-height: 0px;
+						text-align: center;
+
+						a{
+							display: inline-block;
+							line-height: 0px;
+							text-decoration: none;
+
+							button{
+								padding-left: 40px;
+								padding-right: 40px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

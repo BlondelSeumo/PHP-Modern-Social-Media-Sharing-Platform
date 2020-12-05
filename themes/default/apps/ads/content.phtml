@@ -1,0 +1,59 @@
+<div class="timeline-container" data-app="advertisements">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link('ads'); ?>">
+					<?php echo cl_translate('Advertisement'); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link('/'); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<span class="go-back" onclick="SMColibri.go_back();">
+					<?php echo cl_svg('md-arrow-back'); ?>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="main-ads--settings-container">
+		<div class="main-ads--settings-container-inner">
+			<div class="account--ads-list-navbar">
+				<div class="account--ads-list-navbar-inner">
+					<a href="<?php echo cl_link('ads') ?>" data-spa="true">
+						<button class="navbar-item-btn <?php if($cl['page_tab'] == 'active') { echo('active'); } ?>">
+							<?php echo cl_translate("Active ads"); ?> (<?php echo($cl["active_ads"]); ?>)
+						</button>
+					</a>
+					<a href="<?php echo cl_link('ads/archive') ?>" data-spa="true">
+						<button class="navbar-item-btn <?php if($cl['page_tab'] == 'archive') { echo('active'); } ?>">
+							<?php echo cl_translate("Archive"); ?> (<?php echo($cl["inactive_ads"]); ?>)
+						</button>
+					</a>
+					<a href="<?php echo cl_link('ads/new') ?>" data-spa="true">
+						<button class="navbar-item-btn <?php if($cl['page_tab'] == 'upsert' && $cl['ad_data']['status'] == 'orphan') { echo('active'); } ?>">
+							<?php echo cl_translate("New"); ?>
+						</button>
+					</a>
+				</div>
+			</div>
+			<div class="account--ads-list-container">
+				<?php if ($cl["page_tab"] == 'active'): ?>
+					<?php echo cl_template('ads/includes/active'); ?>
+				<?php elseif ($cl["page_tab"] == 'archive'): ?>
+					<?php echo cl_template('ads/includes/archive'); ?>
+				<?php elseif($cl["page_tab"] == 'upsert'): ?>
+					<?php echo cl_template('ads/includes/upsert'); ?>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+
+	<?php echo cl_template('ads/scripts/app_master_script'); ?>
+</div>

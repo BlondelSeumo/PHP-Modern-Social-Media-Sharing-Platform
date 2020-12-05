@@ -1,0 +1,19 @@
+<div class="empty-profile-placeholder">
+	<div class="icon">
+		<?php echo cl_svg('close-circle-outline'); ?>
+	</div>
+
+	<div class="pl-message">
+		<h4>
+			<?php echo cl_translate("You have blocked this user."); ?>
+		</h4>
+		<p>
+			<?php echo cl_translate("You will not see posts from this user, receive notifications, comments, messages, etc."); ?>
+		</p>
+	</div>
+	<div class="c2action-single">
+		<button onclick="SMColibri.block(this);" class="btn btn-custom main-outline lg" data-action="unblock" data-id="<?php echo($cl['prof_user']['id']); ?>">
+			<?php echo cl_translate("Unblock this user!"); ?>
+		</button>
+	</div>
+</div>

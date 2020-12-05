@@ -1,0 +1,94 @@
+<div class="cp-app-container" data-app="posts">
+    <div class="current-page-name">
+        <div class="lp">
+            <h2>
+                <?php echo cl_translate('Publications'); ?>
+            </h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="<?php echo cl_link('admin_panel'); ?>">
+                        <?php echo cl_translate('Control panel'); ?>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0);">
+                        <?php echo cl_translate('Publications'); ?>
+                    </a>
+                </li> 
+            </ol>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card" data-an="info-content">
+                <div class="header">
+                    <h2>
+                        <?php echo cl_translate('Manage site publications'); ?>
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="regular-table">
+                        <table class="table table-hover no-mb">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>
+                                        <?php echo cl_translate('Post type'); ?>
+                                    </th>
+                                    <th>
+                                        <?php echo cl_translate('Target'); ?>
+                                    </th>
+                                    <th>
+                                        <?php echo cl_translate('Replys'); ?>
+                                    </th>
+                                    <th>
+                                        <?php echo cl_translate('Likes'); ?>
+                                    </th>
+                                    <th>
+                                        <?php echo cl_translate('Reposts'); ?>
+                                    </th>
+                                    <th>
+                                        <?php echo cl_translate('Date'); ?>
+                                    </th>
+                                    <th>
+                                        <?php echo cl_translate('Action'); ?>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody data-an="posts-list">
+                                <?php if (not_empty($cl['posts'])): ?>
+                                    <?php foreach ($cl['posts'] as $cl['li']): ?>
+                                        <?php echo cl_template('cpanel/assets/publications/includes/list_item'); ?>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="8">
+                                            <div class="empty-table">
+                                                <span class="icon">
+                                                    <i class="material-icons">video_library</i>
+                                                </span>
+                                                <h4><?php echo('No posts found'); ?></h4>
+                                                <p>
+                                                    <?php echo('It looks like there are no posts in your database yet. All publications of your site will be displayed here.'); ?>
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                        <?php if (not_empty($cl['posts'])): ?>
+                            <a data-an="pagination" data-dir="prev" href="javascript:void(0);" class="pagination-ctrls prev">
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+                            <a data-an="pagination" data-dir="next" href="javascript:void(0);" class="pagination-ctrls next">
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php echo cl_template('cpanel/assets/publications/scripts/app_master_script'); ?>

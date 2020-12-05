@@ -1,0 +1,80 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+@media (max-width: 1024px) {
+	body.cl-app-profile{
+		main.main-content-container{
+			div.main-content-container-inner{
+				div.timeline-container{
+					div.timeline-header{
+						div.lp div.profile-name-holder{
+							h5{
+								font-size: 13px;
+								line-height: 14px;
+								max-width: 110px;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								white-space: nowrap;
+							}
+
+							span{
+								font-size: 11px;
+								line-height: 14px;
+							}
+						}
+					}
+
+					div.timeline-prof-info-area{
+						div.profile-avatar-holder{
+							bottom: -40px !important;
+							div.profile-avatar{
+								width: 80px !important;
+								height: 80px !important;
+							}
+						}
+					}
+
+					div.profile-main--info-holder{
+						div.profile-page-ctrls{
+							margin-bottom: 0px !important;
+							height: 50px !important;
+						}
+					}
+
+					div.profile--user-info-block-set{
+						margin-bottom: 10px;
+						div.block-item{
+							margin-right: 5px !important;
+	    					margin-bottom: 5px !important;
+
+	    					span.text{
+	    						font-size: 11px !important;
+	    					}
+						}
+					}
+
+					div.profile--activity-stats-info{
+						div.stat-holder{
+							b, span{
+								font-size: 11px !important;
+							}
+						}
+					}
+
+					div.profile--activity-navbar{
+						border-top: 1px solid $border;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,328 @@
+body.cl-app-chat {
+  overflow: hidden; }
+  body.cl-app-chat main.main-content-container div.main-content-container-inner {
+    height: 100vh !important; }
+    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container {
+      height: 100%; }
+      body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: hidden; }
+        body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body {
+          width: 100%;
+          flex: 1;
+          overflow: hidden; }
+          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            overflow: hidden; }
+            body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper {
+              width: 100%;
+              line-height: 0px; }
+              body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input {
+                width: 100%;
+                line-height: 0px;
+                position: relative;
+                padding: 15px;
+                border-bottom: 1px solid #e6ecf0; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input {
+                  border: 1px solid #e6ecf0;
+                  background: #e6ecf0;
+                  border-radius: 5em;
+                  padding: 0 0 3px 40px;
+                  height: 35px;
+                  width: 100%;
+                  font-size: 12px;
+                  color: #14171a; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input::placeholder {
+                    color: #72777c;
+                    font-size: 12px; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input:active, body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input:hover, body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input:focus {
+                    box-shadow: none;
+                    outline: none;
+                    border: 2px solid #1ca1f3; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input:active + span.icon svg, body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input:hover + span.icon svg, body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input input:focus + span.icon svg {
+                      fill: #1ca1f3;
+                      opacity: 1; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input span.icon {
+                  position: absolute;
+                  left: 30px;
+                  top: 23px;
+                  text-decoration: none;
+                  line-height: 0px;
+                  z-index: 2;
+                  width: 22px;
+                  height: 22px; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input span.icon svg {
+                    width: 100%;
+                    height: 100%;
+                    fill: #657786;
+                    opacity: 0.8; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input span.spinner-icon {
+                  position: absolute;
+                  right: 30px;
+                  top: 22px;
+                  text-decoration: none;
+                  line-height: 0px;
+                  z-index: 2;
+                  width: 22px;
+                  height: 22px; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--search-form-wrapper form div.keyword-input span.spinner-icon svg {
+                    width: 100%;
+                    height: 100%;
+                    fill: #657786;
+                    opacity: 0.8; }
+            body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper {
+              width: 100%;
+              flex: 1;
+              line-height: 0px;
+              overflow: hidden; }
+              body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list {
+                width: 100%;
+                line-height: 0px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: 100%; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item {
+                  width: 100%;
+                  line-height: 0px;
+                  padding: 15px 15px;
+                  border-bottom: 1px solid #e6ecf0;
+                  cursor: pointer;
+                  overflow: hidden; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item:hover, body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item:active {
+                    background: #f5f8fa; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a {
+                    width: 100%;
+                    display: block;
+                    line-height: 0px;
+                    text-decoration: none; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner {
+                      width: 100%;
+                      max-width: 100%;
+                      overflow: hidden;
+                      display: flex;
+                      flex-direction: row;
+                      flex-wrap: nowrap; }
+                      body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.lp {
+                        width: 40px;
+                        height: 40px;
+                        max-width: 40px;
+                        min-width: 40px;
+                        flex-basis: 40px;
+                        line-height: 0px; }
+                        body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.lp div.avatar {
+                          width: 100%;
+                          height: 100%;
+                          display: block;
+                          overflow: hidden;
+                          border-radius: 10em; }
+                          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.lp div.avatar img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover; }
+                      body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp {
+                        flex: 1;
+                        line-height: 0px;
+                        overflow: hidden; }
+                        body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-header {
+                          width: 100%;
+                          max-width: 100%;
+                          display: flex;
+                          flex-direction: row;
+                          flex-wrap: nowrap;
+                          align-items: center;
+                          padding-left: 15px; }
+                          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-header b.name {
+                            font-size: 13px;
+                            line-height: 20px;
+                            color: #14171a;
+                            font-weight: 700; }
+                          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-header span.uname {
+                            font-size: 13px;
+                            line-height: 20px;
+                            color: #657786;
+                            font-weight: 400;
+                            margin-left: 5px; }
+                          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-header span.time {
+                            margin-left: auto; }
+                            body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-header span.time svg {
+                              width: 13px;
+                              height: 13px;
+                              display: inline-block;
+                              vertical-align: middle;
+                              fill: #657786; }
+                            body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-header span.time time {
+                              font-size: 11px;
+                              line-height: 20px;
+                              color: #657786; }
+                        body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-body {
+                          width: 100%;
+                          line-height: 0px;
+                          padding-left: 15px;
+                          overflow: hidden;
+                          max-width: 100%; }
+                          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-body p {
+                            display: inline-block;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            max-width: 80%;
+                            overflow: hidden;
+                            font-size: 13px;
+                            line-height: 18px;
+                            color: #657786;
+                            padding: 0;
+                            margin: 0; }
+                          body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item a div.chat--contacts-list-item-inner div.rp div.rp-inner-content-body span.badge {
+                            background: #1ca1f3;
+                            color: #fff;
+                            border-radius: 5em;
+                            font-size: 11px;
+                            line-height: 18px;
+                            display: inline-block;
+                            vertical-align: top;
+                            padding: 0 5px;
+                            margin: 0;
+                            font-weight: 400; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list div.chat--contacts-list-item.hidden {
+                    display: none !important; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list::-webkit-scrollbar-track {
+                  background-color: #e6ecf0; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list::-webkit-scrollbar {
+                  width: 5px;
+                  background-color: #e6ecf0; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.chat--contacts-list::-webkit-scrollbar-thumb {
+                  background-color: #d1d1d1;
+                  border: 0px;
+                  border-radius: 0px; }
+              body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                line-height: 0px;
+                padding: 50px;
+                height: calc(100vh - 100px);
+                overflow: hidden; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.icon {
+                  line-height: 0px;
+                  margin-bottom: 15px;
+                  width: 100%;
+                  text-align: center; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.icon svg {
+                    width: 80px;
+                    height: 80px;
+                    fill: #1ca1f3; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.icon svg * {
+                      stroke: #1ca1f3; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.pl-message {
+                  line-height: 0px;
+                  width: 100%;
+                  margin-bottom: 50px; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.pl-message h4 {
+                    font-size: 20px;
+                    padding: 0;
+                    margin: 0 0 15px 0;
+                    line-height: 20px;
+                    color: #14171a;
+                    font-weight: 700;
+                    text-align: center; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.pl-message p {
+                    font-size: 13px;
+                    line-height: 20px;
+                    padding: 0;
+                    margin: 0;
+                    color: #657786;
+                    text-align: center;
+                    overflow-wrap: break-word; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.pl-message p span {
+                      display: inline-block;
+                      line-height: 0;
+                      vertical-align: middle; }
+                      body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.pl-message p span svg {
+                        width: 15px;
+                        height: 15px;
+                        fill: #1ca1f3; }
+                        body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-search-result div.pl-message p span svg * {
+                          stroke: #1ca1f3; }
+              body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-items: center;
+                line-height: 0px;
+                padding: 50px;
+                height: calc(100vh - 100px);
+                overflow: hidden; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.icon {
+                  line-height: 0px;
+                  margin-bottom: 15px;
+                  width: 100%;
+                  text-align: center; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.icon svg {
+                    width: 80px;
+                    height: 80px;
+                    fill: #1ca1f3; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.icon svg * {
+                      stroke: #1ca1f3; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.pl-message {
+                  line-height: 0px;
+                  width: 100%;
+                  margin-bottom: 50px; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.pl-message h4 {
+                    font-size: 20px;
+                    padding: 0;
+                    margin: 0 0 15px 0;
+                    line-height: 20px;
+                    color: #14171a;
+                    font-weight: 700;
+                    text-align: center; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.pl-message p {
+                    font-size: 13px;
+                    line-height: 20px;
+                    padding: 0;
+                    margin: 0;
+                    color: #657786;
+                    text-align: center;
+                    overflow-wrap: break-word; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.pl-message p span {
+                      display: inline-block;
+                      line-height: 0;
+                      vertical-align: middle; }
+                      body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.pl-message p span svg {
+                        width: 15px;
+                        height: 15px;
+                        fill: #1ca1f3; }
+                        body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.pl-message p span svg * {
+                          stroke: #1ca1f3; }
+                body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.c2action-single {
+                  width: 100%;
+                  line-height: 0px;
+                  text-align: center; }
+                  body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.c2action-single a {
+                    display: inline-block;
+                    line-height: 0px;
+                    text-decoration: none; }
+                    body.cl-app-chat main.main-content-container div.main-content-container-inner div.timeline-container div.timeline-container-inner div.vue-app-body div.vue-app-body-inner div.chat--contacts-list-wrapper div.empty-chats-list div.c2action-single a button {
+                      padding-left: 40px;
+                      padding-right: 40px; }
+    body.cl-app-chat main.main-content-container div.main-content-container-inner div.left-sb-container, body.cl-app-chat main.main-content-container div.main-content-container-inner div.right-sb-container {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none; }
+      body.cl-app-chat main.main-content-container div.main-content-container-inner div.left-sb-container::-webkit-scrollbar, body.cl-app-chat main.main-content-container div.main-content-container-inner div.right-sb-container::-webkit-scrollbar {
+        display: none; }
+
+/*# sourceMappingURL=style.master.css.map */

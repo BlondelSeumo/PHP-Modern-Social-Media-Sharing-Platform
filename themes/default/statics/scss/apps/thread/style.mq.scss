@@ -1,0 +1,125 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+@media (max-width: 1024px) {
+	body.cl-app-thread{
+		main.main-content-container{
+			div.main-content-container-inner{
+				div.timeline-container{
+					div.publication--thread-container{
+						div.publication--thread-data-holder{
+							div.publication-data{
+								div.publisher-info{
+									div.lp{
+										min-width: 30px !important;
+										max-width: 30px !important;
+										flex-basis: 30px !important;
+
+										div.avatar-holder{
+											width: 30px !important;
+		    								height: 30px !important;
+										}
+									}
+
+									div.rp{
+										a.uname{
+											span{
+												font-size: 11px !important;
+											}
+										}
+
+										button{
+											svg{
+												width: 18px !important;
+												height: 18px !important;
+											}
+										}
+									}
+								}
+
+								div.publication-meta-info{
+									div.posted-time{
+										svg{
+											width: 14px;
+											height: 14px;
+										}
+
+										time{
+											font-size: 11px !important;
+										}
+									}
+
+									div.publication-target{
+										div.post-reply{
+											span{
+												font-size: 11px !important;
+											}
+										}
+									}
+								}
+
+								div.publication-footer-ctrls{
+									margin-top: 15px !important;
+
+									button.ctrls-item{
+										span.icon{
+											svg{
+												width: 20px !important;
+												height: 20px !important;
+											}
+										}
+									}
+								}
+							}
+						}
+
+						div.publication--thread-chain-holder{
+							div.post-list-item{
+								div.publisher-avatar{
+									&:before{
+										top: 30px !important;
+										bottom: -30px !important;
+										left: 14px !important;
+										width: 2px !important;
+									}
+								}
+							}
+						}
+
+						div.publication--thread-replys-holder{
+							div.timeline-posts-container{
+								div.timeline-posts-ls{
+									div.timeline-posts-ls-group{
+										div.timeline-posts-ls-group-inner{
+											div.post-list-item{
+												div.publisher-avatar{
+													position: relative;
+
+													&:before{
+														top: 30px !important;
+														bottom: -30px !important;
+														left: 14px !important;
+														width: 2px !important;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

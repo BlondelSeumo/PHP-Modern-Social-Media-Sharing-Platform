@@ -1,0 +1,70 @@
+<div class="timeline-container" data-app="confirm_registration">
+	<div class="timeline-header">
+		<div class="lp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link("confirm_registration"); ?>" data-spa="true">
+					<?php echo cl_translate("Confirm registration"); ?>
+				</a>
+			</div>
+		</div>
+		<div class="cp">
+			<a href="<?php echo cl_link("/"); ?>">
+				<img src="{%config site_logo%}" alt="Logo">
+			</a>
+		</div>
+		<div class="rp">
+			<div class="nav-link-holder">
+				<a href="<?php echo cl_link("about_us"); ?>">
+					<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512' viewBox='0 0 512 512'><title>ionicons-v5-a</title><path d='M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z' style='fill:none;stroke:#1ca1f3;stroke-miterlimit:10;stroke-width:32px'/><path d='M250.26,166.05,256,288l5.73-121.95a5.74,5.74,0,0,0-5.79-6h0A5.74,5.74,0,0,0,250.26,166.05Z' style='fill:none;stroke:#1ca1f3;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px'/><path d='M256,367.91a20,20,0,1,1,20-20A20,20,0,0,1,256,367.91Z'/></svg>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="confirm-registration-container">
+		<div class="confirm-registration-content">
+			<form class="form" id="vue-confirm-reg-app" v-on:submit="submit_form($event)">
+				<div class="form-header">
+					<div class="icon">
+						<?php echo cl_svg('shield-checkmark-outline'); ?>
+					</div>
+					<h4>
+						<?php echo cl_translate("Thank you for Signing-Up!"); ?>
+					</h4>
+					<p>
+						<?php echo cl_translate("Please check your email inbox, we just sent you an email with the activation code of your account, enter this code in the (Activation code) field and click confirm!"); ?>
+					</p>
+				</div>
+				<div class="form-body">
+					<div class="form-group">
+						<label>
+							<?php echo cl_translate("Activation code"); ?>
+						</label>
+						<input v-model.trim="$v.code.$model" type="number" name="code" class="form-control" placeholder="<?php echo cl_translate("Enter your account activation code"); ?> ...">
+						<div class="invalid-main-feedback" v-if="is_invalid_code">
+							{{invalid_feedback_code}}
+						</div>
+						<div class="invalid-main-feedback" v-else-if="unsuccessful_attempt">
+							<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>
+						</div>
+					</div>
+					<div class="form-group no-mb">
+						<button v-if="done" disabled="true" class="btn btn-custom main-inline lg btn-block">
+							<?php echo cl_translate("Done! Please wait.."); ?>
+						</button>
+						<button v-else-if="submitting" disabled="true" class="btn btn-custom main-inline lg btn-block">
+							<?php echo cl_translate("Please wait"); ?>
+						</button>
+						<button v-else v-bind:disabled="is_invalid_form" class="btn btn-custom main-inline lg btn-block">
+							<?php echo cl_translate("Confirm registration!"); ?>
+						</button>
+					</div>
+				</div>
+				<input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+			</form>
+		</div>
+	</div>
+
+	<?php echo cl_template("main/includes/inline_statics/app_statics"); ?>
+	<?php echo cl_template("confirm_reg/scripts/app_master_script"); ?>
+</div>

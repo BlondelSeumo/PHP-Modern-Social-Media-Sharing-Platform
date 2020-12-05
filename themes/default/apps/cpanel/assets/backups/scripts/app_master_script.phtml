@@ -1,0 +1,43 @@
+<script>
+	"use strict";
+
+	$(document).ready(function($) {
+		var _app  = $('[data-app="backups"]');
+		var _data = _app.find('form[data-an="form"]');
+
+		_data.ajaxForm({
+			url: '<?php echo cl_link("native_api/cpanel/create_backup"); ?>',
+			type: 'POST',
+			dataType: 'json',
+			beforeSend: function() {
+				_app.find('[data-an="info-content"]').waitMe({
+					effect : 'rotation',
+					text : '',
+					bg : 'rgba(255,255,255,0.5)',
+					color : '#1ca1f3',
+					maxSize : '40',
+					waitTime : -1,
+					textPos : 'vertical',
+					fontSize : '',
+					source : ''
+				});
+
+				_data.find('[data-an="submit-ctrl"]').attr('disabled', 'true').text("<?php echo cl_translate("Please wait"); ?>");
+			},
+			success: function(data) {
+				if (data.status == 200) {
+					cl_bs_notify("<?php echo cl_translate("A new backup of your site has been created successfully!"); ?>", 3000);
+					_data.find('[data-an="last-backup-date"]').text(data.last_backup);
+				}
+				else {
+					cl_bs_notify("<?php echo cl_translate("An error occurred while processing your request. Please try again later."); ?>",3000);
+				}
+			},
+			complete: function() {
+				_app.find('[data-an="info-content"]').waitMe('hide');
+
+				_data.find('[data-an="submit-ctrl"]').removeAttr('disabled').text("<?php echo cl_translate("Create backup!"); ?>");
+			}
+		});
+	});
+</script>

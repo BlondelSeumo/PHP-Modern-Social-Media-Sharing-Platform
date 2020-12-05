@@ -1,0 +1,1 @@
+scss --watch style.custom.scss:../../../css/apps/bookmarks/style.custom.css

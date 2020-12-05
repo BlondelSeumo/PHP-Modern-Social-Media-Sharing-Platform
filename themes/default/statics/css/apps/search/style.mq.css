@@ -1,0 +1,31 @@
+@media (max-width: 1024px) {
+  body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.hashtags-list div.hashtags-list-item {
+    padding: 10px 15px; }
+    body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.hashtags-list div.hashtags-list-item span.hash {
+      width: 30px;
+      height: 30px;
+      line-height: 28px; }
+    body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.hashtags-list div.hashtags-list-item span.hashtag-info b.tag {
+      font-size: 13px;
+      line-height: 16px; }
+    body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.hashtags-list div.hashtags-list-item span.hashtag-info span.total {
+      font-size: 11px;
+      line-height: 16px; }
+  body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.people-list div.people-list-item div.avatar {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    max-width: 30px; }
+  body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.people-list div.people-list-item div.user-info-holder a {
+    line-height: 16px;
+    font-size: 11px; }
+  body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.people-list div.people-list-item div.user-info-holder p {
+    font-size: 11px;
+    line-height: 16px; }
+  body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.people-list div.people-list-item div.user-info-holder button {
+    padding: 5px 10px;
+    font-size: 11px; }
+  body.cl-app-search main.main-content-container div.main-content-container-inner div.timeline-container div.vue-app-body div.main--search-area-content div.search-result-container div.people-list div.people-list-item:first-child {
+    padding-top: 10px !important; } }
+
+/*# sourceMappingURL=style.mq.css.map */

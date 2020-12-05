@@ -1,0 +1,76 @@
+<form class="form" id="main_login_form" v-on:submit="submit_form($event)">
+	<div class="form-group">
+		<label>
+			<?php echo cl_translate("Email address"); ?>
+		</label>
+		<input name="email" v-model.trim.lazy="$v.email.$model" type="text" class="form-control" placeholder="<?php echo cl_translate("Email address"); ?>">
+		<div class="invalid-main-feedback" v-if="is_valid_email">
+			{{invalid_feedback_email}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label>
+			<?php echo cl_translate("Password"); ?>
+		</label>
+		<input name="password" v-model.trim="$v.password.$model" type="password" class="form-control" placeholder="<?php echo cl_translate("Password"); ?>">
+		<div class="invalid-main-feedback" v-if="is_valid_password">
+			{{invalid_feedback_pass}}
+		</div>
+		<div v-else-if="unsuccessful_attempt" class="form-group invalid-main-feedback mb-20">
+			<?php echo cl_translate("A user with such credentials is not found. Check the data entered and try again."); ?>
+		</div>
+	</div>
+	<div class="form-group no-mb">
+		<button v-if="submitting != true" v-bind:disabled="($v.$invalid == true)" class="btn btn-custom main-inline lg btn-block">
+			<?php echo cl_translate("Login"); ?>
+		</button>
+		<button v-else disabled="true" type="button" class="btn btn-custom main-inline lg btn-block">
+			<?php echo cl_translate("Please wait"); ?>
+		</button>
+	</div>
+	<div class="form-group login-or-signup">
+		<small><?php echo cl_translate("Or continue with"); ?></small>
+	</div>
+	<div class="form-group oauth-login-providers">
+		<a href="<?php echo cl_link('oauth?provider=Facebook'); ?>" class="social-login-btn facebook">
+			<span class="icon">
+				<?php echo cl_svg('logo-facebook'); ?>
+			</span>
+		</a>
+		<a href="<?php echo cl_link('oauth?provider=Twitter'); ?>" class="social-login-btn twitter">
+			<span class="icon">
+				<?php echo cl_svg('logo-twitter'); ?>
+			</span>
+		</a>
+		<a href="<?php echo cl_link('oauth?provider=Google'); ?>" class="social-login-btn google">
+			<span class="icon">
+				<?php echo cl_svg('logo-google'); ?>
+			</span>
+		</a>
+	</div>
+	<div class="form-group tos-agreement no-mb">
+		<div class="block-header">
+			<span>
+				<?php echo cl_translate("By continuing, you agree to {@site_name@}",array(
+					"site_name" => $cl["config"]["name"]
+				)); ?>
+			</span>
+			<a href="<?php echo cl_link('terms_of_use'); ?>"><?php echo cl_translate("Terms of Use"); ?></a>
+			<a href="<?php echo cl_link('privacy_policy'); ?>"><?php echo cl_translate("Privacy policy"); ?></a>
+		</div>
+		<div class="block-body">
+			<a href="#" data-toggle="modal" data-target="#reset_password_window">
+				<?php echo cl_translate("Forgot your password?"); ?>
+			</a>
+		</div>
+		<div class="block-footer">
+			<span>
+				<?php echo cl_translate("Don't have an account?"); ?>
+			</span>
+			<a href="#" data-toggle="modal" data-target="#sign_up_window">
+				<?php echo cl_translate("Sign up"); ?>
+			</a>
+		</div>
+	</div>
+	<input type="hidden" class="d-none" value="<?php echo fetch_or_get($cl['csrf_token'],'none'); ?>" name="hash">
+</form>

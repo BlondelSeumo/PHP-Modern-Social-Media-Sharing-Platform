@@ -1,0 +1,369 @@
+body {
+  background: #f2f3f2; }
+
+div.main-cont {
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+  padding-bottom: 80px; }
+  div.main-cont div.main-cont-header {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px; }
+    div.main-cont div.main-cont-header h1 {
+      font-size: 20px;
+      line-height: 22px;
+      color: #14171a;
+      padding: 0;
+      margin: 0;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 5px; }
+    div.main-cont div.main-cont-header p {
+      color: #616161;
+      font-size: 13px;
+      line-height: 24px;
+      text-align: center;
+      margin: 0;
+      padding: 0; }
+  div.main-cont div.main-cont-inner {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 10px 0px;
+    border-radius: 5px;
+    background: #fff;
+    overflow: hidden; }
+    div.main-cont div.main-cont-inner div.cont-header {
+      width: 100%;
+      line-height: 0px;
+      background: #1ca1f3;
+      padding: 20px; }
+      div.main-cont div.main-cont-inner div.cont-header h2 {
+        padding: 0;
+        margin: 0;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold; }
+        div.main-cont div.main-cont-inner div.cont-header h2 svg {
+          width: 20px;
+          height: 20px; }
+    div.main-cont div.main-cont-inner div.cont-body div.terms-of-use {
+      width: 100%;
+      overflow: hidden;
+      display: block;
+      padding: 20px;
+      background: #fff; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        line-height: 22px;
+        color: #14171a;
+        font-weight: bold;
+        margin-bottom: 10px; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.createdby {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.createdby h6 {
+          font-size: 12px;
+          font-weight: normal;
+          color: #657786;
+          padding: 0;
+          margin: 0; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-def-title {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-def-title p {
+          padding: 0;
+          margin: 0;
+          font-size: 13px;
+          color: #14171a;
+          line-height: 24px;
+          font-weight: bold; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use h4 {
+        font-size: 14px;
+        padding: 0;
+        margin: 0;
+        color: #14171a;
+        font-weight: bold;
+        margin-bottom: 10px; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use table thead th {
+        font-size: 14px;
+        color: #14171a;
+        font-weight: bold;
+        border-bottom: 1px solid #eee;
+        padding: 10px 5px; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use table tr td {
+        font-size: 13px;
+        border: none;
+        padding: 7px 5px; }
+        div.main-cont div.main-cont-inner div.cont-body div.terms-of-use table tr td span {
+          width: 15px;
+          height: 15px;
+          display: inline-block;
+          margin-right: 5px; }
+          div.main-cont div.main-cont-inner div.cont-body div.terms-of-use table tr td span svg {
+            width: 100%;
+            height: 100%; }
+          div.main-cont div.main-cont-inner div.cont-body div.terms-of-use table tr td span.allowed svg {
+            fill: #35c85f; }
+          div.main-cont div.main-cont-inner div.cont-body div.terms-of-use table tr td span.denied svg {
+            fill: #f6546a; }
+      div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #eee;
+        padding-top: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action input {
+          vertical-align: middle; }
+        div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action label {
+          font-size: 13px;
+          line-height: 13px;
+          color: #14171a;
+          padding: 0;
+          margin: 0; }
+        div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action button.btn.btn-red {
+          color: #1ca1f3;
+          background: #fff;
+          font-size: 13px;
+          border: 1px solid #1ca1f3;
+          box-shadow: none;
+          outline: 0;
+          padding: 5px 15px; }
+          div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action button.btn.btn-red:active, div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action button.btn.btn-red:hover, div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action button.btn.btn-red:focus {
+            background: #fff;
+            color: #1ca1f3; }
+          div.main-cont div.main-cont-inner div.cont-body div.terms-of-use div.agreement-action button.btn.btn-red:disabled {
+            cursor: not-allowed; }
+    div.main-cont div.main-cont-inner div.cont-body div.requirements {
+      width: 100%;
+      overflow: hidden;
+      display: block;
+      padding: 20px;
+      background: #fff; }
+      div.main-cont div.main-cont-inner div.cont-body div.requirements h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        line-height: 22px;
+        color: #14171a;
+        font-weight: bold;
+        margin-bottom: 10px; }
+      div.main-cont div.main-cont-inner div.cont-body div.requirements div.createdby {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.requirements div.createdby h6 {
+          font-size: 12px;
+          font-weight: normal;
+          color: #657786;
+          padding: 0;
+          margin: 0; }
+      div.main-cont div.main-cont-inner div.cont-body div.requirements div.requirements-def-title {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.requirements div.requirements-def-title p {
+          padding: 0;
+          margin: 0;
+          font-size: 13px;
+          color: #14171a;
+          line-height: 24px;
+          font-weight: bold; }
+      div.main-cont div.main-cont-inner div.cont-body div.requirements table thead th {
+        font-size: 14px;
+        color: #14171a;
+        font-weight: bold;
+        border-bottom: 1px solid #eee;
+        padding: 10px 5px; }
+      div.main-cont div.main-cont-inner div.cont-body div.requirements table tr td {
+        font-size: 13px;
+        border: none;
+        padding: 7px 5px; }
+        div.main-cont div.main-cont-inner div.cont-body div.requirements table tr td span {
+          width: 15px;
+          height: 15px;
+          display: inline-block;
+          margin-right: 5px; }
+          div.main-cont div.main-cont-inner div.cont-body div.requirements table tr td span svg {
+            width: 100%;
+            height: 100%; }
+          div.main-cont div.main-cont-inner div.cont-body div.requirements table tr td span.installed svg {
+            fill: #35c85f; }
+          div.main-cont div.main-cont-inner div.cont-body div.requirements table tr td span.not-installed svg {
+            fill: #f6546a; }
+        div.main-cont div.main-cont-inner div.cont-body div.requirements table tr td strong {
+          color: #657786;
+          font-weight: normal;
+          font-size: 12px; }
+      div.main-cont div.main-cont-inner div.cont-body div.requirements div.next-action {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding-top: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.requirements div.next-action button.btn.btn-red {
+          color: #1ca1f3;
+          background: #fff;
+          font-size: 13px;
+          border: 1px solid #1ca1f3;
+          box-shadow: none;
+          outline: 0;
+          padding: 5px 15px; }
+          div.main-cont div.main-cont-inner div.cont-body div.requirements div.next-action button.btn.btn-red:active, div.main-cont div.main-cont-inner div.cont-body div.requirements div.next-action button.btn.btn-red:hover, div.main-cont div.main-cont-inner div.cont-body div.requirements div.next-action button.btn.btn-red:focus {
+            background: #fff;
+            color: #1ca1f3; }
+          div.main-cont div.main-cont-inner div.cont-body div.requirements div.next-action button.btn.btn-red:disabled {
+            cursor: not-allowed; }
+    div.main-cont div.main-cont-inner div.cont-body div.installation {
+      width: 100%;
+      overflow: hidden;
+      display: block;
+      padding: 20px;
+      background: #fff; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        line-height: 22px;
+        color: #14171a;
+        font-weight: bold;
+        margin-bottom: 10px; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.createdby {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.createdby h6 {
+          font-size: 12px;
+          font-weight: normal;
+          color: #657786;
+          padding: 0;
+          margin: 0; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.installation-def-title {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.installation-def-title p {
+          padding: 0;
+          margin: 0;
+          font-size: 13px;
+          color: #14171a;
+          line-height: 24px;
+          font-weight: bold; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.errors {
+        margin-bottom: 20px;
+        width: 100%;
+        border: 1px solid #f6546a;
+        border-radius: 5px;
+        padding: 15px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.errors p {
+          font-size: 12px;
+          color: #f6546a;
+          line-height: 16px;
+          margin: 0;
+          padding: 0; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success {
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success h2 {
+          font-size: 24px;
+          line-height: 24px;
+          padding: 0;
+          margin: 0;
+          color: #14171a;
+          text-align: center;
+          font-weight: bold;
+          margin-bottom: 10px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success p {
+          font-size: 12px;
+          color: #657786;
+          line-height: 16px;
+          margin: 0;
+          padding: 0;
+          text-align: center;
+          margin-bottom: 20px;
+          opacity: 0.9; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success a.lets-go {
+          display: inline-block;
+          text-decoration: none; }
+          div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success a.lets-go button {
+            color: #1ca1f3;
+            background: #fff;
+            font-size: 13px;
+            border: 1px solid #1ca1f3;
+            box-shadow: none;
+            outline: 0;
+            padding: 7px 40px; }
+            div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success a.lets-go button:active, div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success a.lets-go button:hover, div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.success a.lets-go button:focus {
+              background: #fff;
+              color: #1ca1f3; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group small.info-message {
+        font-size: 12px;
+        line-height: 16px;
+        color: #1ca1f3;
+        display: block;
+        width: 100%;
+        margin-top: 10px; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group label.form-input-label {
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+        line-height: 18px;
+        color: #14171a; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input {
+        border: 1px solid #d4e3eb;
+        padding-left: 15px;
+        padding-right: 15px;
+        background: #f8fafb;
+        border-radius: 1px;
+        height: 38px;
+        font-size: 13px;
+        color: #14171a; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input::placeholder {
+          font-size: 13px;
+          color: #72777c; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input:focus, div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input:active, div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input:hover {
+          border: 1px solid #1ca1f3;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 10px 0px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input[type="date"] {
+          padding: 6px 12px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input.block-input {
+          display: block; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.form-content div.form-group div.form-input input:disabled {
+          opacity: 0.5;
+          cursor: not-allowed; }
+      div.main-cont div.main-cont-inner div.cont-body div.installation div.next-action {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-top: 1px solid #eee;
+        padding-top: 20px; }
+        div.main-cont div.main-cont-inner div.cont-body div.installation div.next-action button.btn.btn-red {
+          color: #1ca1f3;
+          background: #fff;
+          font-size: 13px;
+          border: 1px solid #1ca1f3;
+          box-shadow: none;
+          outline: 0;
+          padding: 5px 15px; }
+          div.main-cont div.main-cont-inner div.cont-body div.installation div.next-action button.btn.btn-red:active, div.main-cont div.main-cont-inner div.cont-body div.installation div.next-action button.btn.btn-red:hover, div.main-cont div.main-cont-inner div.cont-body div.installation div.next-action button.btn.btn-red:focus {
+            background: #fff;
+            color: #1ca1f3; }
+          div.main-cont div.main-cont-inner div.cont-body div.installation div.next-action button.btn.btn-red:disabled {
+            cursor: not-allowed; }
+  div.main-cont div.main-cont-footer {
+    width: 100%;
+    overflow: hidden; }
+    div.main-cont div.main-cont-footer span {
+      font-size: 13px;
+      color: #657786;
+      line-height: 18px; }

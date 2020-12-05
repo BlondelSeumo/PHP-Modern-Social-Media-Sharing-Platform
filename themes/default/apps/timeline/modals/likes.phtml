@@ -1,0 +1,50 @@
+<div class="modal fadeIn" data-app="post-likes-list" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static" data-onclose="remove">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content of-hide">
+			<div class="post-likes-container">
+				<div class="modal-header">
+                    <div class="main---mh--block">
+                        <h5 class="modal-title">
+                            <?php echo ("People who liked"); ?> (<?php echo($cl['likes_count']); ?>)
+                        </h5>
+                        <span class="dismiss-modal" data-dismiss="modal">
+                            <?php echo cl_svg('md-close'); ?>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <?php if (not_empty($cl['post_likes'])): ?>
+                    	<div class="post-likes-ls" data-an="users-ls">
+							<?php foreach ($cl['post_likes'] as $cl['li']): ?>
+								<?php echo cl_template('timeline/includes/like_li'); ?>
+							<?php endforeach; ?>
+                    	</div>
+                        <?php if (count($cl['post_likes']) == 30): ?>
+                            <div class="load-more">
+                                <button onclick="SMColibri.load_likes('<?php echo($cl['liked_post']); ?>', this);" class="btn btn-custom main-outline lg">
+                                    <?php echo cl_translate("Show more"); ?>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="post-likes-ls-empty">
+                            <div class="icon">
+                                <?php echo cl_svg('heart-dislike-outline'); ?>
+                            </div>
+                            <div class="pl-message">
+                                <h4>
+                                    <?php echo ("No likes yet!"); ?>
+                                </h4>
+                                <p>
+                                    <?php echo cl_translate("This post appears to have no likes yet. To like this post, click {@svg_icon@} below it.",array(
+                                        "svg_icon" => '<span><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><title>ionicons-v5-f</title><path d="M352.92,80C288,80,256,144,256,144s-32-64-96.92-64C106.32,80,64.54,124.14,64,176.81c-1.1,109.33,86.73,187.08,183,252.42a16,16,0,0,0,18,0c96.26-65.34,184.09-143.09,183-252.42C447.46,124.14,405.68,80,352.92,80Z" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg></span>',
+                                    )); ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+			</div>
+        </div>
+    </div>
+</div>

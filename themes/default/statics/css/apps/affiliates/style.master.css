@@ -1,0 +1,301 @@
+body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container {
+  width: 100%;
+  display: block;
+  line-height: 0px;
+  min-height: calc(100vh - 55px); }
+  body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 30px 0px 30px; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header div.icon {
+      width: 60px;
+      height: 60px;
+      min-width: 60px;
+      min-height: 60px;
+      margin-bottom: 20px; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header div.icon svg {
+        width: 100%;
+        height: 100%;
+        display: block; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header div.icon svg * {
+          stroke: #1ca1f3; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header div.icon.icon-2 {
+        width: 25px;
+        height: 25px;
+        min-height: 25px;
+        min-width: 25px;
+        margin-bottom: 20px; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header h4 {
+      text-align: center;
+      padding: 0;
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      line-height: 26px;
+      font-weight: 700;
+      color: #14171a; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header p {
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      line-height: 20px;
+      margin-bottom: 20px;
+      color: #14171a; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-header p b {
+        color: green; }
+  body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 30px; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body h5 {
+      text-align: center;
+      font-size: 14px;
+      line-height: 18px;
+      padding: 0;
+      margin: 0;
+      font-weight: 500;
+      color: #14171a;
+      margin-bottom: 20px; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.input-affiliate-url {
+      margin-bottom: 30px; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.input-affiliate-url b {
+        text-align: center;
+        display: block;
+        font-size: 16px;
+        color: #1b95e0;
+        text-decoration: underline; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn {
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 10px 0px;
+        background: none;
+        color: #fff;
+        padding: 0;
+        line-height: 0;
+        outline: 0;
+        overflow: hidden;
+        border-radius: 5em;
+        margin: 0px 5px;
+        height: 35px;
+        width: 35px;
+        position: relative; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn span.icon {
+          width: 15px;
+          height: 15px;
+          line-height: 0px;
+          overflow: hidden;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto; }
+          body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn span.icon svg {
+            width: 15px;
+            height: 15px;
+            fill: #fff; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.twitter {
+          background: #64ccf2; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.facebook {
+          background: #507cc0; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.whatsapp {
+          background: #4de675; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.pinterest {
+          background: #cb2027; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.linkedin {
+          background: #007bb6; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.copy-link {
+          background: #657786; }
+          body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-body div.social-links a.social-link-btn.copy-link svg * {
+            stroke: #fff; }
+  body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-footer {
+    width: 100%;
+    display: block;
+    padding: 0px 30px;
+    margin-top: 30px; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-footer div.new-payout-request {
+      width: 100%;
+      display: block; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-footer div.new-payout-request p {
+        display: block;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        font-size: 13px;
+        color: #657786;
+        line-height: 18px;
+        margin-bottom: 15px;
+        font-weight: 500; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-footer div.new-payout-request button {
+        height: 40px; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-footer div.payments-info-nav {
+      width: 100%;
+      display: block;
+      margin-top: 10px;
+      text-align: center; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.affiliates--settings-footer div.payments-info-nav span {
+        font-size: 11px;
+        color: #657786;
+        line-height: 18px;
+        margin-left: 5px;
+        margin-right: 5px;
+        cursor: pointer; }
+  body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    line-height: 0px;
+    padding: 50px 25px 50px 25px;
+    height: calc(100vh - 55px); }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.icon {
+      line-height: 0px;
+      margin-bottom: 15px;
+      width: 100%;
+      text-align: center; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.icon svg {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        vertical-align: middle; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.pl-message {
+      line-height: 0px;
+      width: 100%;
+      margin-bottom: 50px; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.pl-message h4 {
+        font-size: 20px;
+        padding: 0;
+        margin: 0 0 15px 0;
+        line-height: 20px;
+        color: #14171a;
+        font-weight: 700;
+        text-align: center; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.pl-message p {
+        font-size: 13px;
+        line-height: 18px;
+        padding: 0;
+        margin: 0;
+        color: #657786;
+        text-align: center;
+        overflow-wrap: break-word; }
+    body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.c2action-single {
+      width: 100%;
+      line-height: 0px;
+      text-align: center; }
+      body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.c2action-single a {
+        display: inline-block;
+        line-height: 0px;
+        text-decoration: none; }
+        body.cl-app-affiliates main.main-content-container div.main-content-container-inner div.timeline-container div.main-affiliates--settings-container div.feature-system-off-page div.c2action-single a button {
+          padding-left: 40px;
+          padding-right: 40px; }
+body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px; }
+  body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item div.tp {
+    margin-bottom: 10px; }
+    body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item div.tp div.icon {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: 50px;
+      min-width: 50px;
+      height: 50px;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center; }
+      body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item div.tp div.icon svg {
+        width: 100%;
+        height: 100%;
+        fill: #1ca1f3; }
+        body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item div.tp div.icon svg * {
+          stroke: #1ca1f3; }
+  body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item div.bp {
+    padding: 0 15px;
+    font-size: 13px;
+    color: #14171a;
+    line-height: 20px;
+    font-weight: 300;
+    text-align: center; }
+    body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item div.bp b {
+      font-weight: 500;
+      color: green; }
+  body.cl-app-affiliates div.modal.how-it-works div.modal-body div.list-item.no-mb {
+    margin-bottom: 0px; }
+body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls {
+  display: block;
+  line-height: 0;
+  max-height: 300px;
+  overflow-y: auto; }
+  body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    padding: 15px;
+    background: #f5f8fa;
+    border-radius: 6px; }
+    body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      margin-bottom: 10px; }
+      body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info:last-child {
+        margin-bottom: 0px; }
+      body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info b {
+        font-size: 13px;
+        line-height: 18px;
+        color: #14171a;
+        font-weight: 500;
+        margin-right: 10px; }
+      body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info span {
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: normal;
+        color: #14171a; }
+        body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info span.badge.bg-red {
+          background: #f6546a;
+          color: #fff;
+          font-size: 11px;
+          line-height: 11px;
+          padding: 3px 10px; }
+        body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info span.badge.bg-orange {
+          background: #ffa500;
+          color: #fff;
+          font-size: 11px;
+          line-height: 11px;
+          padding: 3px 10px; }
+        body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info span.badge.bg-green {
+          background: #35c85f;
+          color: #fff;
+          font-size: 11px;
+          line-height: 11px;
+          padding: 3px 10px; }
+        body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info span.amount {
+          color: #1ca1f3;
+          font-weight: 700; }
+        body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item div.payout-info span.time {
+          color: #657786; }
+    body.cl-app-affiliates div.modal.payout-history div.payouts-history-ls div.payouts-history-ls-item:last-child {
+      margin-bottom: 0px; }
+
+/*# sourceMappingURL=style.master.css.map */

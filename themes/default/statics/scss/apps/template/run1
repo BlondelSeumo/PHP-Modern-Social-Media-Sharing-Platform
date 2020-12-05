@@ -1,0 +1,1 @@
+scss --watch style.master.scss:../../../css/apps/[app name]/style.master.css

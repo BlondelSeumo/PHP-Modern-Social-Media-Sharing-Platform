@@ -1,0 +1,166 @@
+// @*************************************************************************@
+// @ @author Mansur Altamirov (Mansur_TL)									 @
+// @ @author_url 1: https://www.instagram.com/mansur_tl                      @
+// @ @author_url 2: http://codecanyon.net/user/mansur_tl                     @
+// @ @author_email: highexpresstore@gmail.com                                @
+// @*************************************************************************@
+// @ ColibriSM - The Ultimate Modern Social Media Sharing Platform           @
+// @ Copyright (c) 21.03.2020 ColibriSM. All rights reserved.                @
+// @*************************************************************************@
+
+@import '../main-variables';
+
+html {
+	scroll-behavior: smooth;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+}
+
+body{
+	font-family: inherit !important;
+}
+
+main.main-content-container{
+	header.stat-page-header{
+		width: 100%;
+		line-height: 0px;	
+		padding: 0px 50px;
+		background: #fff;
+
+		ul.h-inner-nav{
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			line-height: 0px;
+			height: 40px;
+			align-items: center;
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+
+			& > li{
+				line-height: 0px;
+				&.logo{
+					margin-right: auto;
+					img{
+						width: 25px;
+						height: 25px;
+					}
+					a{
+						margin: 0px;
+						text-decoration: none;
+						line-height: 0px;
+					}
+				}
+
+				& > a{
+					font-size: 11px;
+					line-height: 11px;
+					color: $blue;
+					margin-left: 20px;
+					font-weight: 300;
+					cursor: pointer;
+
+					&.active{
+						opacity: 0.7;
+						cursor: default !important;
+						text-decoration: none;
+					}
+				}
+
+				&.dropdown{
+					position: relative;
+					a{
+						&:after,&:before{
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.content-title{
+		padding: 15px 50px;
+		background: $blue;
+
+		h1{
+			padding: 0;
+			margin: 0;
+			font-size: 22px;
+			color: #fff;
+			line-height: 34px;
+			font-weight: 700;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+
+			svg{
+				width: 20px;
+				height: 20px;
+				fill: #fff;
+
+				*{
+					stroke: #fff;
+				}
+			}
+
+			span{
+				color: inherit;
+				font-size: inherit;
+				line-height: inherit;
+				font-weight: inherit;
+				margin-left: 10px;
+			}
+		}
+	}
+
+	div.content-body{
+		padding: 30px 50px;
+		background: #fff;
+		min-height: calc(100vh - 150px);
+
+		h1,h2,h3,h4,h5,h6,p,article,span,b,strong,small,time,s{
+			color: $black;
+		}
+	}
+
+	div.content-footer{
+		width: 100%;
+		padding: 10px 50px;
+		line-height: 0px;
+		text-align: center;
+		background: $blue;
+
+		small{
+			color: #fff;
+			font-size: 12px;
+			line-height: 12px;
+		}
+	}
+
+	.dropdown{
+		div.dropdown-menu{
+			border: none;
+			box-shadow: rgba(101, 119, 134, 0.2) 0px 0px 15px, rgba(101, 119, 134, 0.15) 0px 0px 3px 1px;
+			padding: 0px;
+
+			a.dropdown-item{
+				font-size: 13px;
+				line-height: 32px;
+				color: $black;
+
+				&:hover,&:active{
+					background: $el_hovbg !important;
+				}
+			}
+
+			div.dropdown-divider{
+				padding: 0;
+				margin: 0;
+				border-color: $border;
+			}
+		}
+	}
+}
